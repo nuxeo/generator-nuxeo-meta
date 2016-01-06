@@ -1,4 +1,4 @@
-{
+module.exports = {
   params: [{
     type: 'input',
     name: 'name',

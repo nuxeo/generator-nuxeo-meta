@@ -1,5 +1,5 @@
 // Descriptor skeleton
-{
+module.exports = {
   // Validate that everything is ok before starting to ask params
   before: function() { },
   // List of params following yeoman

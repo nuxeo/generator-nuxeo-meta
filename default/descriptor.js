@@ -1,4 +1,4 @@
-{
+module.exports = {
   params: [{
     type: 'input',
     name: 'name',
@@ -38,8 +38,8 @@
     message: 'Nuxeo Version:',
     default: '8.1-SNAPSHOT'
   }],
-  // Rebinded to BaseGenerator
   beforeTemplates: function() {
+    // Rebinded to BaseGenerator
     var mkdirp = require('mkdirp');
 
     mkdirp.sync('src/main/java/' + this.props.package.replace(/\./g, '/'));
@@ -56,4 +56,4 @@
     src: "MANIFEST.MF",
     dest: "src/main/resources/META-INF"
   }]
-}
+};
