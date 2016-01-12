@@ -1,5 +1,6 @@
 module.exports = {
   type: 'root',
+  order: -5,
   skip: function() {
     return this.fs.exists('pom.xml');
   },

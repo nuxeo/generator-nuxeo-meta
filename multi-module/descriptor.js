@@ -1,6 +1,7 @@
 module.exports = {
   depends: 'single-module',
   type: "root",
+  order: -10,
   skipInstall: function() {
     return this.fs.exists('pom.xml');
   },
