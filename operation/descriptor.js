@@ -1,4 +1,5 @@
 module.exports = {
+  type: "core",
   params: [{
     type: 'input',
     name: 'name',
