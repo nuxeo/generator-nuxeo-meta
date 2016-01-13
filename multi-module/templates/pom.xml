@@ -3,53 +3,14 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.nuxeo</groupId>
-    <artifactId>nuxeo-addons-parent</artifactId>
-    <version><%= nuxeo_version %></version>
-  </parent>
+
+  <name><%= name %></name>
   <groupId><%= package %></groupId>
   <artifactId><%= artifact %></artifactId>
-  <version><%= version %></version>
-  <name><%= name %></name>
   <description><%= description %></description>
+  <version><%= version %></version>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.nuxeo.common</groupId>
-      <artifactId>nuxeo-common</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.nuxeo.runtime</groupId>
-      <artifactId>nuxeo-runtime</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.nuxeo.ecm.core</groupId>
-      <artifactId>nuxeo-core</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.nuxeo.ecm.core</groupId>
-      <artifactId>nuxeo-core-api</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.nuxeo.ecm.core</groupId>
-      <artifactId>nuxeo-core-query</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.nuxeo.ecm.core</groupId>
-      <artifactId>nuxeo-core-schema</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.osgi</groupId>
-      <artifactId>org.osgi.core</artifactId>
-    </dependency>
-  </dependencies>
+  <modules></modules>
 
   <repositories>
     <repository>
