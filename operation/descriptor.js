@@ -11,6 +11,7 @@ module.exports = {
     type: 'input',
     name: 'package',
     message: 'Operation package:',
+    store: true,
     validate: function(value) {
       return value.split('.').length > 1;
     }
@@ -36,6 +37,6 @@ module.exports = {
     "org.nuxeo.ecm.automation:nuxeo-automation-core"
   ],
   contributions: [{
-    src: "full-contrib.xml"
+    src: "operation.xml"
   }]
 };

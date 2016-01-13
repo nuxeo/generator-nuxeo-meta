@@ -1,1 +1,8 @@
-<operation class="<%= package %>.<%= name %>"/>
+<?xml version="1.0"?>
+<component name="<%= package %>.<%= name %>" version="1.0">
+
+  <extension point="operations" target="org.nuxeo.ecm.core.operation.OperationServiceComponent">
+    <operation class="<%= package %>.<%= name %>"/>
+  </extension>
+
+</component>

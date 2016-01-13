@@ -1,5 +1,4 @@
 module.exports = {
-  type: 'root',
   order: -5,
   skip: function() {
     return this.fs.exists('pom.xml');
@@ -43,22 +42,25 @@ module.exports = {
     message: 'Nuxeo Version:',
     default: '8.1-SNAPSHOT'
   }],
-  beforeTemplates: function() {
+  beforeGeneration: function(params) {
+    var mkdirp = this.require('mkdirp');
+    var path = this.require('path');
+
     // Rebinded to BaseGenerator
-    var mkdirp = require('mkdirp');
+    var src = path.join(this._getBaseFolderName(), 'src');
 
-    mkdirp.sync('src/main/java/' + this.props.package.replace(/\./g, '/'));
-    mkdirp.sync('src/main/resources/META-INF');
-    mkdirp.sync('src/main/resources/OSGI-INF');
+    mkdirp.sync(path.join(src, 'main/java/' + params.package.replace(/\./g, '/')));
+    mkdirp.sync(path.join(src, 'main/resources/META-INF'));
+    mkdirp.sync(path.join(src, 'main/resources/OSGI-INF'));
 
-    mkdirp.sync('src/test/java/' + this.props.package.replace(/\./g, '/'));
-    mkdirp.sync('src/test/resources/OSGI-INF');
+    mkdirp.sync(path.join(src, 'test/java/' + params.package.replace(/\./g, '/')));
+    mkdirp.sync(path.join(src, 'test/resources/OSGI-INF'));
   },
   templates: [{
     src: "pom.xml",
     dest: "pom.xml"
   }, {
     src: "MANIFEST.MF",
-    dest: "src/main/resources/META-INF"
+    dest: "src/main/resources/META-INF/MANIFEST.MF"
   }]
 };
