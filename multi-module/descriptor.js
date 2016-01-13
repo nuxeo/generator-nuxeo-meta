@@ -2,7 +2,7 @@ module.exports = {
   depends: 'single-module',
   type: "root",
   order: -10,
-  skipInstall: function() {
+  skip: function() {
     return this.fs.exists('pom.xml');
   },
   before: function() {
@@ -14,9 +14,9 @@ module.exports = {
     message: 'BOM path:'
   }],
   templates: [{
-    src: function() {
-      if (this.props.bom && this.props.bom.length > 0) {
-        return this.props.bom;
+    src: function(props) {
+      if (props.bom && props.bom.length > 0) {
+        return props.bom;
       } else {
         return "pom.xml";
       }

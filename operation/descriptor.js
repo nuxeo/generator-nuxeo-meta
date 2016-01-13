@@ -26,22 +26,16 @@ module.exports = {
   // Replace params inside file dest + helpers
   templates: [{
     src: "operation.java",
-    dest: "src/main/java/{{package:/\./,'/'}}/{{name:uppercase}}.java"
+    dest: "src/main/java/{{s.replaceAll(package, '\\\\.', '/')}}/{{s.capitalize(name)}}.java"
   }, {
     src: "test.java",
-    dest: "src/test/java/{{package:/\./,'/'}}/Test{{name:uppercase}}.java"
+    dest: "src/test/java/{{s.replaceAll(package, '\\\\.', '/')}}/Test{{s.capitalize(name)}}.java"
   }],
   // <groupId>:<artifactId>[:<version>[:<extension>[:<classifier>]]]
   dependencies: [
     "org.nuxeo.ecm.automation:nuxeo-automation-core"
   ],
   contributions: [{
-    // recomputed contribution (all those kind of contribution inside one xml file)
-    target: "org.nuxeo.ecm.core.operation.OperationServiceComponent",
-    point: "operations",
-    src: "operation.xml"
-  }, {
-    // full contribution (copy the file)
     src: "full-contrib.xml"
   }]
 };
