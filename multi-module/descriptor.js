@@ -12,6 +12,38 @@ module.exports = {
     type: 'input',
     name: 'bom',
     message: 'BOM path:'
+  }, {
+    type: 'input',
+    name: 'name',
+    message: 'Bundle name:',
+    store: true,
+    validate: function(value) {
+      return value.length > 0;
+    }
+  }, {
+    type: 'input',
+    name: 'package',
+    message: 'Bundle package:',
+    store: true,
+    validate: function(value) {
+      return value.split('.').length > 0;
+    }
+  }, {
+    type: 'input',
+    name: 'version',
+    message: 'Bundle version:',
+    default: '1.0-SNAPSHOT'
+  }, {
+    type: 'input',
+    name: 'artifact',
+    message: 'Artifact id:',
+    validate: function(value) {
+      return value.length > 0;
+    }
+  }, {
+    type: 'input',
+    name: 'description',
+    message: 'Description :'
   }],
   templates: [{
     src: function(props) {
