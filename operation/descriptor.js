@@ -25,18 +25,20 @@ module.exports = {
     message: 'Operation description:'
   }],
   // Replace params inside file dest + helpers
-  templates: [{
+  'main-java': [{
     src: "operation.java",
-    dest: "src/main/java/{{s.replaceAll(package, '\\\\.', '/')}}/{{s.capitalize(name)}}.java"
-  }, {
+    dest: "{{s.camelize(name)}}.java"
+  }],
+  'test-java': [{
     src: "test.java",
-    dest: "src/test/java/{{s.replaceAll(package, '\\\\.', '/')}}/Test{{s.capitalize(name)}}.java"
+    dest: "Test{{s.camelize(name)}}.java"
+  }],
+  contributions: [{
+    src: "operation.xml",
+    dest: "{{s.dasherize(s.decapitalize(name))}}-contrib.xml"
   }],
   // <groupId>:<artifactId>[:<version>[:<extension>[:<classifier>]]]
   dependencies: [
     "org.nuxeo.ecm.automation:nuxeo-automation-core"
-  ],
-  contributions: [{
-    src: "operation.xml"
-  }]
+  ]
 };
