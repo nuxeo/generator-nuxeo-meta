@@ -5,8 +5,8 @@ module.exports = {
   },
   params: [{
     type: 'input',
-    name: 'name',
-    message: 'Bundle name:',
+    name: 'parentArtifact',
+    message: 'Parent Artifact id:',
     store: true,
     validate: function(value) {
       return value.length > 0;
@@ -34,17 +34,30 @@ module.exports = {
     }
   }, {
     type: 'input',
+    name: 'name',
+    message: 'Bundle name:',
+    validate: function(value) {
+      return value.length > 0 ? true : 'Bundle name is required.';
+    }
+  }, {
+    type: 'input',
     name: 'description',
     message: 'Description :'
   }, {
     type: 'input',
     name: 'nuxeo_version',
     message: 'Nuxeo Version:',
-    default: '8.1-SNAPSHOT'
+    default: '8.1-SNAPSHOT',
+    when: function (answers) {
+      return !answers.parentArtifact;
+    },
+    filter: function(answer) {
+      return answer || '';
+    }
   }],
   beforeGeneration: function(params) {
-    var mkdirp = this.require('mkdirp');
-    var path = this.require('path');
+    var mkdirp = this._require('mkdirp');
+    var path = this._require('path');
 
     // Rebinded to BaseGenerator
     var src = path.join(this._getBaseFolderName(), 'src');

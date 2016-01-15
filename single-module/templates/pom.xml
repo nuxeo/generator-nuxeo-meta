@@ -3,14 +3,18 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <% if (parentArtifact) { -%>
   <parent>
-    <groupId>org.nuxeo</groupId>
-    <artifactId>nuxeo-addons-parent</artifactId>
-    <version><%= nuxeo_version %></version>
+    <groupId><%= package %></groupId>
+    <artifactId><%= parentArtifact %></artifactId>
+    <version><%= typeof nuxeo_version === 'undefined' ? version : nuxeo_version %></version>
   </parent>
-  <groupId><%= package %></groupId>
+  <% } -%>
   <artifactId><%= artifact %></artifactId>
+  <% if (parentArtifact) { -%>
+  <groupId><%= package %></groupId>
   <version><%= version %></version>
+  <% } -%>
   <name><%= name %></name>
   <description><%= description %></description>
 

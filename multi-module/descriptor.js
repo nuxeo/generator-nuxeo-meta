@@ -14,8 +14,8 @@ module.exports = {
     message: 'BOM path:'
   }, {
     type: 'input',
-    name: 'name',
-    message: 'Bundle name:',
+    name: 'parentArtifact',
+    message: 'Artifact id:',
     store: true,
     validate: function(value) {
       return value.length > 0;
@@ -30,13 +30,19 @@ module.exports = {
     }
   }, {
     type: 'input',
+    name: 'nuxeo_version',
+    message: 'Nuxeo Version:',
+    default: '8.1-SNAPSHOT'
+  }, {
+    type: 'input',
     name: 'version',
     message: 'Bundle version:',
+    store: true,
     default: '1.0-SNAPSHOT'
   }, {
     type: 'input',
-    name: 'artifact',
-    message: 'Artifact id:',
+    name: 'name',
+    message: 'Bundle name:',
     validate: function(value) {
       return value.length > 0;
     }
