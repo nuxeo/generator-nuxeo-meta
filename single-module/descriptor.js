@@ -7,10 +7,7 @@ module.exports = {
     type: 'input',
     name: 'parentArtifact',
     message: 'Parent Artifact id:',
-    store: true,
-    validate: function(value) {
-      return value.length > 0;
-    }
+    store: true
   }, {
     type: 'input',
     name: 'package',
