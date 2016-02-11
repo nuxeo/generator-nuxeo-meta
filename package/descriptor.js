@@ -38,21 +38,5 @@ module.exports = {
     type: 'input',
     name: 'company',
     message: 'Company name:'
-  }],
-  templates: [{
-    src: 'pom.xml',
-    dest: 'pom.xml'
-  }, {
-    src: 'assembly.xml',
-    dest: 'src/main/assemble/assembly.xml'
-  }, {
-    src: 'install.xml',
-    dest: 'src/main/resources/install.xml'
-  }, {
-    src: 'package.xml',
-    dest: 'src/main/resources/package.xml'
-  }, {
-    src: 'nuxeo.defaults',
-    dest: 'src/main/resources/install/templates/{{s.dasherize(s.decapitalize(name))}}/nuxeo.defaults'
   }]
 };

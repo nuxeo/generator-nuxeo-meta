@@ -6,18 +6,13 @@ module.exports = {
   // Return a boolean to skip the generator installation
   skip: function() { },
   type: "core|web|ftest",
-  // Do some job before starting to ask params
-  before: function() { },
+  // Global configuration to save
+  // value can be function / litteral / or {{template}}
+  config: { }
   // List of params following yeoman documentation
   params: [],
-  // Void function before starting generation (init context)
-  beforeGeneration: function() { },
-  // Templates to render
-  templates: [{
-    src: "local filename",
-    dest: "destination path"
-  }],
   // Helper for java Classes (package need to exists in path)
+  // Files need to be in 'classes' folder
   'main-java': [{
     src: "template class",
     dest: "destination filename"

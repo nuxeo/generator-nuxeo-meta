@@ -5,8 +5,8 @@ module.exports = {
   skip: function() {
     return this.fs.exists('pom.xml');
   },
-  before: function() {
-    this.config.set('multi', true);
+  config: {
+    multi: true
   },
   params: [{
     type: 'input',

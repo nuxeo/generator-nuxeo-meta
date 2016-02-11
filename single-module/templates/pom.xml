@@ -7,53 +7,16 @@
   <parent>
     <groupId><%= package %></groupId>
     <artifactId><%= parentArtifact %></artifactId>
-    <version><%= typeof nuxeo_version === 'undefined' ? version : nuxeo_version %></version>
+    <version><%= parent_version %></version>
   </parent>
   <% } -%>
   <artifactId><%= artifact %></artifactId>
-  <% if (parentArtifact) { -%>
+  <% if (!parentArtifact) { -%>
   <groupId><%= package %></groupId>
   <version><%= version %></version>
   <% } -%>
   <name><%= name %></name>
   <description><%= description %></description>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.nuxeo.common</groupId>
-      <artifactId>nuxeo-common</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.nuxeo.runtime</groupId>
-      <artifactId>nuxeo-runtime</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.nuxeo.ecm.core</groupId>
-      <artifactId>nuxeo-core</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.nuxeo.ecm.core</groupId>
-      <artifactId>nuxeo-core-api</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.nuxeo.ecm.core</groupId>
-      <artifactId>nuxeo-core-query</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.nuxeo.ecm.core</groupId>
-      <artifactId>nuxeo-core-schema</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.osgi</groupId>
-      <artifactId>org.osgi.core</artifactId>
-    </dependency>
-  </dependencies>
 
   <repositories>
     <repository>

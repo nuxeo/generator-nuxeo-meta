@@ -6,8 +6,11 @@ module.exports = {
   params: [{
     type: 'input',
     name: 'parentArtifact',
-    message: 'Parent Artifact id:',
-    store: true
+    message: 'Parent Artifact id (use white space to cancel default value.):',
+    store: true,
+    filter: function(answer) {
+      return answer ? answer.trim() : '';
+    }
   }, {
     type: 'input',
     name: 'package',
@@ -16,6 +19,17 @@ module.exports = {
     store: true,
     validate: function(value) {
       return value.split('.').length > 0;
+    }
+  }, {
+    type: 'input',
+    name: 'parent_version',
+    message: 'Parent Version:',
+    default: '8.2-SNAPSHOT',
+    when: function(answers) {
+      return answers.parentArtifact;
+    },
+    filter: function(answer) {
+      return answer || '';
     }
   }, {
     type: 'input',
@@ -40,37 +54,5 @@ module.exports = {
     type: 'input',
     name: 'description',
     message: 'Description :'
-  }, {
-    type: 'input',
-    name: 'nuxeo_version',
-    message: 'Nuxeo Version:',
-    default: '8.1-SNAPSHOT',
-    when: function (answers) {
-      return !answers.parentArtifact;
-    },
-    filter: function(answer) {
-      return answer || '';
-    }
-  }],
-  beforeGeneration: function(params) {
-    var mkdirp = this._require('mkdirp');
-    var path = this._require('path');
-
-    // Rebinded to BaseGenerator
-    var src = path.join(this._getBaseFolderName(), 'src');
-
-    mkdirp.sync(path.join(src, 'main/java/' + params.package.replace(/\./g, '/')));
-    mkdirp.sync(path.join(src, 'main/resources/META-INF'));
-    mkdirp.sync(path.join(src, 'main/resources/OSGI-INF'));
-
-    mkdirp.sync(path.join(src, 'test/java/' + params.package.replace(/\./g, '/')));
-    mkdirp.sync(path.join(src, 'test/resources/OSGI-INF'));
-  },
-  templates: [{
-    src: "pom.xml",
-    dest: "pom.xml"
-  }, {
-    src: "MANIFEST.MF",
-    dest: "src/main/resources/META-INF/MANIFEST.MF"
   }]
 };
