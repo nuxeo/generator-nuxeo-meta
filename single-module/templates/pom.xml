@@ -13,8 +13,8 @@
   <artifactId><%= artifact %></artifactId>
   <% if (!parentArtifact) { -%>
   <groupId><%= package %></groupId>
-  <version><%= version %></version>
   <% } -%>
+  <version><%= version %></version>
   <name><%= name %></name>
   <description><%= description %></description>
 
