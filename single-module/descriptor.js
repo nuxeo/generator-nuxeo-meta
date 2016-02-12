@@ -5,7 +5,7 @@ module.exports = {
   },
   params: [{
     type: 'input',
-    name: 'parentArtifact',
+    name: 'parent_artifact',
     message: 'Parent Artifact id (use white space to cancel default value.):',
     store: true,
     filter: function(answer) {
@@ -13,10 +13,13 @@ module.exports = {
     }
   }, {
     type: 'input',
-    name: 'package',
-    message: 'Bundle package:',
-    default: 'org.nuxeo.addon',
+    name: 'parent_package',
+    message: 'Parent GroupId:',
+    default: 'org.nuxeo',
     store: true,
+    when: function(answers) {
+      return answers.parent_artifact;
+    },
     validate: function(value) {
       return value.split('.').length > 0;
     }
@@ -26,16 +29,11 @@ module.exports = {
     message: 'Parent Version:',
     default: '8.2-SNAPSHOT',
     when: function(answers) {
-      return answers.parentArtifact;
+      return answers.parent_artifact;
     },
     filter: function(answer) {
       return answer || '';
     }
-  }, {
-    type: 'input',
-    name: 'version',
-    message: 'Bundle version:',
-    default: '1.0-SNAPSHOT'
   }, {
     type: 'input',
     name: 'artifact',
@@ -43,6 +41,20 @@ module.exports = {
     validate: function(value) {
       return value.length > 0;
     }
+  }, {
+    type: 'input',
+    name: 'package',
+    message: 'Artifact group:',
+    default: 'org.nuxeo.addon',
+    store: true,
+    validate: function(value) {
+      return value.split('.').length > 0;
+    }
+  }, {
+    type: 'input',
+    name: 'version',
+    message: 'Bundle version:',
+    default: '1.0-SNAPSHOT'
   }, {
     type: 'input',
     name: 'name',

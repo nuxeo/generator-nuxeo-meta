@@ -3,17 +3,15 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <% if (parentArtifact) { -%>
+  <% if (parent_artifact) { -%>
   <parent>
-    <groupId><%= package %></groupId>
-    <artifactId><%= parentArtifact %></artifactId>
+    <groupId><%= parent_package %></groupId>
+    <artifactId><%= parent_artifact %></artifactId>
     <version><%= parent_version %></version>
   </parent>
   <% } -%>
   <artifactId><%= artifact %></artifactId>
-  <% if (!parentArtifact) { -%>
   <groupId><%= package %></groupId>
-  <% } -%>
   <version><%= version %></version>
   <name><%= name %></name>
   <description><%= description %></description>

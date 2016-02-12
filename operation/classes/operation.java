@@ -14,7 +14,7 @@ import org.nuxeo.ecm.core.api.DocumentRef;
 /**
  *
  */
-@Operation(id=<%= name %>.ID, category=Constants.Document, label="<% label %>", description="<%= description %>")
+@Operation(id=<%= name %>.ID, category=Constants.CAT_DOCUMENT, label="<% label %>", description="<%= description %>")
 public class <%= name %> {
 
     public static final String ID = "Document.<%= name %>";
