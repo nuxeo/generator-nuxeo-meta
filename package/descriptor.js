@@ -1,6 +1,9 @@
 module.exports = {
   type: "marketplace",
   depends: 'multi-module',
+  ensure: function() {
+    return this.config['multi'];
+  },
   params: [{
     type: 'input',
     name: 'parentArtifact',
