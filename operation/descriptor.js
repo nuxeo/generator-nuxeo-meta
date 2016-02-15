@@ -3,9 +3,9 @@ module.exports = {
   params: [{
     type: 'input',
     name: 'operation_name',
-    message: 'Operation name:',
+    message: 'Operation class name:',
     validate: function(value) {
-      return value.length > 1 && value.match(/^[A-Z]/) !== null;
+      return value.length > 1 && value.match(/^[A-Z]/) !== null ? true : 'Operation class name is mandatory with a first upper character.';
     }
   }, {
     type: 'input',
@@ -14,6 +14,9 @@ module.exports = {
     store: true,
     validate: function(value) {
       return value.split('.').length > 1;
+    },
+    filter: function(answer) {
+      return answer.replace(/\s+/g, '.');
     }
   }, {
     type: 'input',
@@ -35,7 +38,7 @@ module.exports = {
   }],
   contributions: [{
     src: "operation.xml",
-    dest: "{{s.dasherize(s.decapitalize(operation_name))}}-contrib.xml"
+    dest: "{{s.dasherize(s.decapitalize(operation_name))}}-operation-contrib.xml"
   }],
   // <groupId>:<artifactId>[:<version>[:<extension>[:<classifier>]]]
   dependencies: [

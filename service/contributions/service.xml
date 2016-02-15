@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<component name="<%= package %>.service.<%= s.dasherize(s.decapitalize(service_name)) %>" version="1.0">
+
+  <implementation class="<%= package %>.<%= s.camelize(service_name)%>Impl" />
+
+  <service>
+    <provide interface="<%= package %>.<%= s.camelize(service_name) %>" />
+  </service>
+</component>

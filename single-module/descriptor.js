@@ -22,6 +22,9 @@ module.exports = {
     },
     validate: function(value) {
       return value.split('.').length > 0;
+    },
+    filter: function(answer) {
+      return answer.replace(/\s+/g, '.');
     }
   }, {
     type: 'input',
@@ -49,6 +52,9 @@ module.exports = {
     store: true,
     validate: function(value) {
       return value.split('.').length > 0;
+    },
+    filter: function(answer) {
+      return answer.replace(/\s+/g, '.');
     }
   }, {
     type: 'input',
