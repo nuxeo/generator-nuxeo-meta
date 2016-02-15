@@ -5,4 +5,4 @@ Bundle-Vendor: Nuxeo
 Bundle-Version: 1.0.0
 Bundle-Name: <%= name %>
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: <%= package %>;singleton=true
+Bundle-SymbolicName: <%= package %>.<%= s.dasherize(s.decapitalize(name)) %>;singleton=true

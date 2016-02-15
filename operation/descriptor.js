@@ -39,6 +39,7 @@ module.exports = {
   }],
   // <groupId>:<artifactId>[:<version>[:<extension>[:<classifier>]]]
   dependencies: [
-    "org.nuxeo.ecm.automation:nuxeo-automation-core"
+    "org.nuxeo.ecm.automation:nuxeo-automation-core",
+    "org.nuxeo.ecm.automation:nuxeo-automation-test:::test"
   ]
 };
