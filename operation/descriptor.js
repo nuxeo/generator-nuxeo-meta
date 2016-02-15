@@ -2,7 +2,7 @@ module.exports = {
   type: "core",
   params: [{
     type: 'input',
-    name: 'name',
+    name: 'operation_name',
     message: 'Operation name:',
     validate: function(value) {
       return value.length > 1 && value.match(/^[A-Z]/) !== null;
@@ -17,25 +17,25 @@ module.exports = {
     }
   }, {
     type: 'input',
-    name: 'label',
+    name: 'operation_label',
     message: 'Operation label:'
   }, {
     type: 'input',
-    name: 'description',
+    name: 'operation_description',
     message: 'Operation description:'
   }],
   // Replace params inside file dest + helpers
   'main-java': [{
     src: "operation.java",
-    dest: "{{s.camelize(name)}}.java"
+    dest: "{{s.camelize(operation_name)}}.java"
   }],
   'test-java': [{
     src: "test.java",
-    dest: "Test{{s.camelize(name)}}.java"
+    dest: "Test{{s.camelize(operation_name)}}.java"
   }],
   contributions: [{
     src: "operation.xml",
-    dest: "{{s.dasherize(s.decapitalize(name))}}-contrib.xml"
+    dest: "{{s.dasherize(s.decapitalize(operation_name))}}-contrib.xml"
   }],
   // <groupId>:<artifactId>[:<version>[:<extension>[:<classifier>]]]
   dependencies: [

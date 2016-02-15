@@ -25,14 +25,14 @@ import org.nuxeo.runtime.test.runner.Jetty;
 @RepositoryConfig(init = DefaultRepositoryInit.class, cleanup = Granularity.METHOD)
 @Jetty(port = 18080)
 @Deploy("<%= symbolicName %>")
-public class Test<%= name %> {
+public class Test<%= s.camelize(operation_name) %> {
 
       @Inject
       protected Session clientSession;
 
       @Test
       public void shouldCallTheOperation() throws IOException {
-          Object response = clientSession.newRequest(<%= name %>.ID).execute();
+          Object response = clientSession.newRequest(<%= s.camelize(operation_name) %>.ID).execute();
           assertTrue(response.getClass().equals(Document.class));
           Document root = (Document) response;
           assertEquals("/", root.getPath());
@@ -41,7 +41,7 @@ public class Test<%= name %> {
       @Test
       public void shouldCallWithParameters() throws IOException {
           String path = "/default-domain";
-          Object response = clientSession.newRequest(<%= name %>.ID).set("path", path).execute();
+          Object response = clientSession.newRequest(<%= s.camelize(operation_name) %>.ID).set("path", path).execute();
           assertTrue(response.getClass().equals(Document.class));
           Document root = (Document) response;
           assertEquals(path, root.getPath());

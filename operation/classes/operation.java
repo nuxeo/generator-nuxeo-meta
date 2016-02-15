@@ -13,10 +13,10 @@ import org.nuxeo.ecm.core.api.PathRef;
 /**
  *
  */
-@Operation(id=<%= name %>.ID, category=Constants.CAT_DOCUMENT, label="<% label %>", description="<%= description %>")
-public class <%= name %> {
+@Operation(id=<%= s.camelize(operation_name) %>.ID, category=Constants.CAT_DOCUMENT, label="<% operation_label %>", description="<%= operation_description %>")
+public class <%= s.camelize(operation_name) %> {
 
-    public static final String ID = "Document.<%= name %>";
+    public static final String ID = "Document.<%= s.camelize(operation_name) %>";
 
     @Context
     protected CoreSession session;
