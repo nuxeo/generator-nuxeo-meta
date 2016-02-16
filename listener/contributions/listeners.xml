@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<component name="<%= package %>.listener.<%= s.dasherize(s.decapitalize(listener_name)) %>">
+
+  <extension target="org.nuxeo.ecm.core.event.EventServiceComponent" point="listener">
+    <listener<% if (async) { %> async="false"<% }; if (async || post_commit) { %> postCommit="true"<% } %> name="<%= s.dasherize(s.decapitalize(listener_name)) %>"
+      class="<%= package + '.' + s.camelize(listener_name) %>">
+      <% if(events) { events.forEach(function(event) { -%>
+        <event><%= event %></event>
+      <% });} -%>
+      <%  if(custom_events) { custom_events.forEach(function(event) { -%>
+        <event><%= event %></event>
+      <% });} -%>
+    </listener>
+  </extension>
+
+</component>
