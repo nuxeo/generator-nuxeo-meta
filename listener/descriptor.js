@@ -12,7 +12,7 @@ module.exports = {
     name: 'listener_name',
     message: 'Listener class name:',
     validate: function(value) {
-      return value.length > 1 && value.match(/^[A-Z]/) !== null ? true : 'Operation class name is mandatory with a first upper character.';
+      return value.length > 1 && value.match(/^[A-Z]/) !== null ? true : 'Service class name is mandatory with a first upper character.';
     }
   }, {
     type: 'input',

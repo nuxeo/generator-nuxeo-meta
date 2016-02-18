@@ -1,4 +1,4 @@
-package org.nuxeo.addon;
+package <%= package %>;
 
 import static org.junit.Assert.assertNotNull;
 
