@@ -1,6 +1,6 @@
 # Generator Nuxeo Metamodel
 ## Introduction
-This project is the metamodel used by [nuxeo/generator-nuxeo](https://github.com/nuxeo/generator-nuxeo) project, a Yeoman generator for Nuxeo. It defines which can be generated with the generator using a simple description format.
+This project is the metamodel used by [nuxeo/generator-nuxeo](https://github.com/nuxeo/generator-nuxeo) project, a Yeoman generator for Nuxeo. It defines what can be generated with the generator using a simple description format.
 
 ## Format description
 Each folder is a generator; you can pass several generator name to the `yo nuxeo` command.
