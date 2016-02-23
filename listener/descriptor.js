@@ -1,3 +1,5 @@
+var helper = require('../helpers.js');
+
 // Fake Inquirer Separator / with chalk
 // See: https://github.com/SBoudrias/Inquirer.js/blob/master/lib/objects/separator.js
 var Separator = function(line) {
@@ -11,17 +13,13 @@ module.exports = {
     type: 'input',
     name: 'listener_name',
     message: 'Listener class name:',
-    validate: function(value) {
-      return value.length > 1 && value.match(/^[A-Z]/) !== null ? true : 'Service class name is mandatory with a first upper character.';
-    }
+    validate: helper.validators.className
   }, {
     type: 'input',
     name: 'package',
     message: 'Listener package:',
     store: true,
-    validate: function(value) {
-      return value.split('.').length > 1;
-    }
+    validate: helper.validators.package
   }, {
     type: 'checkbox',
     name: 'events',

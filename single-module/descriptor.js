@@ -1,3 +1,5 @@
+var helper = require('../helpers.js');
+
 module.exports = {
   order: -5,
   skip: function() {
@@ -20,12 +22,8 @@ module.exports = {
     when: function(answers) {
       return answers.parent_artifact;
     },
-    validate: function(value) {
-      return value.split('.').length > 0;
-    },
-    filter: function(answer) {
-      return answer.replace(/\s+/g, '.');
-    }
+    validate: helper.validators.package,
+    filter: helper.filters.package
   }, {
     type: 'input',
     name: 'parent_version',
@@ -47,15 +45,11 @@ module.exports = {
   }, {
     type: 'input',
     name: 'package',
-    message: 'Artifact group:',
+    message: 'Artifact group id:',
     default: 'org.nuxeo.addon',
     store: true,
-    validate: function(value) {
-      return value.split('.').length > 0;
-    },
-    filter: function(answer) {
-      return answer.replace(/\s+/g, '.');
-    }
+    validate: helper.validators.package,
+    filter: helper.filters.package
   }, {
     type: 'input',
     name: 'version',
@@ -65,9 +59,7 @@ module.exports = {
     type: 'input',
     name: 'name',
     message: 'Bundle name:',
-    validate: function(value) {
-      return value.length > 0 ? true : 'Bundle name is required.';
-    }
+    validate: helper.validators.required
   }, {
     type: 'input',
     name: 'description',

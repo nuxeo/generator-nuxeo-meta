@@ -1,12 +1,12 @@
+var helper = require('../helpers.js');
+
 module.exports = {
   type: "core",
   params: [{
     type: 'input',
     name: 'operation_name',
     message: 'Operation class name:',
-    validate: function(value) {
-      return value.length > 1 && value.match(/^[A-Z]/) !== null ? true : 'Operation class name is mandatory with a first upper character.';
-    }
+    validate: helper.validators.className
   }, {
     type: 'input',
     name: 'package',

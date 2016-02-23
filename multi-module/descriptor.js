@@ -1,3 +1,5 @@
+var helper = require('../helpers.js');
+
 module.exports = {
   depends: 'single-module',
   type: "root",
@@ -10,45 +12,49 @@ module.exports = {
   },
   params: [{
     type: 'input',
-    name: 'bom',
-    message: 'BOM path:'
+    name: 'super_artifact',
+    message: 'Parent Artifact id:',
+    default: 'nuxeo-distribution',
+    validate: helper.validators.artifact
   }, {
     type: 'input',
-    name: 'parentArtifact',
+    name: 'super_package',
+    message: 'Parent group id:',
+    default: 'org.nuxeo.ecm.distribution',
+    validate: helper.validators.package,
+    filter: helper.filters.package
+  }, {
+    type: 'input',
+    name: 'super_version',
+    message: 'Parent Version:',
+    default: '8.2-SNAPSHOT'
+  }, {
+    type: 'input',
+    name: 'parent_artifact',
     message: 'Artifact id:',
     store: true,
-    validate: function(value) {
-      return value.length > 0;
-    }
+    validate: helper.validators.artifact
   }, {
     type: 'input',
-    name: 'package',
-    message: 'Bundle package:',
+    name: 'parent_package',
+    message: 'Artifact group id:',
     store: true,
-    validate: function(value) {
-      return value.split('.').length > 0;
-    }
+    validate: helper.validators.package,
+    filter: helper.filters.package
   }, {
     type: 'input',
-    name: 'nuxeo_version',
-    message: 'Nuxeo Version:',
-    default: '8.1-SNAPSHOT'
-  }, {
-    type: 'input',
-    name: 'version',
+    name: 'parent_version',
     message: 'Bundle version:',
     store: true,
     default: '1.0-SNAPSHOT'
   }, {
     type: 'input',
-    name: 'name',
+    name: 'multi_name',
     message: 'Bundle name:',
-    validate: function(value) {
-      return value.length > 0;
-    }
+    validate: helper.validators.required
   }, {
     type: 'input',
-    name: 'description',
+    name: 'multi_description',
     message: 'Description :'
   }],
   templates: [{
