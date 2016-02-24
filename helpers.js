@@ -1,6 +1,7 @@
 var errors = {
-  package: 'Package name must contains at least one "." char.',
-  artifact: 'Artifact name can\'t be empty and must not contains invalid char.',
+  package: 'Package name must contain at least one "." char and no special chars.',
+  artifact: 'Artifact name can\'t be empty and must not contains invalid chars.',
+  parent_artifact: 'Parent artifact name must not contain invalid chars.',
   required: 'Field can\'t be empty',
   className: 'Invalid Class name.'
 }
@@ -9,14 +10,18 @@ var validators = {
   package: function(value) {
     return value.split('.').length > 0 && !value.match(/[^\w\.]/);
   },
+  parent_artifact: function(value) {
+    var v = (value && value.trim()) || false;
+    return !v || !value.match(/[^\w-]/);
+  },
   artifact: function(value) {
-    return value.length > 0 && !value.match(/\W+/);
+    return value.length > 0 && !value.match(/[^\w-]/);
   },
   required: function(value) {
     return value && value.length > 0;
   },
   className: function(value) {
-    return value.length > 1 && value.match(/^[A-Z]/) !== null && !value.match(/\W+/);
+    return value.length > 1 && value.match(/^[A-Z]/) !== null && !value.match(/[^\w]/);
   }
 }
 

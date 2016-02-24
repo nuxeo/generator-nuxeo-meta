@@ -10,6 +10,7 @@ module.exports = {
     name: 'parent_artifact',
     message: 'Parent Artifact id (use white space to cancel default value.):',
     store: true,
+    validate: helper.validators.parent_artifact,
     filter: function(answer) {
       return answer ? answer.trim() : '';
     }
@@ -39,9 +40,7 @@ module.exports = {
     type: 'input',
     name: 'artifact',
     message: 'Artifact id:',
-    validate: function(value) {
-      return value.length > 0;
-    }
+    validate: helper.validators.artifact
   }, {
     type: 'input',
     name: 'package',
