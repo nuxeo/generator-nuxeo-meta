@@ -50,6 +50,7 @@ var nuxeo_version = {
     '8.2-SNAPSHOT'
   ],
   default: '8.2-SNAPSHOT',
+  default_distribution: '8.1',
   filter: function(answer) {
     // Strip text between parenthesis
     return answer.replace(/\s+?\(.+\)/g, '');

@@ -33,7 +33,7 @@ module.exports = {
     type: 'input',
     name: 'super_version',
     message: 'Parent Version:',
-    default: helper.nuxeo_version.default,
+    default: helper.nuxeo_version.default_distribution,
     validate: helper.validators.version,
     when: function(answers) {
       return answers.super_artifact;
