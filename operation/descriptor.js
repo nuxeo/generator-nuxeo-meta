@@ -19,7 +19,8 @@ module.exports = {
   }, {
     type: 'input',
     name: 'operation_label',
-    message: 'Operation label:'
+    message: 'Operation label:',
+    validate: helper.validators.required
   }, {
     type: 'input',
     name: 'operation_description',

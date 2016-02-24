@@ -5,11 +5,7 @@ module.exports = {
   type: "root",
   order: -10,
   skip: function() {
-    var pomExists = this.fs.exists('pom.xml');
-    if (pomExists) {
-      this.log.conflict('The current folder contains an existing project.')
-    }
-    return pomExists;
+    return this.fs.exists('pom.xml');
   },
   config: {
     multi: true
