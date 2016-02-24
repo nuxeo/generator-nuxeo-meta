@@ -29,7 +29,7 @@ module.exports = {
     type: 'input',
     name: 'parent_version',
     message: 'Parent Version:',
-    default: helper.nuxeo_version.default,
+    store: true,
     validate: helper.validators.version,
     when: function(answers) {
       return answers.parent_artifact;
@@ -47,7 +47,8 @@ module.exports = {
     validate: helper.validators.version,
     filter: helper.nuxeo_version.filter,
     when: function(answers) {
-      return !answers.parent_artifact;
+      // If parent_artifact undefined, it was handled previously
+      return typeof answers.parent_artifact !== 'undefined' && !answers.parent_artifact;
     }
   }, {
     type: 'input',
@@ -58,7 +59,6 @@ module.exports = {
     type: 'input',
     name: 'package',
     message: 'Artifact group id:',
-    default: 'org.nuxeo.addon',
     store: true,
     validate: helper.validators.package,
     filter: helper.filters.package
