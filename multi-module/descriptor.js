@@ -39,12 +39,13 @@ module.exports = {
       return answers.super_artifact;
     }
   }, {
-    type: 'input',
+    type: 'list',
     name: 'nuxeo_version',
     message: 'Nuxeo Version:',
-    default: helper.nuxeo_version,
-    validate: helper.validators.version,
+    default: helper.nuxeo_version.default,
     store: true,
+    choices: helper.nuxeo_version.choices,
+    validate: helper.validators.version,
     when: function(answers) {
       return !answers.super_artifact;
     }

@@ -1,12 +1,12 @@
 var errors = {
   package: 'Package name must contain at least one "." char and no special chars.',
-  artifact: 'Artifact name can\'t be empty and must not contain invalid chars.',
-  parent_artifact: 'Parent artifact name must not contain invalid chars.',
+  artifact: 'Artifact name can\'t be empty and must not contain special chars.',
+  parent_artifact: 'Parent artifact name must not contain special chars.',
   required: 'Field can\'t be empty',
   className: 'Invalid class name.',
   version_snapshot: 'Version must match pattern (X.)Y.Z-SNAPSHOT (X, Y and Z being numbers)',
   version: 'Version must match pattern (X.)Y.Z(-IDENTIFIER) (X, Y and Z being numbers)',
-  package_name: 'Package name contains invalid chars.'
+  package_name: 'Package name contains special chars.'
 };
 
 var validators = {
@@ -43,11 +43,20 @@ var filters = {
   }
 };
 
+var nuxeo_version = {
+  choices: [
+    '7.10',
+    '8.1',
+    '8.2-SNAPSHOT'
+  ],
+  default: '8.1'
+}
+
 module.exports = (function() {
   var obj = {
     validators: {},
     filters: filters,
-    nuxeo_version: '8.2-SNAPSHOT'
+    nuxeo_version: nuxeo_version
   };
 
   // Loop over each validators to bind his error message

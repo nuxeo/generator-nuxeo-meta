@@ -38,11 +38,12 @@ module.exports = {
       return answer || '';
     }
   }, {
-    type: 'input',
+    type: 'list',
     name: 'nuxeo_version',
     message: 'Nuxeo Version:',
-    default: helper.nuxeo_version,
+    default: helper.nuxeo_version.default,
     store: true,
+    choices: helper.nuxeo_version.choices,
     validate: helper.validators.version,
     when: function(answers) {
       return !answers.parent_artifact;
