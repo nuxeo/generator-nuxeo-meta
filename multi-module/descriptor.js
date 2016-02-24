@@ -27,7 +27,8 @@ module.exports = {
     type: 'input',
     name: 'super_version',
     message: 'Parent Version:',
-    default: '8.2-SNAPSHOT'
+    default: '8.2-SNAPSHOT',
+    validate: helper.validators.version,
   }, {
     type: 'input',
     name: 'parent_artifact',
@@ -46,7 +47,8 @@ module.exports = {
     name: 'parent_version',
     message: 'Bundle version:',
     store: true,
-    default: '1.0-SNAPSHOT'
+    default: '1.0-SNAPSHOT',
+    validate: helper.validators.version_snapshot,
   }, {
     type: 'input',
     name: 'multi_name',

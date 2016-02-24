@@ -1,3 +1,5 @@
+var helper = require('../helpers.js');
+
 module.exports = {
   type: "marketplace",
   depends: 'multi-module',
@@ -25,7 +27,8 @@ module.exports = {
     name: 'version',
     message: 'Bundle version:',
     store: true,
-    default: '1.0-SNAPSHOT'
+    default: '1.0-SNAPSHOT',
+    validate: helper.validators.version,
   }, {
     type: 'input',
     name: 'name',

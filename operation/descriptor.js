@@ -12,9 +12,7 @@ module.exports = {
     name: 'package',
     message: 'Operation package:',
     store: true,
-    validate: function(value) {
-      return value.split('.').length > 1;
-    },
+    validate: helper.validators.package,
     filter: function(answer) {
       return answer.replace(/\s+/g, '.');
     }

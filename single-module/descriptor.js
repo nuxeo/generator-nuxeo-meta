@@ -30,6 +30,7 @@ module.exports = {
     name: 'parent_version',
     message: 'Parent Version:',
     default: '8.2-SNAPSHOT',
+    validate: helper.validators.version,
     when: function(answers) {
       return answers.parent_artifact;
     },
@@ -53,7 +54,8 @@ module.exports = {
     type: 'input',
     name: 'version',
     message: 'Bundle version:',
-    default: '1.0-SNAPSHOT'
+    default: '1.0-SNAPSHOT',
+    validate: helper.validators.version_snapshot,
   }, {
     type: 'input',
     name: 'name',
