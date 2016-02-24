@@ -74,7 +74,7 @@ module.exports = {
     name: 'custom_events',
     message: 'Custom Events (separate with a comma):',
     validate: function(value) {
-      return value.trim().length === 0 || value.match(/[^,\w\s]/) ? 'Use a coma to separate custom events.' : true;
+      return value.trim().length === 0 || value.match(/[^,\w\s]/) ? 'Invalid input, and use a comma to separate custom events.' : true;
     },
     when: function(answers) {
       var i = answers.events.indexOf('Add custom events');

@@ -3,21 +3,21 @@ var errors = {
   artifact: 'Artifact name can\'t be empty and must not contain invalid chars.',
   parent_artifact: 'Parent artifact name must not contain invalid chars.',
   required: 'Field can\'t be empty',
-  className: 'Invalid Class name.',
-  version_snapshot: 'Version must match pattern (X.)Y.Z-SNAPSHOT. (X, Y and Z being numbers)',
-  version: 'Version must match pattern (X.)Y.Z(-IDENTIFIER). (X, Y and Z being numbers)'
-}
+  className: 'Invalid class name.',
+  version_snapshot: 'Version must match pattern (X.)Y.Z-SNAPSHOT (X, Y and Z being numbers)',
+  version: 'Version must match pattern (X.)Y.Z(-IDENTIFIER) (X, Y and Z being numbers)'
+};
 
 var validators = {
   package: function(value) {
-    return value.split('.').length > 1 && !value.match(/[^\w\.]/);
+    return value.split('.').length > 1 && !value.match(/^\./) && !value.match(/\.$/) && !value.match(/[^\w\.]/);
   },
   parent_artifact: function(value) {
     var v = (value && value.trim()) || false;
     return !v || !value.match(/[^\w-]/);
   },
   artifact: function(value) {
-    return value.length > 0 && !value.match(/[^\w-]/);
+    return value.length > 0 && !value.match(/[^\w-]/) && !value.match(/\d+/);
   },
   required: function(value) {
     return value && value.length > 0;
@@ -31,13 +31,13 @@ var validators = {
   version_snapshot: function(value) {
     return value.length > 1 && value.match(/^(\d+\.)?(\d+\.)(\*|\d+)-SNAPSHOT$/);
   }
-}
+};
 
 var filters = {
   package: function(answer) {
     return answer.replace(/\s+/g, '.').toLowerCase();
   }
-}
+};
 
 module.exports = (function() {
   var obj = {

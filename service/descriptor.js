@@ -1,3 +1,4 @@
+var helper = require('../helpers.js');
 
 module.exports = {
   depends: "default",
@@ -7,16 +8,12 @@ module.exports = {
       name: 'package',
       message: 'Service package:',
       store: true,
-      validate: function(value) {
-        return value.split('.').length > 1;
-      }
+      validate: helper.validators.package
     }, {
       type: 'input',
       name: 'service_name',
-      message: 'Service class name:',
-      validate: function(value) {
-        return value.length > 1 && value.match(/^[A-Z]/) !== null && value.indexOf(' ') < 0 ? true : 'Invalid Service class name.';
-      }
+      message: 'Service interface name:',
+      validate: helper.validators.className
     }
   ],
   'main-java': [{

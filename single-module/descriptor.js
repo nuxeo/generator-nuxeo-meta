@@ -3,7 +3,11 @@ var helper = require('../helpers.js');
 module.exports = {
   order: -5,
   skip: function() {
-    return this.fs.exists('pom.xml');
+    var pomExists = this.fs.exists('pom.xml');
+    if (pomExists) {
+      this.log.conflict('The current folder contains an existing project.')
+    }
+    return pomExists;
   },
   params: [{
     type: 'input',
