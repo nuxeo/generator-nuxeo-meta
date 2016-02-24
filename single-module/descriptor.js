@@ -29,7 +29,7 @@ module.exports = {
     type: 'input',
     name: 'parent_version',
     message: 'Parent Version:',
-    default: helper.nuxeo_version,
+    default: helper.nuxeo_version.default,
     validate: helper.validators.version,
     when: function(answers) {
       return answers.parent_artifact;
@@ -45,6 +45,7 @@ module.exports = {
     store: true,
     choices: helper.nuxeo_version.choices,
     validate: helper.validators.version,
+    filter: helper.nuxeo_version.filter,
     when: function(answers) {
       return !answers.parent_artifact;
     }

@@ -27,10 +27,10 @@ var validators = {
     return value.length > 1 && value.match(/^[A-Z]/) !== null && !value.match(/[^\w]/);
   },
   version: function(value) {
-    return value.length > 1 && value.match(/^(\d+\.)?(\d+\.)(\*|\d+)(-\w+)?$/);
+    return value && value.length > 1 && value.match(/^(\d+\.)?(\d+\.)(\*|\d+)(-\w+)?$/);
   },
   version_snapshot: function(value) {
-    return value.length > 1 && value.match(/^(\d+\.)?(\d+\.)(\*|\d+)-SNAPSHOT$/);
+    return value && value.length > 1 && value.match(/^(\d+\.)?(\d+\.)(\*|\d+)-SNAPSHOT$/);
   },
   package_name: function(value) {
     return value.length > 0 && !value.match(/[^\w-]/) && !value.match(/\d+/);
@@ -45,11 +45,15 @@ var filters = {
 
 var nuxeo_version = {
   choices: [
-    '7.10',
-    '8.1',
+    '7.10 (LTS 2015)',
+    '8.1 (latest FastTrack)',
     '8.2-SNAPSHOT'
   ],
-  default: '8.1'
+  default: '8.2-SNAPSHOT',
+  filter: function(answer) {
+    // Strip text between parenthesis
+    return answer.replace(/\s+?\(.+\)/g, '');
+  }
 }
 
 module.exports = (function() {
