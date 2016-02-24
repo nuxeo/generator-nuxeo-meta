@@ -128,6 +128,27 @@ Other templates plain files are using [ejs](https://github.com/mde/ejs/blob/mast
 ### Contributions
 Contributions are handled a similar way than java classes;
 
+```
+contributions: [{
+  src: "operation.xml",
+  dest: "{{s.dasherize(s.decapitalize(operation_name))}}-operation-contrib.xml"
+}],
+```
+
+### Dependencies
+Adding dependencies to the target `pom.xml` file. A dependency is described with his GAV: `<groupId>:<artifactId>[:<version>[:<extension>[:<classifier>]]]`.
+
+It also allows to add all 'parent child modules' as project dependencies, useful for the Package project `pom.xml`.
+
+```
+dependencies: [
+  "org.nuxeo.ecm.automation:nuxeo-automation-core",
+  "org.nuxeo.ecm.automation:nuxeo-automation-test:::test"
+]
+or
+dependencies: 'inherited'
+```
+
 ## Licensing
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
