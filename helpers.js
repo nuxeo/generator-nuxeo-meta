@@ -5,7 +5,8 @@ var errors = {
   required: 'Field can\'t be empty',
   className: 'Invalid class name.',
   version_snapshot: 'Version must match pattern (X.)Y.Z-SNAPSHOT (X, Y and Z being numbers)',
-  version: 'Version must match pattern (X.)Y.Z(-IDENTIFIER) (X, Y and Z being numbers)'
+  version: 'Version must match pattern (X.)Y.Z(-IDENTIFIER) (X, Y and Z being numbers)',
+  package_name: 'Package name contains invalid chars.'
 };
 
 var validators = {
@@ -30,6 +31,9 @@ var validators = {
   },
   version_snapshot: function(value) {
     return value.length > 1 && value.match(/^(\d+\.)?(\d+\.)(\*|\d+)-SNAPSHOT$/);
+  },
+  package_name: function(value) {
+    return value.length > 0 && !value.match(/[^\w-]/) && !value.match(/\d+/);
   }
 };
 
@@ -42,7 +46,8 @@ var filters = {
 module.exports = (function() {
   var obj = {
     validators: {},
-    filters: filters
+    filters: filters,
+    nuxeo_version: '8.2-SNAPSHOT'
   };
 
   // Loop over each validators to bind his error message

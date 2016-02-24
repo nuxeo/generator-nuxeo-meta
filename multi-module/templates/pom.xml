@@ -2,11 +2,13 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <% if (super_artifact) { -%>
   <parent>
     <groupId><%= super_package %></groupId>
     <artifactId><%= super_artifact %></artifactId>
     <version><%= super_version %></version>
   </parent>
+  <% } -%>
 
   <groupId><%= parent_package %></groupId>
   <artifactId><%= parent_artifact %></artifactId>
@@ -16,6 +18,20 @@
   <packaging>pom</packaging>
 
   <modules></modules>
+
+  <% if (!super_artifact) { -%>
+    <dependencyManagement>
+      <dependencies>
+        <dependency>
+          <groupId>org.nuxeo.ecm.distribution</groupId>
+          <artifactId>nuxeo-distribution</artifactId>
+          <scope>import</scope>
+          <type>pom</type>
+          <version><%= nuxeo_version %></version>
+        </dependency>
+      </dependencies>
+    </dependencyManagement>
+  <% } -%>
 
   <repositories>
     <repository>

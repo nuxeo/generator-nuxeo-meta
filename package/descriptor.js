@@ -8,41 +8,38 @@ module.exports = {
   },
   params: [{
     type: 'input',
-    name: 'parentArtifact',
+    name: 'parent_artifact',
     message: 'Parent Artifact id:',
     store: true,
-    validate: function(value) {
-      return value.length > 0;
-    }
+    validate: helper.validators.artifact
   }, {
     type: 'input',
-    name: 'package',
-    message: 'GroupId:',
+    name: 'parent_package',
+    message: 'Artifact Group id:',
     store: true,
-    validate: function(value) {
-      return value.split('.').length > 1;
-    }
+    validate: helper.validators.package
   }, {
     type: 'input',
-    name: 'version',
+    name: 'parent_version',
     message: 'Bundle version:',
     store: true,
     default: '1.0-SNAPSHOT',
-    validate: helper.validators.version,
+    validate: helper.validators.version_snapshot,
   }, {
     type: 'input',
     name: 'name',
     message: 'Package name:',
-    validate: function(value) {
-      return value.indexOf(' ') < 0 && value.length > 1 && value.match(/^[A-Z]/) !== null;
-    }
+    validate: helper.validators.package_name
   }, {
     type: 'input',
     name: 'title',
-    message: 'Package title:'
+    message: 'Package title:',
+    validate: helper.validators.required
   }, {
     type: 'input',
     name: 'company',
-    message: 'Company name:'
-  }]
+    message: 'Company name:',
+    validate: helper.validators.required
+  }],
+  dependencies: 'inherited'
 };

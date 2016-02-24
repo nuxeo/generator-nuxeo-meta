@@ -33,13 +33,23 @@ module.exports = {
     type: 'input',
     name: 'parent_version',
     message: 'Parent Version:',
-    default: '8.2-SNAPSHOT',
+    default: helper.nuxeo_version,
     validate: helper.validators.version,
     when: function(answers) {
       return answers.parent_artifact;
     },
     filter: function(answer) {
       return answer || '';
+    }
+  }, {
+    type: 'input',
+    name: 'nuxeo_version',
+    message: 'Nuxeo Version:',
+    default: helper.nuxeo_version,
+    store: true,
+    validate: helper.validators.version,
+    when: function(answers) {
+      return !answers.parent_artifact;
     }
   }, {
     type: 'input',

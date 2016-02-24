@@ -19,20 +19,39 @@ module.exports = {
     name: 'super_artifact',
     message: 'Parent Artifact id:',
     default: 'nuxeo-distribution',
-    validate: helper.validators.artifact
+    validate: helper.validators.parent_artifact,
+    filter: function(answer) {
+      return answer.trim();
+    }
   }, {
     type: 'input',
     name: 'super_package',
     message: 'Parent group id:',
     default: 'org.nuxeo.ecm.distribution',
     validate: helper.validators.package,
-    filter: helper.filters.package
+    filter: helper.filters.package,
+    when: function(answers) {
+      return answers.super_artifact;
+    }
   }, {
     type: 'input',
     name: 'super_version',
     message: 'Parent Version:',
-    default: '8.2-SNAPSHOT',
+    default: helper.nuxeo_version,
     validate: helper.validators.version,
+    when: function(answers) {
+      return answers.super_artifact;
+    }
+  }, {
+    type: 'input',
+    name: 'nuxeo_version',
+    message: 'Nuxeo Version:',
+    default: helper.nuxeo_version,
+    validate: helper.validators.version,
+    store: true,
+    when: function(answers) {
+      return !answers.super_artifact;
+    }
   }, {
     type: 'input',
     name: 'parent_artifact',

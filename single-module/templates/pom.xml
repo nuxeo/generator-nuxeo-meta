@@ -18,6 +18,20 @@
   <name><%= name %></name>
   <description><%= description %></description>
 
+<% if (!parent_artifact) { -%>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.nuxeo.ecm.distribution</groupId>
+        <artifactId>nuxeo-distribution</artifactId>
+        <scope>import</scope>
+        <type>pom</type>
+        <version><%= nuxeo_version %></version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+<% } -%>
+
 <% if (!multi) { -%>
   <repositories>
     <repository>
