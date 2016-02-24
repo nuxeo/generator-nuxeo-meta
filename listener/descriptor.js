@@ -88,7 +88,7 @@ module.exports = {
       }
     },
     filter: function(value) {
-      return value.trim().toLowerCase().replace(/^,|\s+|,$/g, '').replace(/,+/g, ',').split(/,\s*/);
+      return value.trim().toLowerCase().replace(/^,+|\s+|,+$/g, '').replace(/,+/g, ',').split(/,\s*/);
     }
   }, {
     type: 'confirm',
