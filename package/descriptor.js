@@ -4,7 +4,7 @@ module.exports = {
   type: "marketplace",
   depends: 'multi-module',
   ensure: function() {
-    return this.config['multi'];
+    return this.config.get('multi');
   },
   params: [{
     type: 'input',
@@ -15,16 +15,21 @@ module.exports = {
   }, {
     type: 'input',
     name: 'parent_package',
-    message: 'Artifact Group id:',
+    message: 'Parent Group id:',
     store: true,
     validate: helper.validators.package
   }, {
     type: 'input',
     name: 'parent_version',
-    message: 'Bundle version:',
+    message: 'Parent version:',
     store: true,
     default: '1.0-SNAPSHOT',
     validate: helper.validators.version_snapshot,
+  }, {
+    type: 'input',
+    name: 'artifact',
+    message: 'Package Artifact id:',
+    validate: helper.validators.artifact
   }, {
     type: 'input',
     name: 'name',
@@ -38,8 +43,7 @@ module.exports = {
   }, {
     type: 'input',
     name: 'company',
-    message: 'Company name:',
-    validate: helper.validators.required
+    message: 'Company name:'
   }],
   dependencies: 'inherited'
 };

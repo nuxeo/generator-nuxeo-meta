@@ -6,7 +6,7 @@
   <target name="build" description="Build Nuxeo Package">
     <property name="outdir" value="${maven.project.build.directory}"/>
     <!-- Include your artifacts in the graph adding your groupId to groupPrefixes -->
-    <artifact:nuxeo-expand includeTestScope="true" groupPrefixes="org.nuxeo,<%= package %>"/>
+    <artifact:nuxeo-expand includeTestScope="true" groupPrefixes="org.nuxeo,<%= parent_package %>"/>
     <!-- For Nuxeo IDE being able to use that distribution as a SDK -->
     <artifact:print output="${outdir}/artifacts.properties" mode="sdk"/>
     <artifact:print output="${outdir}/test-artifacts.properties" mode="sdk" scopes="test"/>
@@ -39,7 +39,7 @@
         <includes>
           <artifact groupId="org.nuxeo*" scope="!test" type="!pom"/>
           <!-- Include your artifacts using their groupId for instance -->
-          <artifact groupId="<%= package %>*" scope="!test" type="!pom"/>
+          <artifact groupId="<%= parent_package %>*" scope="!test" type="!pom"/>
         </includes>
         <excludes>
           <artifact groupId="org.nuxeo.lib*"/>
@@ -55,7 +55,7 @@
         </includes>
         <excludes>
           <!-- Filter out your artifacts using their groupId for instance -->
-          <artifact groupId="<%= package %>*"/>
+          <artifact groupId="<%= parent_package %>*"/>
         </excludes>
       </artifact:set>
     </copy>
