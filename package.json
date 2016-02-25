@@ -13,7 +13,7 @@
     "nuxeo"
   ],
   "author": "Arnaud Kervern",
-  "license": "MIT",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
   "bugs": {
     "url": "https://github.com/nuxeo/generator-nuxeo-meta/issues"
   },
