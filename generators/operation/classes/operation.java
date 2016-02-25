@@ -13,7 +13,7 @@ import org.nuxeo.ecm.core.api.PathRef;
 /**
  *
  */
-@Operation(id=<%= s.camelize(operation_name) %>.ID, category=Constants.CAT_DOCUMENT, label="<% operation_label %>", description="Describe here what your operation do.")
+@Operation(id=<%= s.camelize(operation_name) %>.ID, category=Constants.CAT_DOCUMENT, label="<%= operation_label %>", description="Describe here what your operation does.")
 public class <%= s.camelize(operation_name) %> {
 
     public static final String ID = "Document.<%= s.camelize(operation_name) %>";

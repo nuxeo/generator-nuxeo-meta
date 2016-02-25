@@ -1,7 +1,7 @@
 ## Edit this file to customize your configuration ##
-#sample.target=
+#<%= s.dasherize(s.decapitalize(name)) %>.target=
 
 # Set list of templates to include, comma separated values.
 nuxeo.template.includes=common
 
-# org.nuxeo.ecm.instance.description=Nuxeo ECM customized with sample project
+# org.nuxeo.ecm.instance.description=Nuxeo ECM customized with <%= name %>

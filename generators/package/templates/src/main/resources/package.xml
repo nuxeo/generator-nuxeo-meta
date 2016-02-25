@@ -1,8 +1,7 @@
 <!-- See documentation at http://doc.nuxeo.com/x/HgIz -->
-<package type="addon" name="<%= s.dasherize(name) %>" version="@VERSION@">
+<package type="addon" name="<%= s.dasherize(s.decapitalize(name)) %>" version="@VERSION@">
   <title><%= s.humanize(name) %></title>
   <description>
-    <p>This addon adds the "sample project" functionality to Nuxeo.</p>
     <p>Put here an HTML description of your Nuxeo Package.</p>
   </description>
   <!-- <home-page>http://doc.nuxeo.com/</home-page> -->
@@ -37,5 +36,6 @@
   <!-- </provides> -->
   <license>Apache License, Version 2.0</license>
   <license-url>http://www.apache.org/licenses/LICENSE-2.0</license-url>
-  <visibility>PUBLIC</visibility>
+  <!-- Visibility: PRIVATE | MARKETPLACE | DEV | PUBLIC -->
+  <visibility>DEV</visibility>
 </package>
