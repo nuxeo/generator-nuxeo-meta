@@ -69,14 +69,5 @@ module.exports = {
     message: 'Bundle version:',
     default: '1.0-SNAPSHOT',
     validate: helper.validators.version_snapshot
-  }, {
-    type: 'input',
-    name: 'name',
-    message: 'Bundle name:',
-    validate: helper.validators.required
-  }, {
-    type: 'input',
-    name: 'description',
-    message: 'Description :'
   }]
 };

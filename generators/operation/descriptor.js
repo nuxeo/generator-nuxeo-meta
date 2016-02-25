@@ -22,10 +22,6 @@ module.exports = {
     name: 'operation_label',
     message: 'Operation label:',
     validate: helper.validators.required
-  }, {
-    type: 'input',
-    name: 'operation_description',
-    message: 'Operation description:'
   }],
   // Replace params inside file dest + helpers
   'main-java': [{

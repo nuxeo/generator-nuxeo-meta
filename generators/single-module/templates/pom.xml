@@ -15,8 +15,7 @@
   <groupId><%= package %></groupId>
   <version><%= version %></version>
   <% } -%>
-  <name><%= name %></name>
-  <description><%= description %></description>
+  <name><%= s.humanize(artifact) %></name>
 
 <% if (!parent_artifact) { -%>
   <properties>
