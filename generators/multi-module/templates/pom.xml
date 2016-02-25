@@ -12,9 +12,8 @@
 
   <groupId><%= parent_package %></groupId>
   <artifactId><%= parent_artifact %></artifactId>
-  <name><%= multi_name %></name>
-  <description><%= multi_description %></description>
   <version><%= parent_version %></version>
+  <name><%= s.humanize(multi_name) %></name>
   <packaging>pom</packaging>
 
   <modules></modules>

@@ -54,32 +54,23 @@ module.exports = {
   }, {
     type: 'input',
     name: 'parent_artifact',
-    message: 'Artifact id:',
+    message: 'Project Artifact id:',
     store: true,
     validate: helper.validators.artifact
   }, {
     type: 'input',
     name: 'parent_package',
-    message: 'Artifact group id:',
+    message: 'Project group id:',
     store: true,
     validate: helper.validators.package,
     filter: helper.filters.package
   }, {
     type: 'input',
     name: 'parent_version',
-    message: 'Bundle version:',
+    message: 'Project version:',
     store: true,
     default: '1.0-SNAPSHOT',
     validate: helper.validators.version_snapshot
-  }, {
-    type: 'input',
-    name: 'multi_name',
-    message: 'Bundle name:',
-    validate: helper.validators.required
-  }, {
-    type: 'input',
-    name: 'multi_description',
-    message: 'Description :'
   }],
   templates: [{
     src: function(props) {

@@ -18,7 +18,7 @@ module.exports = {
   }, {
     type: 'input',
     name: 'parent_package',
-    message: 'Parent GroupId:',
+    message: 'Parent Group id:',
     default: 'org.nuxeo',
     store: true,
     when: function(answers) {
@@ -54,19 +54,19 @@ module.exports = {
   }, {
     type: 'input',
     name: 'artifact',
-    message: 'Artifact id:',
+    message: 'Project Artifact id:',
     validate: helper.validators.artifact
   }, {
     type: 'input',
     name: 'package',
-    message: 'Artifact group id:',
+    message: 'Project Group id:',
     store: true,
     validate: helper.validators.package,
     filter: helper.filters.package
   }, {
     type: 'input',
     name: 'version',
-    message: 'Bundle version:',
+    message: 'Project version:',
     default: '1.0-SNAPSHOT',
     validate: helper.validators.version_snapshot
   }]
