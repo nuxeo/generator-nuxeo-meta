@@ -10,6 +10,8 @@ var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
 var plumber = require('gulp-plumber');
 
+var files = ['generators/**/*.js', 'lib/*.js', 'test/**/*.js'];
+
 gulp.task('pre-test', function() {
   return gulp.src(['generators/**/*.js', 'utils/*.js'])
     .pipe(istanbul({
@@ -19,7 +21,7 @@ gulp.task('pre-test', function() {
 });
 
 gulp.task('watch-test', function() {
-  watch(['generators/**/*.js', 'utils/*.js', 'test/**/*.js'], batch(function(events, done) {
+  watch(files, batch(function(events, done) {
     gulp.start('test', done);
   }));
 });
@@ -31,13 +33,13 @@ gulp.task('checkstyle', function() {
   }
   fs.mkdirSync('target');
 
-  return gulp.src(['generators/*/descriptor.js', 'utils/*.js', 'test/**/*.js'])
+  return gulp.src(files)
     .pipe(eslint())
     .pipe(eslint.format('checkstyle', fs.createWriteStream(path.join(targetFolder, '/checkstyle-result.xml'))));
 });
 
 gulp.task('lint', ['checkstyle'], function() {
-  return gulp.src(['generators/*/descriptor.js', 'utils/*.js', 'test/**/*.js'])
+  return gulp.src(files)
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
