@@ -1,7 +1,8 @@
+'use strict';
 var helper = require('../../lib/helpers.js');
 
 module.exports = {
-  depends: "default",
+  depends: 'default',
   params: [
     {
       type: 'input',
@@ -17,22 +18,22 @@ module.exports = {
     }
   ],
   'main-java': [{
-    src: "implementation.java",
-    dest: "{{s.camelize(service_name)}}Impl.java"
+    src: 'implementation.java',
+    dest: '{{s.camelize(service_name)}}Impl.java'
   }, {
-    src: "interface.java",
-    dest: "{{s.camelize(service_name)}}.java"
+    src: 'interface.java',
+    dest: '{{s.camelize(service_name)}}.java'
   }],
   'test-java': [{
-    src: "test.java",
-    dest: "Test{{s.camelize(service_name)}}.java"
+    src: 'test.java',
+    dest: 'Test{{s.camelize(service_name)}}.java'
   }],
   contributions: [{
     src: 'service.xml',
-    dest: "{{s.dasherize(s.decapitalize(service_name))}}-service.xml"
+    dest: '{{s.dasherize(s.decapitalize(service_name))}}-service.xml'
   }],
   dependencies: [
-    "org.nuxeo.runtime:nuxeo-runtime-test:::test",
-    "org.nuxeo.ecm.platform:nuxeo-platform-test:::test"
+    'org.nuxeo.runtime:nuxeo-runtime-test:::test',
+    'org.nuxeo.ecm.platform:nuxeo-platform-test:::test'
   ]
-}
+};

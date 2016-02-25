@@ -1,3 +1,4 @@
+'use strict';
 var helper = require('../../lib/helpers.js');
 
 // Fake Inquirer Separator / with chalk
@@ -5,7 +6,7 @@ var helper = require('../../lib/helpers.js');
 var Separator = function(line) {
   this.type = 'separator';
   this.line = ' > \u001b[90m' + line.trim() + '\u001b[22m\u001b[39m';
-}
+};
 
 module.exports = {
   depends: 'default',
@@ -117,8 +118,8 @@ module.exports = {
     dest: '{{s.dasherize(s.decapitalize(listener_name))}}-listener-contrib.xml'
   }],
   dependencies: [
-    "org.nuxeo.runtime:nuxeo-runtime-test:::test",
-    "org.nuxeo.ecm.platform:nuxeo-platform-test:::test",
-    "org.nuxeo.ecm.core:nuxeo-core-event"
+    'org.nuxeo.runtime:nuxeo-runtime-test:::test',
+    'org.nuxeo.ecm.platform:nuxeo-platform-test:::test',
+    'org.nuxeo.ecm.core:nuxeo-core-event'
   ]
-}
+};

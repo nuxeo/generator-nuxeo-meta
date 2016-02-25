@@ -1,0 +1,30 @@
+{
+  "name": "generator-nuxeo-meta",
+  "version": "1.0.0",
+  "description": "generator-nuxeo metamodel",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuxeo/generator-nuxeo-meta.git"
+  },
+  "keywords": [
+    "nuxeo"
+  ],
+  "author": "Arnaud Kervern",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nuxeo/generator-nuxeo-meta/issues"
+  },
+  "homepage": "https://github.com/nuxeo/generator-nuxeo-meta#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-batch": "^1.0.5",
+    "gulp-eslint": "^2.0.0",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-watch": "^4.3.5"
+  }
+}

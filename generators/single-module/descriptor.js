@@ -1,3 +1,4 @@
+'use strict';
 var helper = require('../../lib/helpers.js');
 
 module.exports = {
@@ -67,7 +68,7 @@ module.exports = {
     name: 'version',
     message: 'Bundle version:',
     default: '1.0-SNAPSHOT',
-    validate: helper.validators.version_snapshot,
+    validate: helper.validators.version_snapshot
   }, {
     type: 'input',
     name: 'name',

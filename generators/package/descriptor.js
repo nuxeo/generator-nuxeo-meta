@@ -1,7 +1,8 @@
+'use strict';
 var helper = require('../../lib/helpers.js');
 
 module.exports = {
-  type: "marketplace",
+  type: 'marketplace',
   depends: 'multi-module',
   ensure: function() {
     return this.config.get('multi');
@@ -24,7 +25,7 @@ module.exports = {
     message: 'Parent version:',
     store: true,
     default: '1.0-SNAPSHOT',
-    validate: helper.validators.version_snapshot,
+    validate: helper.validators.version_snapshot
   }, {
     type: 'input',
     name: 'artifact',

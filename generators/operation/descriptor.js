@@ -1,7 +1,8 @@
+'use strict';
 var helper = require('../../lib/helpers.js');
 
 module.exports = {
-  type: "core",
+  type: 'core',
   params: [{
     type: 'input',
     name: 'operation_name',
@@ -28,20 +29,20 @@ module.exports = {
   }],
   // Replace params inside file dest + helpers
   'main-java': [{
-    src: "operation.java",
-    dest: "{{s.camelize(operation_name)}}.java"
+    src: 'operation.java',
+    dest: '{{s.camelize(operation_name)}}.java'
   }],
   'test-java': [{
-    src: "test.java",
-    dest: "Test{{s.camelize(operation_name)}}.java"
+    src: 'test.java',
+    dest: 'Test{{s.camelize(operation_name)}}.java'
   }],
   contributions: [{
-    src: "operation.xml",
-    dest: "{{s.dasherize(s.decapitalize(operation_name))}}-operation-contrib.xml"
+    src: 'operation.xml',
+    dest: '{{s.dasherize(s.decapitalize(operation_name))}}-operation-contrib.xml'
   }],
   // <groupId>:<artifactId>[:<version>[:<extension>[:<classifier>]]]
   dependencies: [
-    "org.nuxeo.ecm.automation:nuxeo-automation-core",
-    "org.nuxeo.ecm.automation:nuxeo-automation-test:::test"
+    'org.nuxeo.ecm.automation:nuxeo-automation-core',
+    'org.nuxeo.ecm.automation:nuxeo-automation-test:::test'
   ]
 };

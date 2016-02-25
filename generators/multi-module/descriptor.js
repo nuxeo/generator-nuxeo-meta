@@ -1,8 +1,9 @@
+'use strict';
 var helper = require('../../lib/helpers.js');
 
 module.exports = {
   depends: 'single-module',
-  type: "root",
+  type: 'root',
   order: -10,
   skip: function() {
     return this.fs.exists('pom.xml');
@@ -69,7 +70,7 @@ module.exports = {
     message: 'Bundle version:',
     store: true,
     default: '1.0-SNAPSHOT',
-    validate: helper.validators.version_snapshot,
+    validate: helper.validators.version_snapshot
   }, {
     type: 'input',
     name: 'multi_name',
@@ -85,9 +86,9 @@ module.exports = {
       if (props.bom && props.bom.length > 0) {
         return props.bom;
       } else {
-        return "pom.xml";
+        return 'pom.xml';
       }
     },
-    dest: "pom.xml"
+    dest: 'pom.xml'
   }]
 };
