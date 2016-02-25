@@ -1,4 +1,4 @@
-var helper = require('../helpers.js');
+var helper = require('../../lib/helpers.js');
 
 module.exports = {
   depends: 'single-module',

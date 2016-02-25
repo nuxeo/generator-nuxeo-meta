@@ -1,4 +1,4 @@
-var helper = require('../helpers.js');
+var helper = require('../../lib/helpers.js');
 
 // Fake Inquirer Separator / with chalk
 // See: https://github.com/SBoudrias/Inquirer.js/blob/master/lib/objects/separator.js
