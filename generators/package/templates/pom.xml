@@ -9,7 +9,7 @@
 
   <artifactId><%= artifact %></artifactId>
   <packaging>zip</packaging>
-  <name><%= name %> - Nuxeo Package</name>
+  <name><%= s.humanize(name) %> - Nuxeo Package</name>
 
   <dependencies>
     <!-- Base distribution(s) for the MP -->

@@ -38,11 +38,6 @@ module.exports = {
     validate: helper.validators.package_name
   }, {
     type: 'input',
-    name: 'title',
-    message: 'Package title:',
-    validate: helper.validators.required
-  }, {
-    type: 'input',
     name: 'company',
     message: 'Company name:'
   }],

@@ -1,6 +1,6 @@
 <!-- See documentation at http://doc.nuxeo.com/x/HgIz -->
-<package type="addon" name="<%= name.toLowerCase().replace(' ', '-') %>" version="@VERSION@">
-  <title><%= title %></title>
+<package type="addon" name="<%= s.dasherize(name) %>" version="@VERSION@">
+  <title><%= s.humanize(name) %></title>
   <description>
     <p>This addon adds the "sample project" functionality to Nuxeo.</p>
     <p>Put here an HTML description of your Nuxeo Package.</p>
