@@ -1,6 +1,5 @@
 #!/bin/bash -
 set -e
 
-git checkout master
-git branch -f stable
+git branch -f stable origin/master
 git push origin stable
