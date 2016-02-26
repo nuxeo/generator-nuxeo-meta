@@ -58,6 +58,8 @@ describe('Generators', function() {
       expect(res).to.be.a('string');
       res = this.validators.artifact('Dasdasdasdsad');
       expect(res).to.be.true();
+      res = this.validators.artifact('common-dash-3');
+      expect(res).to.be.true();
       res = this.validators.artifact('Dasd-asdasdsad');
       expect(res).to.be.true();
       res = this.validators.artifact('Dasd,asdasdsad');
