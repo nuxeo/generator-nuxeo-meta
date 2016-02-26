@@ -42,6 +42,8 @@
           <artifact groupId="<%= parent_package %>*" scope="!test" type="!pom"/>
         </includes>
         <excludes>
+          <artifact groupId="${maven.project.groupId}" artifactId="${maven.project.artifactId}" version="${maven.project.version}" type="${maven.project.packaging}"/>
+          <artifact type="pom"/>
           <artifact groupId="org.nuxeo.lib*"/>
         </excludes>
       </artifact:set>
