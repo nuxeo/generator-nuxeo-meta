@@ -23,7 +23,7 @@ module.exports = {
   }, {
     type: 'input',
     name: 'super_package',
-    message: 'Parent group id:',
+    message: 'Parent Group id:',
     default: 'org.nuxeo.ecm.distribution',
     validate: helper.validators.package,
     filter: helper.filters.package,

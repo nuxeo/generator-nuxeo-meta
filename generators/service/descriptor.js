@@ -3,20 +3,18 @@ var helper = require('../../lib/helpers.js');
 
 module.exports = {
   depends: 'default',
-  params: [
-    {
-      type: 'input',
-      name: 'package',
-      message: 'Service package:',
-      store: true,
-      validate: helper.validators.package
-    }, {
-      type: 'input',
-      name: 'service_name',
-      message: 'Service interface name:',
-      validate: helper.validators.className
-    }
-  ],
+  params: [{
+    type: 'input',
+    name: 'service_name',
+    message: 'Service interface name:',
+    validate: helper.validators.className
+  }, {
+    type: 'input',
+    name: 'package',
+    message: 'Service package:',
+    store: true,
+    validate: helper.validators.package
+  }],
   'main-java': [{
     src: 'implementation.java',
     dest: '{{s.camelize(service_name)}}Impl.java'
