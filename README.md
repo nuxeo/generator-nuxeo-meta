@@ -1,4 +1,7 @@
 # Generator Nuxeo Metamodel
+[![Build Status](https://qa.nuxeo.org/jenkins/buildStatus/icon?job=tools_generator-nuxeo-meta-master)](https://qa.nuxeo.org/jenkins/job/tools_generator-nuxeo-meta-master/)
+
+
 ## Introduction
 This project is the metamodel used by the [nuxeo/generator-nuxeo](https://github.com/nuxeo/generator-nuxeo) project, a Yeoman generator for Nuxeo. It defines what can be generated with the generator using a simple description format.
 
