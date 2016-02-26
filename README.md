@@ -1,9 +1,9 @@
 # Generator Nuxeo Metamodel
 ## Introduction
-This project is the metamodel used by [nuxeo/generator-nuxeo](https://github.com/nuxeo/generator-nuxeo) project, a Yeoman generator for Nuxeo. It defines what can be generated with the generator using a simple description format.
+This project is the metamodel used by the [nuxeo/generator-nuxeo](https://github.com/nuxeo/generator-nuxeo) project, a Yeoman generator for Nuxeo. It defines what can be generated with the generator using a simple description format.
 
 ## Format description
-Each folder is a generator; you can pass several generator name to the `yo nuxeo` command.
+Each folder is a generator; you can pass several generator names to the `yo nuxeo` command.
 
 A basic field explanation can be found on the [descriptor sample file](https://github.com/nuxeo/generator-nuxeo-meta/blob/master/sample-descriptor.js).
 
@@ -11,7 +11,7 @@ A basic field explanation can be found on the [descriptor sample file](https://g
 #### Using the Generator Inheritance
 The descriptor file is handled using the `require` node module; you need to use `module.exports` to export your descriptor in a `descriptor.js` file.
 
-A descriptor can depends from another one. For instance, an `operation` generator depends of the `default` generator which check if a project initialization is needed. The default value is `default`.
+A descriptor can depend from another one. For instance, an `operation` generator depends on the `default` generator, which checks if a project initialization is needed. The default value is `default`.
 
 ```
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
 ```
 
 ##### Using `Skip` and `Ensure` Fields
-Sometimes, you can't use a generator because the target project is not suitable, or you do not want to generate something twice. You got two ways to do that:
+Sometimes, you can't use a generator because the target project is not suitable, or you do not want to generate something twice. You have two ways to do that:
 - using the `skip` method; useful when you do not want to generate it several times. The `skip` value is a `function` where `this` is the generator.
 - using the `ensure` method; useful when you'd stop the generation due to some context issues. The `skip` value is a `function` where `this` is the generator.
 
@@ -35,7 +35,7 @@ module.exports = {
 };
 ```
 
-For instance, the `package` generator can't be executed on an existing project:
+For instance, the `package` generator can't be executed on a single module project:
 
 ```
 module.exports = {
@@ -57,7 +57,7 @@ module.exports = {
 ```
 
 ### Configuration
-Storing project configuration can be done using the `config` field; and can be read later to skip some generator; or having default value for a paramater, ... And you'll be able to read them using `this.config.read('mykey')`.
+Storing project configuration can be done using the `config` field; and can be read later to skip some generator; or having a default value for a parameter... And you'll be able to read them using `this.config.read('mykey')`.
 
 ```
 module.exports = {
@@ -68,8 +68,8 @@ module.exports = {
 }
 ```
 
-### parameters
-The `params` field is defining which parameter are prompted to the user. Prompting is handled by [Inquirer.js](https://github.com/SBoudrias/Inquirer.js), you can read their documentation to have a fully explanation of each types.
+### Parameters
+The `params` field defines which parameters are prompted to the user. Prompting is handled by [Inquirer.js](https://github.com/SBoudrias/Inquirer.js), you can read their documentation to have a full explanation of each type.
 
 To sum up:
 
@@ -95,7 +95,7 @@ To sum up:
 - `filter`: function called after the user input finished to change it
 
 ### Java classes
-Define _main_ or _test_ Java classes to be generated to a `java-main`, or `java-test` field. For both, each entry is an object with a `src` and a `dest` entries. The `src` value should refer a local file in the `classes` folder; and `dest` only the expected filename. The `package` is handled automatically from the `package` parameter of your generator.
+Define _main_ or _test_ Java classes to be generated to a `java-main`, or `java-test` field. For both, each entry is an object with a `src` and a `dest` entries. The `src` value should refer to a local file in the `classes` folder; and `dest` only to the expected filename. The `package` is handled automatically from the `package` parameter of your generator.
 
 ```
 module.exports = {
@@ -111,11 +111,11 @@ module.exports = {
 ```
 
 ### Templates
-All files/folders present in the `templates` folder are rendered with a simple rendering engine with parameters in his context. To template in a file path, escape it using `{{param}}`.
+All files/folders present in the `templates` folder are rendered with a simple rendering engine with parameters in its context. To template in a file path, escape it using `{{param}}`.
 
 In the templating context, you have access to [underscore.string](https://github.com/epeli/underscore.string) to have some useful methods.
 
-Other templates plain files are using [ejs](https://github.com/mde/ejs/blob/master/docs/syntax.md) to be rendered; with also [underscore.string](https://github.com/epeli/underscore.string) exposed in the `s` variable.
+Other templates' plain files are using [ejs](https://github.com/mde/ejs/blob/master/docs/syntax.md) to be rendered; with also [underscore.string](https://github.com/epeli/underscore.string) exposed in the `s` variable.
 
 ```
  src/main/java/{{s.unpackagize(package)}}/.empty
@@ -136,9 +136,9 @@ contributions: [{
 ```
 
 ### Dependencies
-Adding dependencies to the target `pom.xml` file. A dependency is described with his GAV: `<groupId>:<artifactId>[:<version>[:<extension>[:<classifier>]]]`.
+Adding dependencies to the target `pom.xml` file. A dependency is described with its GAV: `<groupId>:<artifactId>[:<version>[:<extension>[:<classifier>]]]`.
 
-It also allows to add all 'parent child modules' as project dependencies, useful for the Package project `pom.xml`.
+It also allows to add all 'parent child modules' as project dependencies, useful for the Package project's `pom.xml`.
 
 ```
 dependencies: [
