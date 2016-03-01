@@ -1,7 +1,7 @@
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
 Manifest-Version: 1.0
-Bundle-Vendor: Nuxeo
+Bundle-Vendor: <%= package %>
 Bundle-Version: 1.0.0
 Bundle-Name: <%= artifact %>
 Bundle-ManifestVersion: 2

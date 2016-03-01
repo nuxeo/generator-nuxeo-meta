@@ -9,16 +9,16 @@ module.exports = {
   },
   params: [{
     type: 'input',
-    name: 'parent_artifact',
-    message: 'Parent Artifact id:',
-    store: true,
-    validate: helper.validators.artifact
-  }, {
-    type: 'input',
     name: 'parent_package',
     message: 'Parent Group id:',
     store: true,
     validate: helper.validators.package
+  }, {
+    type: 'input',
+    name: 'parent_artifact',
+    message: 'Parent Artifact id:',
+    store: true,
+    validate: helper.validators.artifact
   }, {
     type: 'input',
     name: 'parent_version',

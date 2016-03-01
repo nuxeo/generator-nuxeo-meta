@@ -12,15 +12,15 @@ module.exports = {
   depends: 'default',
   params: [{
     type: 'input',
-    name: 'listener_name',
-    message: 'Listener class name:',
-    validate: helper.validators.className
-  }, {
-    type: 'input',
     name: 'package',
     message: 'Listener package:',
     store: true,
     validate: helper.validators.package
+  }, {
+    type: 'input',
+    name: 'listener_name',
+    message: 'Listener class name:',
+    validate: helper.validators.className
   }, {
     type: 'checkbox',
     name: 'events',

@@ -1,5 +1,6 @@
 'use strict';
 var helper = require('../../lib/helpers.js');
+var path = require('path');
 
 module.exports = {
   order: -5,
@@ -7,15 +8,6 @@ module.exports = {
     return this.fs.exists('pom.xml');
   },
   params: [{
-    type: 'input',
-    name: 'parent_artifact',
-    message: 'Parent Artifact id (use white space to cancel default value.):',
-    store: true,
-    validate: helper.validators.parent_artifact,
-    filter: function(answer) {
-      return answer ? answer.trim() : '';
-    }
-  }, {
     type: 'input',
     name: 'parent_package',
     message: 'Parent Group id:',
@@ -26,6 +18,15 @@ module.exports = {
     },
     validate: helper.validators.package,
     filter: helper.filters.package
+  }, {
+    type: 'input',
+    name: 'parent_artifact',
+    message: 'Parent Artifact id (use white space to cancel default value.):',
+    store: true,
+    validate: helper.validators.parent_artifact,
+    filter: function(answer) {
+      return answer ? answer.trim() : '';
+    }
   }, {
     type: 'input',
     name: 'parent_version',
@@ -53,11 +54,6 @@ module.exports = {
     }
   }, {
     type: 'input',
-    name: 'artifact',
-    message: 'Project Artifact id:',
-    validate: helper.validators.artifact
-  }, {
-    type: 'input',
     name: 'package',
     message: 'Project Group id:',
     store: true,
@@ -65,9 +61,21 @@ module.exports = {
     filter: helper.filters.package
   }, {
     type: 'input',
+    name: 'artifact',
+    message: 'Project Artifact id:',
+    default: function() {
+      return path.basename(path.resolve('.')) + '-core';
+    },
+    validate: helper.validators.artifact
+  }, {
+    type: 'input',
     name: 'version',
     message: 'Project version:',
     default: '1.0-SNAPSHOT',
     validate: helper.validators.version_snapshot
+  }, {
+    type: 'input',
+    name: 'description',
+    message: 'Project description:'
   }]
 };

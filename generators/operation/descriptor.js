@@ -5,11 +5,6 @@ module.exports = {
   type: 'core',
   params: [{
     type: 'input',
-    name: 'operation_name',
-    message: 'Operation class name:',
-    validate: helper.validators.className
-  }, {
-    type: 'input',
     name: 'package',
     message: 'Operation package:',
     store: true,
@@ -17,6 +12,11 @@ module.exports = {
     filter: function(answer) {
       return answer.replace(/\s+/g, '.');
     }
+  }, {
+    type: 'input',
+    name: 'operation_name',
+    message: 'Operation class name:',
+    validate: helper.validators.className
   }, {
     type: 'input',
     name: 'operation_label',

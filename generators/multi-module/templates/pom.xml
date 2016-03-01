@@ -2,39 +2,65 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <% if (super_artifact) { -%>
+<% if (super_artifact) { -%>
   <parent>
     <groupId><%= super_package %></groupId>
     <artifactId><%= super_artifact %></artifactId>
     <version><%= super_version %></version>
   </parent>
-  <% } -%>
+<% } -%>
 
   <groupId><%= parent_package %></groupId>
   <artifactId><%= parent_artifact %></artifactId>
   <version><%= parent_version %></version>
   <name><%= s.humanize(parent_artifact) %></name>
+  <description><%= description %></description>
   <packaging>pom</packaging>
 
   <modules></modules>
 
-  <% if (!super_artifact) { -%>
+<% if (super_artifact && !parent_package.match(/^org\.nuxeo/)) { -%>
+  <scm>
+  </scm>
+
+  <licenses>
+  </licenses>
+
+  <mailingLists>
+  </mailingLists>
+
+  <issueManagement>
+  </issueManagement>
+
+  <ciManagement>
+  </ciManagement>
+
+  <developers>
+  </developers>
+
+  <distributionManagement>
+  </distributionManagement>
+<% } -%>
+
+<% if (nuxeo_version) { -%>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.nuxeo.ecm.distribution</groupId>
+        <artifactId>nuxeo-distribution</artifactId>
+        <scope>import</scope>
+        <type>pom</type>
+        <version><%= nuxeo_version %></version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+<% } -%>
+
+<% if (!super_artifact) { -%>
     <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-
-    <dependencyManagement>
-      <dependencies>
-        <dependency>
-          <groupId>org.nuxeo.ecm.distribution</groupId>
-          <artifactId>nuxeo-distribution</artifactId>
-          <scope>import</scope>
-          <type>pom</type>
-          <version><%= nuxeo_version %></version>
-        </dependency>
-      </dependencies>
-    </dependencyManagement>
 
     <build>
       <plugins>
@@ -64,7 +90,7 @@
         </plugin>
       </plugins>
     </build>
-  <% } -%>
+<% } -%>
 
   <repositories>
     <repository>
@@ -114,5 +140,4 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
-
 </project>

@@ -3,26 +3,23 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <% if (parent_artifact) { -%>
+<% if (parent_artifact) { -%>
   <parent>
     <groupId><%= parent_package %></groupId>
     <artifactId><%= parent_artifact %></artifactId>
     <version><%= parent_version %></version>
   </parent>
-  <% } -%>
+<% } -%>
   <artifactId><%= artifact %></artifactId>
-  <% if (!multi) { -%>
+<% if (!multi) { -%>
   <groupId><%= package %></groupId>
   <version><%= version %></version>
-  <% } -%>
+<% } -%>
   <name><%= s.humanize(artifact) %></name>
+  <description><%= description %></description>
 
-<% if (!parent_artifact) { -%>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  </properties>
 
+<% if (!(parent_artifact && parent_package.match(/org\.nuxeo\.ecm\.distribution/))) { -%>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -34,6 +31,13 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+<% } -%>
+
+<% if (!parent_artifact) { -%>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
 
   <build>
     <plugins>
@@ -114,5 +118,5 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
-  <% } -%>
+<% } -%>
 </project>

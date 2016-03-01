@@ -1,8 +1,10 @@
 'use strict';
 var helper = require('../../lib/helpers.js');
+var path = require('path');
 
 module.exports = {
   depends: 'single-module',
+  description: 'Your project parent POM',
   type: 'root',
   order: -10,
   skip: function() {
@@ -12,14 +14,10 @@ module.exports = {
     multi: true
   },
   params: [{
-    type: 'input',
-    name: 'super_artifact',
-    message: 'Parent Artifact id:',
-    default: 'nuxeo-distribution',
-    validate: helper.validators.parent_artifact,
-    filter: function(answer) {
-      return answer.trim();
-    }
+    type: 'confirm',
+    name: 'use_bom',
+    message: 'Use a parent artifact (for instance your company\'s BOM or the org.nuxeo.ecm.distribution:nuxeo-distribution POM)?',
+    default: true
   }, {
     type: 'input',
     name: 'super_package',
@@ -28,7 +26,19 @@ module.exports = {
     validate: helper.validators.package,
     filter: helper.filters.package,
     when: function(answers) {
-      return answers.super_artifact;
+      return answers.use_bom;
+    }
+  }, {
+    type: 'input',
+    name: 'super_artifact',
+    message: 'Parent Artifact id:',
+    default: 'nuxeo-distribution',
+    validate: helper.validators.parent_artifact,
+    filter: function(answer) {
+      return answer.trim();
+    },
+    when: function(answers) {
+      return answers.super_package;
     }
   }, {
     type: 'input',
@@ -37,7 +47,15 @@ module.exports = {
     default: helper.nuxeo_version.default_distribution,
     validate: helper.validators.version,
     when: function(answers) {
-      return answers.super_artifact;
+      return answers.super_package;
+    }
+  }, {
+    type: 'confirm',
+    name: 'import_nuxeo',
+    message: 'Import Nuxeo in the `dependencyManagement` (useful as you don\'t inherit from `org.nuxeo.ecm.distribution:nuxeo-distribution`)?',
+    default: true,
+    when: function(answers) {
+      return answers.super_package && !answers.super_package.match(/org\.nuxeo\.ecm\.distribution/);
     }
   }, {
     type: 'list',
@@ -49,14 +67,8 @@ module.exports = {
     validate: helper.validators.version,
     filter: helper.nuxeo_version.filter,
     when: function(answers) {
-      return !answers.super_artifact;
+      return !answers.super_artifact || answers.import_nuxeo;
     }
-  }, {
-    type: 'input',
-    name: 'parent_artifact',
-    message: 'Project Artifact id:',
-    store: true,
-    validate: helper.validators.artifact
   }, {
     type: 'input',
     name: 'parent_package',
@@ -66,11 +78,24 @@ module.exports = {
     filter: helper.filters.package
   }, {
     type: 'input',
+    name: 'parent_artifact',
+    message: 'Project Artifact id:',
+    store: true,
+    default: function() {
+      return path.basename(path.resolve('.')) + '-parent';
+    },
+    validate: helper.validators.artifact
+  }, {
+    type: 'input',
     name: 'parent_version',
     message: 'Project version:',
     store: true,
     default: '1.0-SNAPSHOT',
     validate: helper.validators.version_snapshot
+  }, {
+    type: 'input',
+    name: 'description',
+    message: 'Project description:'
   }],
   templates: [{
     src: function(props) {
