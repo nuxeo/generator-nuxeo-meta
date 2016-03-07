@@ -5,15 +5,15 @@ module.exports = {
   depends: 'default',
   params: [{
     type: 'input',
-    name: 'service_name',
-    message: 'Service interface name:',
-    validate: helper.validators.className
-  }, {
-    type: 'input',
     name: 'package',
     message: 'Service package:',
     store: true,
     validate: helper.validators.package
+  }, {
+    type: 'input',
+    name: 'service_name',
+    message: 'Service interface name:',
+    validate: helper.validators.className
   }],
   'main-java': [{
     src: 'implementation.java',
