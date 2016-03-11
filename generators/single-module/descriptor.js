@@ -10,22 +10,23 @@ module.exports = {
   params: [{
     type: 'input',
     name: 'parent_package',
-    message: 'Parent Group id:',
+    message: 'Parent Group id (use white space to cancel default value.):',
     default: 'org.nuxeo',
     store: true,
-    when: function(answers) {
-      return answers.parent_artifact;
+    validate: function(value) {
+      return value.match(/^\s+$/) ? true : helper.validators.package(value);
     },
-    validate: helper.validators.package,
     filter: helper.filters.package
   }, {
     type: 'input',
     name: 'parent_artifact',
-    message: 'Parent Artifact id (use white space to cancel default value.):',
+    message: 'Parent Artifact id:',
+    default: 'nuxeo-addons-parent',
     store: true,
     validate: helper.validators.parent_artifact,
-    filter: function(answer) {
-      return answer ? answer.trim() : '';
+
+    when: function(answers) {
+      return answers.parent_package;
     }
   }, {
     type: 'input',
@@ -33,8 +34,9 @@ module.exports = {
     message: 'Parent Version:',
     store: true,
     validate: helper.validators.version,
+    default: helper.nuxeo_version.default_distribution,
     when: function(answers) {
-      return answers.parent_artifact;
+      return answers.parent_package;
     },
     filter: function(answer) {
       return answer || '';
@@ -49,8 +51,7 @@ module.exports = {
     validate: helper.validators.version,
     filter: helper.nuxeo_version.filter,
     when: function(answers) {
-      // If parent_artifact undefined, it was handled previously
-      return typeof answers.parent_artifact !== 'undefined' && !answers.parent_artifact;
+      return !answers.parent_artifact || !answers.parent_package.match(/^org\.nuxeo/);
     }
   }, {
     type: 'input',

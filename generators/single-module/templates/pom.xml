@@ -19,7 +19,7 @@
   <description><%= description %></description>
 
 
-<% if (!parent_artifact || !multi && !parent_package.match(/org\.nuxeo\.ecm\.distribution/)) { -%>
+<% if (!parent_artifact || !multi && !parent_package.match(/^org\.nuxeo/)) { -%>
   <dependencyManagement>
     <dependencies>
       <dependency>
