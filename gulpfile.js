@@ -9,6 +9,7 @@ var childProcess = require('child_process');
 var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
 var plumber = require('gulp-plumber');
+var nsp = require('gulp-nsp');
 
 var files = ['generators/**/*.js', 'lib/*.js', 'test/**/*.js'];
 
@@ -43,6 +44,15 @@ gulp.task('lint', ['checkstyle'], function() {
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
+});
+
+gulp.task('prepublish', ['nsp', 'test']);
+
+gulp.task('nsp', function(done) {
+  nsp({
+    shrinkwrap: __dirname + '/npm-shrinkwrap.json',
+    package: __dirname + '/package.json'
+  }, done);
 });
 
 gulp.task('test', ['lint', 'pre-test'], function(cb) {

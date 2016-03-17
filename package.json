@@ -1,9 +1,9 @@
 {
   "name": "generator-nuxeo-meta",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "generator-nuxeo metamodel",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "gulp-istanbul": "^0.10.3",
     "gulp-mocha": "^2.2.0",
     "gulp-plumber": "^1.1.0",
-    "gulp-watch": "^4.3.5"
+    "gulp-watch": "^4.3.5",
+    "gulp-nsp": "^2.3.1"
   }
 }
