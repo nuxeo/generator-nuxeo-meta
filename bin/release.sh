@@ -38,3 +38,5 @@ git tag v$VERSION
 git push origin master
 git push origin $VERSION
 git push origin v$VERSION
+
+git checkout master
