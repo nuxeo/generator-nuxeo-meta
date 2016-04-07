@@ -2,7 +2,6 @@
 var helper = require('../../lib/helpers.js');
 
 module.exports = {
-  type: 'core',
   params: [{
     type: 'input',
     name: 'package',

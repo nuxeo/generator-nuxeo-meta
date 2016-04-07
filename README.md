@@ -50,7 +50,7 @@ module.exports = {
 ```
 
 #### Using `type` Field
-The `type` field is useful when you are in a `multi-module` archetype. As the main module is a `pom`; you can chose in which submodule you'd like to generate stuff. The default value is `core`. The submodule is automatically added to the parent `pom.xml` file if needed.
+The `type` field is useful when you are in a `multi-module` archetype. As the main module is a `pom`; you can chose in which submodule you'd like to force the generation. If you do not use the `type` field, user can set it using the `--type` option on the generator. The default value is `core`. The submodule is automatically added to the parent `pom.xml` file if needed.
 
 ```
 module.exports = {

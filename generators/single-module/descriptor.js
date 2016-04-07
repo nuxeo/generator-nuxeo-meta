@@ -5,7 +5,8 @@ var path = require('path');
 module.exports = {
   order: -5,
   skip: function() {
-    return this.fs.exists('pom.xml');
+    var pom = path.join(this._getBaseFolderName(null), 'pom.xml');
+    return this.fs.exists(pom);
   },
   params: [{
     type: 'input',
@@ -64,7 +65,7 @@ module.exports = {
     name: 'artifact',
     message: 'Project Artifact id:',
     default: function() {
-      return path.basename(path.resolve('.')) + '-core';
+      return path.basename(path.resolve('.')) + '-' + global._options.type;
     },
     validate: helper.validators.artifact
   }, {
