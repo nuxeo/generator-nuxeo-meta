@@ -24,7 +24,6 @@ module.exports = {
     default: 'nuxeo-addons-parent',
     store: true,
     validate: helper.validators.parent_artifact,
-
     when: function(answers) {
       return answers.parent_package;
     }

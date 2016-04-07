@@ -124,6 +124,8 @@ describe('Generators', function() {
       res = this.validators.package_name('dsa d asd sad');
       expect(res).to.be.true();
       res = this.validators.package_name('dsa d asd 1 sad');
+      expect(res).to.be.true();
+      res = this.validators.package_name('dsa d a.sd 1 sad');
       expect(res).to.be.a('string');
       res = this.validators.package_name('dsadasd-sad');
       expect(res).to.be.true();
