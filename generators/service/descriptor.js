@@ -31,6 +31,7 @@ module.exports = {
     dest: '{{s.dasherize(s.decapitalize(service_name))}}-service.xml'
   }],
   dependencies: [
+    'org.nuxeo.runtime:nuxeo-runtime',
     'org.nuxeo.runtime:nuxeo-runtime-test:::test',
     'org.nuxeo.ecm.platform:nuxeo-platform-test:::test'
   ]
