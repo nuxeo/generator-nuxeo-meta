@@ -17,11 +17,17 @@ module.exports = {
   // Files need to be in 'classes' folder
   'main-java': [{
     src: 'template class',
-    dest: 'destination filename'
+    dest: 'destination filename',
+    when: function(answers) {
+      return answers.res === 'ok'; // Filter some classes generation
+    }
   }],
   'test-java': [{
     src: 'template class',
-    dest: 'destination filename'
+    dest: 'destination filename',
+    when: function(answers) {
+      return answers.res === 'ok'; // Filter some test classes generation
+    }
   }],
   // Maven dependency to ensure exists / add -> GAV format
   dependencies: [],

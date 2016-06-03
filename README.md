@@ -98,17 +98,23 @@ To sum up:
 - `filter`: function called after the user input finished to change it
 
 ### Java classes
-Define _main_ or _test_ Java classes to be generated to a `java-main`, or `java-test` field. For both, each entry is an object with a `src` and a `dest` entries. The `src` value should refer to a local file in the `classes` folder; and `dest` only to the expected filename. The `package` is handled automatically from the `package` parameter of your generator.
+Define _main_ or _test_ Java classes to be generated to a `java-main`, or `java-test` field. For both, each entry is an object with a `src` and a `dest` entries. The `src` value should refer to a local file in the `classes` folder; and `dest` only to the expected filename. The `package` is handled automatically from the `package` parameter of your generator. The `when` function is not mandatory, it makes possible to skip some classes generation depending of the answers values.
 
 ```
 module.exports = {
   'main-java': [{
     src: "operation.java",
-    dest: "{{s.camelize(operation_name)}}.java"
+    dest: "{{s.camelize(operation_name)}}.java",
+    when: function(answers) {
+      return true;
+    }
   }],
   'test-java': [{
     src: "test.java",
-    dest: "Test{{s.camelize(operation_name)}}.java"
+    dest: "Test{{s.camelize(operation_name)}}.java",
+    when: function(answers) {
+      return true;
+    }
   }],
 }
 ```
