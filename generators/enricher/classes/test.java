@@ -15,7 +15,7 @@ switch(entity_type) {
     obj_type = 'user';
     break;
   default:
-    jsonWriter = package + '.' + s.classifiy(entity_type_c) + 'JsonWriter';
+    jsonWriter = package + '.' + s.classify(entity_type_c) + 'JsonWriter';
     initObj = s.strRightBack(entity_type, '.') + ' obj = new ' + s.strRightBack(entity_type, '.') + ';';
     obj_type = 'MASHALLED_TYPE';
 }
