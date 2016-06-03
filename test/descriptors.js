@@ -32,6 +32,8 @@ describe('Generators', function() {
       expect(res).to.be.a('string');
       res = this.validators.package('org.nuxeo.');
       expect(res).to.be.a('string');
+      res = this.validators.package('org.nuxeo..nuxeo');
+      expect(res).to.be.a('string');
       res = this.validators.package('org.nuxeo.nuxeo');
       expect(res).to.be.true();
     });
@@ -130,5 +132,27 @@ describe('Generators', function() {
       res = this.validators.package_name('dsadasd-sad');
       expect(res).to.be.true();
     });
+
+    it('can validate fully qualified class name', function() {
+      var res = this.validators.qualified_className('');
+      expect(res).to.be.a('string');
+      res = this.validators.qualified_className('1.');
+      expect(res).to.be.a('string');
+      res = this.validators.qualified_className('org.nuxeo.Hello');
+      expect(res).to.be.true();
+      res = this.validators.qualified_className('org.nuxeo.');
+      expect(res).to.be.a('string');
+      res = this.validators.qualified_className('.Helo');
+      expect(res).to.be.a('string');
+      res = this.validators.qualified_className('org.nuxeo.helo');
+      expect(res).to.be.a('string');
+      res = this.validators.qualified_className('org..nuxeo..helo');
+      expect(res).to.be.a('string');
+      res = this.validators.qualified_className('org.nudxeo.Hell1o');
+      expect(res).to.be.true();
+      res = this.validators.qualified_className('org.nuxeo.blabla.ds.Nuxeo');
+      expect(res).to.be.true();
+    });
+
   });
 });

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<component name="<%= package %>.enricher.<%= s.dasherize(s.decapitalize(enricher_name)) %>">
+
+  <extension target="org.nuxeo.ecm.core.io.MarshallerRegistry" point="marshallers">
+    <register class="<%= package %>.<%= s.classify(enricher_name)%>Enricher" enable="true" />
+<% if (typeof entity_type_c !== 'undefined') { -%>
+    <register class="<%= package %>.<%= s.strRightBack(entity_type_c, '.')%>JsonWriter" enable="true" />
+<% } -%>
+  </extension>
+</component>
