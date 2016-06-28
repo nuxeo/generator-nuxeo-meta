@@ -4,8 +4,8 @@ var path = require('path');
 
 module.exports = {
   order: -5,
-  skip: function() {
-    var pom = path.join(this._getBaseFolderName(null), 'pom.xml');
+  skip: function(type) {
+    var pom = path.join(this._getBaseFolderName(type), 'pom.xml');
     return this.fs.exists(pom);
   },
   params: [{
