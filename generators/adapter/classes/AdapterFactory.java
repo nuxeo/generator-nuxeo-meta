@@ -7,7 +7,7 @@ public class <%= s.capitalize(doctype) %>AdapterFactory implements DocumentAdapt
 
     @Override
     public Object getAdapter(DocumentModel doc, Class<?> itf) {
-        if (doc.getType() == "<%= doctype %>"){
+        if ("<%= doctype %>".equals(doc.getType()) && doc.hasSchema("dublincore")){
             return new <%= s.capitalize(doctype) %>Adapter(doc);
         }else{
             return null;

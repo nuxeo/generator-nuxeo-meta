@@ -16,7 +16,6 @@ module.exports = {
     type: 'input',
     name: 'doctype',
     message: 'Document Type ID:',
-    store: true,
     validate: function(value) {
       var doctypeRegex = '^[a-zA-Z][a-zA-Z0-9_-]*$';
       return value.match(doctypeRegex) ? true : 'A doctype id should start with a letter, and contain alphanumeric characters, dashes and underscores only.';
@@ -29,7 +28,15 @@ module.exports = {
     src: 'AdapterFactory.java',
     dest: '{{s.capitalize(doctype)}}AdapterFactory.java'
   }],
-  dependencies: ['org.nuxeo.ecm.core:nuxeo-core-api'],
+  'test-java': [{
+    src: 'TestAdapter.java',
+    dest: 'Test{{s.capitalize(doctype)}}Adapter.java'
+  }],
+  dependencies: [
+    'org.nuxeo.ecm.core:nuxeo-core-api',
+    'org.nuxeo.runtime:nuxeo-runtime',
+    'org.nuxeo.ecm.core:nuxeo-core-test:::test'
+  ],
   contributions: [{
     src: 'adapter.xml',
     dest: '{{s.dasherize(s.decapitalize(package + doctype))}}-adapter-contrib.xml'
