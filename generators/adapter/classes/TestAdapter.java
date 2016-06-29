@@ -23,11 +23,16 @@ public class Test<%= s.capitalize(doctype) %>Adapter {
   @Test
   public void shouldCallTheAdapter() {
     String doctype = "<%= doctype %>";
+    String testTitle = "My Adapter Title";
 
     DocumentModel doc = session.createDocumentModel("/", "test-adapter", doctype);
-    doc = session.createDocument(doc);
-    session.save();
     <%= s.capitalize(doctype) %>Adapter adapter = doc.getAdapter(<%= s.capitalize(doctype) %>Adapter.class);
+    adapter.setTitle(testTitle);
+    adapter.create();
+    // session.save() is only needed in the context of unit tests
+    session.save();
+
     Assert.assertNotNull("The adapter can't be used on the " + doctype + " document type", adapter);
+    Assert.assertEquals("Document title does not match when using the adapter", testTitle, adapter.getTitle());
   }
 }
