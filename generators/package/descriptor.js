@@ -3,7 +3,7 @@ var helper = require('../../lib/helpers.js');
 var path = require('path');
 
 module.exports = {
-  type: 'marketplace',
+  type: 'package',
   depends: 'multi-module',
   ensure: function() {
     return this.config.get('multi');
