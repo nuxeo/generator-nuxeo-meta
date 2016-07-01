@@ -5,6 +5,7 @@ var path = require('path');
 module.exports = {
   type: 'package',
   depends: 'multi-module',
+  autonomous: true,
   ensure: function() {
     return this.config.get('multi');
   },
