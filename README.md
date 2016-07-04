@@ -1,5 +1,5 @@
 # Generator Nuxeo Metamodel
-[![Build Status](https://qa.nuxeo.org/jenkins/buildStatus/icon?job=tools_generator-nuxeo-meta-master)](https://qa.nuxeo.org/jenkins/job/tools_generator-nuxeo-meta-master/)
+[![Build Status](https://qa.nuxeo.org/jenkins/buildStatus/icon?job=master/tools_generator-nuxeo-meta-master)](https://qa.nuxeo.org/jenkins/job/master/job/tools_generator-nuxeo-meta-master/)
 [![devDependency Status](https://img.shields.io/david/dev/nuxeo/generator-nuxeo-meta.svg?style=flat-square)](https://david-dm.org/nuxeo/generator-nuxeo-meta#info=devDependencies)
 
 ## Introduction
