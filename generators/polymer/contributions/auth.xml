@@ -1,0 +1,18 @@
+<component name="<%= parent_package %>.authentication.<%= s.dasherize(s.decapitalize(name)) %>">
+
+  <extension point="startURL" target="org.nuxeo.ecm.platform.ui.web.auth.service.PluggableAuthenticationService">
+    <startURLPattern>
+      <patterns>
+        <pattern><%= route %>/</pattern>
+      </patterns>
+    </startURLPattern>
+  </extension>
+
+  <!-- Uncomment this to allow browsing application without authentication
+  <extension point="openUrl" target="org.nuxeo.ecm.platform.ui.web.auth.service.PluggableAuthenticationService">
+    <openUrl name="<%= s.dasherize(s.decapitalize(name)) %>">
+      <grantPattern><%= route %></grantPattern>
+    </openUrl>
+  </extension>
+  -->
+</component>
