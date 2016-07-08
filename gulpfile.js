@@ -11,10 +11,10 @@ var istanbul = require('gulp-istanbul');
 var plumber = require('gulp-plumber');
 var nsp = require('gulp-nsp');
 
-var files = ['generators/**/*.js', 'lib/*.js', 'test/**/*.js'];
+var files = ['generators/**/*.js', '!generators/*/templates/**/*.js', 'lib/*.js', 'test/**/*.js'];
 
 gulp.task('pre-test', function() {
-  return gulp.src(['generators/**/*.js', 'utils/*.js'])
+  return gulp.src(['lib/*.js'])
     .pipe(istanbul({
       includeUntested: true
     }))
