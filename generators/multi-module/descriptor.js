@@ -21,6 +21,7 @@ module.exports = {
   }, {
     type: 'input',
     name: 'super_package',
+    store: true,
     message: 'Parent Group id:',
     default: 'org.nuxeo.ecm.distribution',
     validate: helper.validators.package,
@@ -43,6 +44,7 @@ module.exports = {
   }, {
     type: 'input',
     name: 'super_version',
+    store: true,
     message: 'Parent Version:',
     default: helper.nuxeo_version.default_distribution,
     validate: helper.validators.version,
