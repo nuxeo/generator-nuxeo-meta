@@ -75,7 +75,7 @@ module.exports = {
     name: 'custom_events',
     message: 'Custom Events (separate with a comma):',
     validate: function(value) {
-      return value.trim().length === 0 || value.match(/[^,\w\s]/) ? 'Invalid input, and use a comma to separate custom events.' : true;
+      return value.length === 0 || value[0].trim().length === 0 ? 'Invalid input, and use a comma to separate custom events.' : true;
     },
     when: function(answers) {
       var i = answers.events.indexOf('Add custom events');
@@ -89,7 +89,11 @@ module.exports = {
       }
     },
     filter: function(value) {
-      return value.trim().toLowerCase().replace(/^,+|\s+|,+$/g, '').replace(/,+/g, ',').split(/,\s*/);
+      return value.trim().toLowerCase()
+                         .replace(/\s+/g, '') // remove all white spaces
+                         .replace(/,+/g, ',') // make unique comma
+                         .replace(/^,+|,+$/g, '') // remove starting and ending commas
+                         .split(/,+\s*/);
     }
   }, {
     type: 'confirm',
