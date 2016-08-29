@@ -25,6 +25,7 @@ package <%= package %>;
 import javax.inject.Inject;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.nuxeo.ecm.core.api.CoreSession;
 import org.nuxeo.ecm.core.api.PathRef;
 import org.nuxeo.ecm.platform.test.PlatformFeature;
@@ -35,7 +36,9 @@ import org.nuxeo.ecm.core.io.marshallers.json.JsonAssert;
 import org.nuxeo.ecm.core.io.registry.context.RenderingContext.CtxBuilder;
 import org.nuxeo.runtime.test.runner.Deploy;
 import org.nuxeo.runtime.test.runner.Features;
+import org.nuxeo.runtime.test.runner.FeaturesRunner;
 
+@RunWith(FeaturesRunner.class)
 @Features({PlatformFeature.class})
 @Deploy({"<%= symbolicName %>"})
 public class <%= s.classify(enricher_name) %>EnricherTest extends AbstractJsonWriterTest.Local<<%= s.strRightBack(jsonWriter, '.')%>, <%= s.strRightBack(entity_type, '.')%>> {

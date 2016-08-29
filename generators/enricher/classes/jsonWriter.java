@@ -22,9 +22,6 @@ public class <%= s.strRightBack(entity_type_c, '.')%>JsonWriter extends Extensib
 
     public static final String ENTITY_TYPE = "<%= s.underscored(s.strRightBack(entity_type_c, '.')).toLowerCase() %>";
 
-    @Inject
-    private CoreSession session;
-
     public <%= s.strRightBack(entity_type_c, '.')%>JsonWriter() {
         super(ENTITY_TYPE, <%= s.strRightBack(entity_type_c, '.')%>.class);
     }
