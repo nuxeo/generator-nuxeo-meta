@@ -9,6 +9,7 @@ target
 npm-debug.log
 .settings/
 bin/
+.yo-rc.json
 .DS_Store
 *.gpd.*
 .idea
