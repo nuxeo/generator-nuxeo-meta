@@ -1,5 +1,3 @@
-'use strict';
-
 // Descriptor skeleton
 module.exports = {
   // Parent module to install if needed, parent is also checked at install

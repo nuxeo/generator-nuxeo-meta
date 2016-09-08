@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/nuxeo/generator-nuxeo-meta#readme",
   "devDependencies": {
+    "async": "^2.0.1",
+    "babel-eslint": "^6.1.2",
     "chai": "^3.5.0",
     "dirty-chai": "^1.2.2",
     "gulp": "^3.9.1",
@@ -26,8 +28,9 @@
     "gulp-eslint": "^3.0.0",
     "gulp-istanbul": "^1.0.0",
     "gulp-mocha": "^2.2.0",
+    "gulp-nsp": "^2.3.1",
     "gulp-plumber": "^1.1.0",
     "gulp-watch": "^4.3.5",
-    "gulp-nsp": "^2.3.1"
+    "request": "^2.74.0"
   }
 }

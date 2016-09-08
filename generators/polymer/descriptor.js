@@ -1,4 +1,3 @@
-'use strict';
 var helper = require('../../lib/helpers.js');
 var path = require('path');
 
