@@ -47,6 +47,7 @@ module.exports = {
     },
     validate: helper.validators.route
   }],
+  'templates-ignore': [/\.html$/],
   contributions: [{
     src: 'auth.xml',
     dest: '{{s.dasherize(s.decapitalize(name))}}-auth-contrib.xml'
