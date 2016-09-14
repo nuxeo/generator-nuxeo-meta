@@ -134,6 +134,12 @@ Other templates' plain files are using [ejs](https://github.com/mde/ejs/blob/mas
  Will create a folder: src/main/java/org/nuxeo/readme
 ```
 
+You can also ignore some files during the templating symtem. To do that, add a `templates-ignore` containing an array of regex that matches the ignored files.
+
+```
+'templates-ignore': [/\.html$/, /.+xx.+/],
+```
+
 ### Contributions
 Contributions are handled a similar way than java classes;
 

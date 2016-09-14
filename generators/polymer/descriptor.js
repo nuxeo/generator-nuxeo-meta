@@ -1,14 +1,10 @@
 var helper = require('../../lib/helpers.js');
-var path = require('path');
 
 module.exports = {
   depends: 'default',
   type: 'web',
   autonomous: true,
-  skip: function(type) {
-    var pom = path.join(this._getBaseFolderName(type), 'pom.xml');
-    return this.fs.exists(pom);
-  },
+  skip: helper.skips.not_empty_project,
   params: [{
     type: 'input',
     name: 'parent_package',

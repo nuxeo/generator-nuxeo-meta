@@ -11,6 +11,8 @@ module.exports = {
   config: {},
   // List of params following yeoman documentation
   params: [],
+  // List of regex that prevent files to be templated
+  'templates-ignore': [/\.html$/, /\.css$/],
   // Helper for java Classes (package need to exists in path)
   // Files need to be in 'classes' folder
   'main-java': [{

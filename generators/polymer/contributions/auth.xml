@@ -1,4 +1,4 @@
-<component name="<%= parent_package %>.authentication.<%= s.dasherize(s.decapitalize(name)) %>">
+<component name="<%= parent_package %>.authentication.polymer.<%= s.dasherize(s.decapitalize(name)) %>">
 
   <extension point="startURL" target="org.nuxeo.ecm.platform.ui.web.auth.service.PluggableAuthenticationService">
     <startURLPattern>
