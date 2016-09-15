@@ -9,12 +9,14 @@ module.exports = {
   params: [{
     type: 'input',
     name: 'parent_package',
+    default: 'org.nuxeo.ecm.distribution',
     message: 'Parent Group id:',
     store: true,
     validate: helper.validators.package
   }, {
     type: 'input',
     name: 'parent_artifact',
+    default: 'nuxeo-distribution',
     message: 'Parent Artifact id:',
     store: true,
     validate: helper.validators.artifact
@@ -23,7 +25,7 @@ module.exports = {
     name: 'parent_version',
     message: 'Parent version:',
     store: true,
-    default: '1.0-SNAPSHOT',
+    default: helper.nuxeo_version.default_distribution,
     validate: helper.validators.version_snapshot
   }, {
     type: 'input',
