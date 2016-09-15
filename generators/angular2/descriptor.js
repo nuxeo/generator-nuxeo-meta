@@ -53,5 +53,9 @@ module.exports = {
   contributions: [{
     src: 'auth.xml',
     dest: '{{s.dasherize(s.decapitalize(name))}}-auth-contrib.xml'
-  }]
+  }],
+  install: {
+    cmd: 'npm',
+    args: ['install']
+  }
 };

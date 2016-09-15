@@ -164,6 +164,20 @@ or
 dependencies: 'inherited'
 ```
 
+### Post Installation Commands
+Post installation commands are run inside the corresponding module folder in case of a multi-module project. Useful to install `npm` or `bower` dependencies at install time.
+
+```
+install: [{
+  cmd: 'npm', // The command to spawn.
+  args: ['arg1', 'arg2'], // Arguments passed to the command without any modification.
+  opts: {
+    something: true,
+    default: 'value'
+  } // And command options if needed. Check https://www.npmjs.com/package/dargs to understand the conversion logic.
+}]
+```
+
 ## Licensing
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 

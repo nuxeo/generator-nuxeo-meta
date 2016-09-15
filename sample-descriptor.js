@@ -35,5 +35,15 @@ module.exports = {
   contributions: [{
     src: 'local filename',
     dest: 'destination filename'
+  }],
+  // Post install commands that make the user environment ready to use
+  install: [{
+    cmd: 'npm',
+    args: ['install', 'generator-nuxeo'],
+    // See https://www.npmjs.com/package/dargs to understand the opts logic
+    opts: {
+      save: true,
+      dryRun: true
+    }
   }]
 };
