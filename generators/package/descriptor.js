@@ -7,7 +7,7 @@ module.exports = {
   depends: 'multi-module',
   autonomous: true,
   ensure: function() {
-    return this.config.get('multi');
+    return this._isMultiModule();
   },
   params: [{
     type: 'input',
