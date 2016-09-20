@@ -1,6 +1,6 @@
 {
   "name": "generator-nuxeo-meta",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "generator-nuxeo metamodel",
   "scripts": {
     "test": "gulp test"
