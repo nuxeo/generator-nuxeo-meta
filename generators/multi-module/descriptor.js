@@ -74,7 +74,7 @@ module.exports = {
   }, {
     type: 'input',
     name: 'parent_package',
-    message: 'Project group id:',
+    message: 'Project Group id:',
     store: true,
     validate: helper.validators.package,
     filter: helper.filters.package
@@ -90,14 +90,14 @@ module.exports = {
   }, {
     type: 'input',
     name: 'parent_version',
-    message: 'Project version:',
+    message: 'Project Version:',
     store: true,
     default: '1.0-SNAPSHOT',
     validate: helper.validators.version_snapshot
   }, {
     type: 'input',
     name: 'description',
-    message: 'Project description:'
+    message: 'Project Description:'
   }],
   templates: [{
     src: function(props) {
