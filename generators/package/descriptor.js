@@ -27,7 +27,7 @@ module.exports = {
     message: 'Parent version:',
     store: true,
     default: '1.0-SNAPSHOT',
-    validate: helper.validators.version_snapshot
+    validate: helper.validators.version
   }, {
     type: 'input',
     name: 'artifact',
@@ -36,6 +36,15 @@ module.exports = {
       return path.basename(path.resolve('.')) + '-package';
     },
     validate: helper.validators.artifact
+  }, {
+    type: 'input',
+    name: 'version',
+    message: 'Package Version:',
+    default: '1.0-SNAPSHOT',
+    validate: helper.validators.version_snapshot,
+    when: function(answers) {
+      return !answers.parent_version.match(/-SNAPSHOT$/i);
+    }
   }, {
     type: 'input',
     name: 'name',

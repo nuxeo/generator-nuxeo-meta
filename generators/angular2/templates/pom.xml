@@ -9,6 +9,9 @@
 
   <artifactId><%= artifact %></artifactId>
   <name><%= s.humanize(name) %></name>
+  <% if (typeof version !== 'undefined') { -%>
+    <version><%= version %></version>
+  <% } -%>
   <description />
 
   <build>

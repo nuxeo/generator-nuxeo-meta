@@ -8,6 +8,9 @@
   </parent>
 
   <artifactId><%= artifact %></artifactId>
+  <% if (typeof version !== 'undefined') { -%>
+    <version><%= version %></version>
+  <% } -%>
   <packaging>zip</packaging>
   <name><%= s.humanize(name) %></name>
 
