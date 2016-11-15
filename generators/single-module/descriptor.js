@@ -51,7 +51,7 @@ module.exports = {
     validate: helper.validators.version,
     filter: helper.nuxeo_version.filter,
     when: function(answers) {
-      return !answers.parent_artifact || !answers.parent_package.match(/^org\.nuxeo/);
+      return answers.parent_artifact && !answers.parent_package.match(/^org\.nuxeo/);
     }
   }, {
     type: 'input',

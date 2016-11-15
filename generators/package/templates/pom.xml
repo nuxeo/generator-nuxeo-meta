@@ -8,25 +8,29 @@
   </parent>
 
   <artifactId><%= artifact %></artifactId>
-  <% if (typeof version !== 'undefined') { -%>
+<% if (typeof version !== 'undefined') { -%>
     <version><%= version %></version>
-  <% } -%>
+<% } -%>
   <packaging>zip</packaging>
-  <name><%= s.humanize(name) %></name>
+  <name><%= s.humanize(artifact) + ' - ' + s.humanize(name) %></name>
 
   <dependencies>
     <!-- Base distribution(s) for the MP -->
+<% if (v.isAfterOrEquals('8.10-SNAPSHOT')) { -%>
     <dependency>
       <groupId>org.nuxeo.ecm.distribution</groupId>
-      <artifactId>nuxeo-distribution-cap</artifactId>
-      <type>pom</type>
+      <artifactId>nuxeo-nxr-server</artifactId>
+      <type>zip</type>
+      <scope>provided</scope>
     </dependency>
+<% } else { -%>
     <dependency>
       <groupId>org.nuxeo.ecm.distribution</groupId>
       <artifactId>nuxeo-distribution-cap</artifactId>
       <type>zip</type>
       <scope>provided</scope>
     </dependency>
+<% } -%>
 
     <!-- Additional bundles to be deployed by the MP -->
   </dependencies>
