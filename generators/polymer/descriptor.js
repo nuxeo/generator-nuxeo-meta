@@ -48,7 +48,7 @@ module.exports = {
     type: 'input',
     name: 'name',
     message: 'Application name:',
-    validate: helper.validators.required
+    validate: helper.validators.artifact
   }, {
     type: 'input',
     name: 'route',
