@@ -12,12 +12,15 @@
 <% } -%>
   <artifactId><%= artifact %></artifactId>
 <% if (!multi) { -%>
+<% if (parent_package && package !== parent_package) { -%>
   <groupId><%= package %></groupId>
+<% } -%>
+<% if (parent_package && parent_version !== version) { -%>
   <version><%= version %></version>
+<% } -%>
 <% } -%>
   <name><%= s.humanize(artifact) %></name>
   <description><%= description %></description>
-
 
 <% if (!parent_artifact || !multi && !parent_package.match(/^org\.nuxeo/)) { -%>
   <dependencyManagement>
@@ -31,8 +34,8 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-<% } -%>
 
+<% } -%>
 <% if (!parent_artifact) { -%>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -81,8 +84,8 @@
         </plugin>
     </plugins>
   </build>
-<% } -%>
 
+<% } -%>
 <% if (!multi) { -%>
   <repositories>
     <repository>
