@@ -88,11 +88,11 @@
 <% } -%>
       includesfile="${outdir}/includes"
       excludesfile="${outdir}/excludesfile"
-      patternsetid="sample.versus.cap"
+      patternsetid="nxr.versus.distribution"
       ignoreContent="false"
       ignoreContentPattern=".*\.jar$"></nx:zipdiff>
     <unzip src="${outdir}/nxr-${maven.project.version}.zip" dest="${outdir}/marketplace/install">
-      <patternset refid="sample.versus.cap"/>
+      <patternset refid="nxr.versus.distribution"/>
     </unzip>
 
     <!-- Generate install.xml content -->
