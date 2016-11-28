@@ -1,6 +1,4 @@
-
 var helper = require('../../lib/helpers.js');
-var path = require('path');
 
 module.exports = {
   depends: 'single-module',
@@ -84,7 +82,7 @@ module.exports = {
     message: 'Project Artifact id:',
     store: true,
     default: function() {
-      return path.basename(path.resolve('.')) + '-parent';
+      return global._options.dirname + '-parent';
     },
     validate: helper.validators.artifact
   }, {

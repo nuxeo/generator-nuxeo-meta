@@ -1,4 +1,3 @@
-
 var helper = require('../../lib/helpers.js');
 var path = require('path');
 
@@ -65,7 +64,7 @@ module.exports = {
     name: 'artifact',
     message: 'Project Artifact id:',
     default: function() {
-      return path.basename(path.resolve('.')) + '-' + global._options.type;
+      return global._options.dirname + '-' + global._options.type;
     },
     validate: helper.validators.artifact
   }, {
