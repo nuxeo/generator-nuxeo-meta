@@ -41,7 +41,7 @@ module.exports = {
     default: '1.0-SNAPSHOT',
     validate: helper.validators.version_snapshot,
     when: function(answers) {
-      return !answers.parent_version.match(/-SNAPSHOT$/i);
+      return !(answers.parent_version && answers.parent_version.match(/-SNAPSHOT$/i));
     }
   }, {
     type: 'input',
