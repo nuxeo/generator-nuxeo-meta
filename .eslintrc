@@ -1,6 +1,6 @@
 {
   "extends": "eslint:recommended",
-  'parser': 'babel-eslint',
+  "parser": "babel-eslint",
   "env": {
     "node": true,
     "mocha": true
@@ -41,8 +41,10 @@
       "single"
     ],
     "keyword-spacing": [
-      2,
-      {"before": true, "after": true}
+      2, {
+        "before": true,
+        "after": true
+      }
     ],
     "space-before-function-paren": [
       0, {
@@ -104,7 +106,9 @@
     "no-shadow": 2,
     "no-shadow-restricted-names": 2,
     "no-undef-init": 2,
-    "camelcase": [2, {"properties": "never"}],
+    "camelcase": [2, {
+      "properties": "never"
+    }],
     "comma-spacing": 2,
     "new-cap": 2,
     "new-parens": 2,
