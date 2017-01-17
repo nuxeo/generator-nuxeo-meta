@@ -55,7 +55,6 @@ module.exports = {
   dependencies: [
     'org.nuxeo.ecm.core:nuxeo-core-io',
     'org.nuxeo.runtime:nuxeo-runtime-test:::test',
-    'org.nuxeo.ecm.core:nuxeo-core-io::test-jar:test',
     'org.nuxeo.ecm.platform:nuxeo-platform-test:::test'
   ]
 };
