@@ -26,9 +26,6 @@
   <condition property="cmd.bower" value="bower.cmd" else="bower">
     <os family="windows"/>
   </condition>
-  <condition property="cmd.gulp" value="gulp.cmd" else="gulp">
-    <os family="windows"/>
-  </condition>
   <condition property="cmd.mvn" value="mvn.cmd" else="mvn">
     <os family="windows"/>
   </condition>
@@ -43,8 +40,9 @@
   </target>
 
   <target name="build" depends="init">
-    <exec executable="${cmd.gulp}" failonerror="true">
-      <arg value="default" />
+    <exec executable="${cmd.npm}" failonerror="true">
+      <arg value="run" />
+      <arg value="build" />
     </exec>
   </target>
 

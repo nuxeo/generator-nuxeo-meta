@@ -16,9 +16,25 @@
 <% } -%>
   <description />
 
+<% if (!multi) { -%>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+<% } -%>
+
 <% if (multi) { -%>
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestFile>nuxeo/META-INF/MANIFEST.MF</manifestFile>
+          </archive>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -41,11 +57,6 @@
   </build>
 <% } -%>
 <% if (!multi) { -%>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  </properties>
-
   <build>
     <plugins>
       <plugin>
@@ -78,7 +89,7 @@
           <version>2.3.1</version>
           <configuration>
             <archive>
-              <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+              <manifestFile>nuxeo/META-INF/MANIFEST.MF</manifestFile>
               <manifestEntries>
                 <Bundle-Version>${project.version}-t${buildNumber}</Bundle-Version>
                 <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
@@ -106,7 +117,6 @@
       </plugin>
     </plugins>
   </build>
-
   <repositories>
     <repository>
       <id>public</id>
@@ -141,7 +151,6 @@
       </snapshots>
     </repository>
   </repositories>
-
   <pluginRepositories>
     <pluginRepository>
       <id>public</id>
