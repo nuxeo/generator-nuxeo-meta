@@ -57,10 +57,6 @@ module.exports = {
     },
     validate: helper.validators.route
   }],
-  contributions: [{
-    src: 'auth.xml',
-    dest: '{{s.dasherize(s.decapitalize(s.titleize(name)))}}-auth-contrib.xml'
-  }],
   install: [{
     cmd: 'npm',
     args: ['install']
