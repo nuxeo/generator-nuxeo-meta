@@ -1,0 +1,72 @@
+.Workspace,
+.Folder,
+.Forum,
+.Collection,
+.Workspace,
+.Domain,
+.WorkspaceRoot,
+.SectionRoot,
+.TemplateRoot,
+.Root,
+.Web,
+.Project,
+.Template,
+.Picture,
+.Video,
+.Portfolio,
+.Note,
+.OrderedFolder,
+.WebTemplateSource,
+.Audio,
+.File {
+    height: 10px;
+    min-width: 10px;
+    margin: 5px;
+    border: 1px solid black;
+}
+
+.Web,
+.Project,
+.Template,
+.Picture,
+.Video,
+.Portfolio,
+.Note,
+.Audio,
+.File,
+.WebTemplateSource {
+    border-radius: 50%;
+}
+
+.show-children {
+    background-color: red;
+}
+
+
+.side-panel-profile {
+    height: 150px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+
+.highlight-working {
+    background: rgb(63, 191, 191);
+}
+
+.file-tree-title-wrapper {
+    display: flex;
+}
+
+.file-tree-title {
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.file-tree-view {
+    margin-left: 15px;
+}
+
+.file-tree-title:hover {
+    background-color: rgba(63, 191, 191, 0.5);
+}
