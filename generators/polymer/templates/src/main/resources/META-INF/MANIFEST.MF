@@ -5,4 +5,4 @@ Bundle-Vendor: <%= parent_package %>
 Bundle-Version: 1.0.0
 Bundle-Name: <%= artifact %>
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: <%= parent_package %>.<%= s.dasherize(s.decapitalize(artifact)) %>;singleton=true
+Bundle-SymbolicName: <%= parent_package %>.<%= s.dasherize(s.decapitalize(s.titleize(artifact))) %>;singleton=true

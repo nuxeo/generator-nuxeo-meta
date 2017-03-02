@@ -17,10 +17,10 @@ import com.google.inject.Inject;
 public class Test<%= s.camelize(service_name) %> {
 
     @Inject
-    protected <%= s.camelize(service_name) %> <%= s.decapitalize(s.camelize(service_name)) %>;
+    protected <%= s.camelize(service_name) %> <%= s.decapitalize(s.titleize(s.camelize(service_name))) %>;
 
     @Test
     public void testService() {
-        assertNotNull(<%= s.decapitalize(s.camelize(service_name)) %>);
+        assertNotNull(<%= s.decapitalize(s.titleize(s.camelize(service_name))) %>);
     }
 }

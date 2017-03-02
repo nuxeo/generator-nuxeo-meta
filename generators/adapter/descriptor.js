@@ -38,6 +38,6 @@ module.exports = {
   ],
   contributions: [{
     src: 'adapter.xml',
-    dest: '{{s.dasherize(s.decapitalize(package + doctype))}}-adapter-contrib.xml'
+    dest: '{{s.dasherize(s.decapitalize(s.titleize(package + doctype)))}}-adapter-contrib.xml'
   }]
 };

@@ -50,7 +50,7 @@ module.exports = {
   }],
   contributions: [{
     src: 'enricher.xml',
-    dest: '{{s.dasherize(s.decapitalize(enricher_name))}}-enricher-contrib.xml'
+    dest: '{{s.dasherize(s.decapitalize(s.titleize(enricher_name)))}}-enricher-contrib.xml'
   }],
   dependencies: [
     'org.nuxeo.ecm.core:nuxeo-core-io',

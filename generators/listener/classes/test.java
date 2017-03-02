@@ -29,7 +29,7 @@ public class Test<%= s.camelize(listener_name)%> {
 
     @Test
     public void listenerRegistration() {
-        EventListenerDescriptor listener = s.getEventListener("<%= s.dasherize(s.decapitalize(listener_name)) %>");
+        EventListenerDescriptor listener = s.getEventListener("<%= s.dasherize(s.decapitalize(s.titleize(listener_name))) %>");
         assertNotNull(listener);
         assertTrue(events.stream().allMatch(listener::acceptEvent));
     }

@@ -23,6 +23,7 @@
     "babel-eslint": "^6.1.2",
     "chai": "^3.5.0",
     "dirty-chai": "^1.2.2",
+    "eslint": "^3.16.1",
     "gulp": "^3.9.1",
     "gulp-batch": "^1.0.5",
     "gulp-eslint": "^3.0.0",

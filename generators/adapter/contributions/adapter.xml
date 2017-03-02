@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<component name="<%= package %>.adapters.<%= s.dasherize(s.decapitalize(doctype)) %>">
+<component name="<%= package %>.adapters.<%= s.dasherize(s.decapitalize(s.titleize(s.titleize(s.titleize(doctype))))) %>">
 
   <extension target="org.nuxeo.ecm.core.api.DocumentAdapterService" point="adapters">
     <adapter class="<%= package + '.' + s.capitalize(doctype) + 'Adapter' %>" factory="<%= package + '.' + s.capitalize(doctype) + 'AdapterFactory' %>"/>

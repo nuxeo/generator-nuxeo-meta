@@ -1,4 +1,4 @@
-<component name="<%= parent_package %>.authentication.polymer.<%= s.dasherize(s.decapitalize(name)) %>">
+<component name="<%= parent_package %>.authentication.polymer.<%= s.dasherize(s.decapitalize(s.titleize(s.titleize(s.titleize(name))))) %>">
 
   <extension point="startURL" target="org.nuxeo.ecm.platform.ui.web.auth.service.PluggableAuthenticationService">
     <startURLPattern>
@@ -10,7 +10,7 @@
 
   <!-- Uncomment this to allow browsing application without authentication
   <extension point="openUrl" target="org.nuxeo.ecm.platform.ui.web.auth.service.PluggableAuthenticationService">
-    <openUrl name="<%= s.dasherize(s.decapitalize(name)) %>">
+    <openUrl name="<%= s.dasherize(s.decapitalize(s.titleize(s.titleize(s.titleize(name))))) %>">
       <grantPattern><%= route %></grantPattern>
     </openUrl>
   </extension>

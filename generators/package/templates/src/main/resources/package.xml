@@ -1,5 +1,5 @@
 <!-- See documentation at http://doc.nuxeo.com/x/HgIz -->
-<package type="addon" name="<%= s.dasherize(s.decapitalize(name)) %>" version="@VERSION@">
+<package type="addon" name="<%= s.dasherize(s.decapitalize(s.titleize(s.titleize(s.titleize(name))))) %>" version="@VERSION@">
   <title><%= s.humanize(name) %></title>
   <description>
     <p>Put here an HTML description of your Nuxeo Package.</p>

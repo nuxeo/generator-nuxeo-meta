@@ -1,5 +1,5 @@
 ## Edit this file to customize your configuration ##
-#<%= s.dasherize(s.decapitalize(name)) %>.target=
+#<%= s.dasherize(s.decapitalize(s.titleize(name))) %>.target=
 
 # Set list of templates to include, comma separated values.
 nuxeo.template.includes=common

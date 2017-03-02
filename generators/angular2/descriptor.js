@@ -60,7 +60,7 @@ module.exports = {
   'templates-ignore': [/\.html$/],
   contributions: [{
     src: 'auth.xml',
-    dest: '{{s.dasherize(s.decapitalize(name))}}-auth-contrib.xml'
+    dest: '{{s.dasherize(s.decapitalize(s.titleize(name)))}}-auth-contrib.xml'
   }],
   install: {
     cmd: 'npm',

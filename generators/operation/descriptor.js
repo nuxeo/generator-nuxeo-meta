@@ -33,7 +33,7 @@ module.exports = {
   }],
   contributions: [{
     src: 'operation.xml',
-    dest: '{{s.dasherize(s.decapitalize(operation_name))}}-operation-contrib.xml'
+    dest: '{{s.dasherize(s.decapitalize(s.titleize(operation_name)))}}-operation-contrib.xml'
   }],
   // <groupId>:<artifactId>[:<version>[:<extension>[:<classifier>]]]
   dependencies: [

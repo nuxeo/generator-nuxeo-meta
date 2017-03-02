@@ -119,7 +119,7 @@ module.exports = {
   }],
   contributions: [{
     src: 'listeners.xml',
-    dest: '{{s.dasherize(s.decapitalize(listener_name))}}-listener-contrib.xml'
+    dest: '{{s.dasherize(s.decapitalize(s.titleize(listener_name)))}}-listener-contrib.xml'
   }],
   dependencies: [
     'org.nuxeo.runtime:nuxeo-runtime-test:::test',

@@ -28,7 +28,7 @@ module.exports = {
   }],
   contributions: [{
     src: 'service.xml',
-    dest: '{{s.dasherize(s.decapitalize(service_name))}}-service.xml'
+    dest: '{{s.dasherize(s.decapitalize(s.titleize(service_name)))}}-service.xml'
   }],
   dependencies: [
     'org.nuxeo.runtime:nuxeo-runtime',

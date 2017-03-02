@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<component name="<%= package %>.enricher.<%= s.dasherize(s.decapitalize(enricher_name)) %>">
+<component name="<%= package %>.enricher.<%= s.dasherize(s.decapitalize(s.titleize(s.titleize(s.titleize(enricher_name))))) %>">
 
   <extension target="org.nuxeo.ecm.core.io.MarshallerRegistry" point="marshallers">
     <register class="<%= package %>.<%= s.classify(enricher_name)%>Enricher" enable="true" />
