@@ -22,14 +22,14 @@ module.exports = {
   }],
   'main-java': [{
     src: 'Adapter.java',
-    dest: '{{s.capitalize(doctype)}}Adapter.java'
+    dest: '{{s.capitalize(s.camelize(doctype))}}Adapter.java'
   }, {
     src: 'AdapterFactory.java',
-    dest: '{{s.capitalize(doctype)}}AdapterFactory.java'
+    dest: '{{s.capitalize(s.camelize(doctype))}}AdapterFactory.java'
   }],
   'test-java': [{
     src: 'TestAdapter.java',
-    dest: 'Test{{s.capitalize(doctype)}}Adapter.java'
+    dest: 'Test{{s.capitalize(s.camelize(doctype))}}Adapter.java'
   }],
   dependencies: [
     'org.nuxeo.ecm.core:nuxeo-core-api',
