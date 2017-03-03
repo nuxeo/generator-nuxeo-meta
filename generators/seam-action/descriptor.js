@@ -27,6 +27,7 @@ module.exports = {
   dependencies: [
     'org.jboss.seam:jboss-seam',
     'org.nuxeo.ecm.core:nuxeo-core-api',
-    'org.nuxeo.ecm.platform:nuxeo-platform-webapp-base'
+    'org.nuxeo.ecm.platform:nuxeo-platform-webapp-base',
+    'org.nuxeo.ecm.platform:nuxeo-platform-ui-web'
   ]
 };
