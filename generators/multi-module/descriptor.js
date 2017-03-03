@@ -90,7 +90,9 @@ module.exports = {
     name: 'parent_version',
     message: 'Project Version:',
     store: true,
-    default: '1.0-SNAPSHOT',
+        default: function() {
+      return '1.0-SNAPSHOT';
+    },
     validate: helper.validators.version_snapshot
   }, {
     type: 'input',

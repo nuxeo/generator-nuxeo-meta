@@ -64,14 +64,17 @@ module.exports = {
     name: 'artifact',
     message: 'Project Artifact id:',
     default: function() {
-      return global._options.dirname + '-' + global._options.type;
+      const type = global._scope.type || global._options.type;
+      return global._options.dirname + '-' + type;
     },
     validate: helper.validators.artifact
   }, {
     type: 'input',
     name: 'version',
     message: 'Project version:',
-    default: '1.0-SNAPSHOT',
+    default: function() {
+      return '1.0-SNAPSHOT';
+    },
     validate: helper.validators.version_snapshot
   }, {
     type: 'input',
