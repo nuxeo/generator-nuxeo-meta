@@ -1,6 +1,5 @@
 {
   "name": "<%= s.dasherize(name) %>",
-  "license": "BSD-3-Clause",
   "devDependencies": {
     "cpr": "^2.0.2",
     "eslint": "^3.12.0",
@@ -13,12 +12,12 @@
   "scripts": {
     "lint": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "npm run lint && polymer test",
-    "clean": "rimraf build",
+    "clean": "rimraf build target",
     "prebuild": "npm run clean",
     "build": "polymer build",
     "postbuild": "npm run nuxeo",
-    "prenuxeo": "mkdirp target/classes/nuxeo.war/app",
-    "nuxeo": "cpr build/bundled/ target/classes/nuxeo.war/app -o && cpr nuxeo/ target/classes/ -o",
+    "prenuxeo": "mkdirp target/classes/nuxeo.war/<%= route %>",
+    "nuxeo": "cpr build/bundled/ target/classes/nuxeo.war/<%= route %> -o && cpr nuxeo/ target/classes/ -o",
     "serve": "polymer serve"
   }
 }
