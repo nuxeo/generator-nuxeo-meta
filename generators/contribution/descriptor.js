@@ -18,7 +18,7 @@ module.exports = {
   }, {
     type: 'input',
     name: 'target',
-    message: 'Target Extension:',
+    message: 'Target Component:',
     validate: helper.validators.package
   }, {
     type: 'input',
