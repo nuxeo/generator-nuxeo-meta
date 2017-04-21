@@ -3,7 +3,8 @@
   "version": "2.4.0",
   "description": "generator-nuxeo metamodel",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "lint": "ejslint"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "babel-eslint": "^6.1.2",
     "chai": "^3.5.0",
     "dirty-chai": "^1.2.2",
+    "ejs-lint": "^0.3.0",
     "eslint": "^3.16.1",
     "gulp": "^3.9.1",
     "gulp-batch": "^1.0.5",
