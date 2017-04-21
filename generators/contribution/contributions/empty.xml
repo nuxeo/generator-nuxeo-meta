@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<component name="<%= package %>.<%= s.dasherize(s.decapitalize(s.titleize(s.titleize(s.titleize(contribution_name))))) %>">
+
+  <extension target="<%= target %>" point="<%= point %>">
+    <!-- 
+    You might find some help here:
+    https://explorer.nuxeo.com/nuxeo/site/distribution/latest/viewExtensionPoint/<%= target %>--<%= point %>
+    -->
+  </extension>
+
+</component>
