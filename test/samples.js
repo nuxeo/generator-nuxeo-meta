@@ -7,6 +7,8 @@ var path = require('path');
 var request = require('request');
 
 describe('Samples', function() {
+  this.timeout(30 * 1000);
+
   describe('samples.js', function() {
 
     before(function(done) {
