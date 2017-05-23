@@ -20,16 +20,16 @@ import java.util.*
 open class Test<%= s.camelize(operation_name) %> {
 
     @Inject
-    protected var session: CoreSession? = null
+    protected lateinit var session: CoreSession
 
     @Inject
-    protected var automationService: AutomationService? = null
+    protected lateinit var automationService: AutomationService
 
     @Test
     fun shouldCallTheOperation() {
         val ctx = OperationContext(session)
 
-        val doc = automationService!!.run(ctx, "Document.<%= s.camelize(operation_name) %>") as DocumentModel
+        val doc = automationService.run(ctx, "Document.<%= s.camelize(operation_name) %>") as DocumentModel
         assertEquals("/", doc.pathAsString)
     }
 
@@ -40,7 +40,7 @@ open class Test<%= s.camelize(operation_name) %> {
         val params = HashMap<String, Any>()
         params.put("path", path)
 
-        val doc = automationService!!.run(ctx, "Document.<%= s.camelize(operation_name) %>", params) as DocumentModel
+        val doc = automationService.run(ctx, "Document.<%= s.camelize(operation_name) %>", params) as DocumentModel
         assertEquals(path, doc.pathAsString)
     }
 }

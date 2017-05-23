@@ -1,6 +1,5 @@
 package <%= package %>
 
-import org.apache.commons.lang3.StringUtils
 import org.nuxeo.ecm.automation.core.Constants
 import org.nuxeo.ecm.automation.core.annotations.Context
 import org.nuxeo.ecm.automation.core.annotations.Operation
@@ -14,17 +13,16 @@ import org.nuxeo.ecm.core.api.PathRef
 open class <%= s.camelize(operation_name) %> {
 
     @Context
-    protected var session: CoreSession? = null
+    protected lateinit var session: CoreSession
 
     @Param(name = "path", required = false)
     protected var path: String? = null
 
     @OperationMethod
     fun run(): DocumentModel {
-        if (StringUtils.isBlank(path)) {
-            return session!!.getRootDocument()
-        } else {
-            return session!!.getDocument(PathRef(path))
+        return when {
+            path.isNullOrBlank() -> session.rootDocument
+            else -> session.getDocument(PathRef(path))
         }
     }
 }
