@@ -26,11 +26,18 @@ An empty Nuxeo Bundle that is based on the Polymer Started Kit. Common `polymer-
 
 ### Start the development server
 
-This command serves the app at `http://localhost:8080` and provides basic URL
+This command serves the app at `http://localhost:3000` and provides basic URL
 routing for the app:
 
-    polymer serve --open
-    npm run serve
+```shell
+npm run serve
+```
+
+By default, a proxy is set between `http://localhost:3000/nuxeo` a `http://localhost:8080/nuxeo`, in order to share the HTTP Session between Nuxeo and your Polymer application. You can change the default value using:
+
+```shell
+npm run serve --proxy-path="nuxeo" --proxy-target="http://localhost:8080/nuxeo"
+```
 
 ### Build
 
@@ -44,27 +51,25 @@ In addition the command also creates a fallback `build/bundled` folder,
 generated using fragment bundling, suitable for serving from non
 H2/push-compatible servers or to clients that do not support H2/Push.
 
-    polymer build
     npm run build
 
 ### Preview the build
 
-This command serves the minified version of the app at `http://localhost:8080`
+This command serves the minified version of the app at `http://localhost:3000`
 in an unbundled state, as it would be served by a push-compatible server:
 
-    polymer serve build/unbundled
+    npm run serve -- build/unbundled
 
-This command serves the minified version of the app at `http://localhost:8080`
+This command serves the minified version of the app at `http://localhost:3000`
 generated using fragment bundling:
 
-    polymer serve build/bundled
+    npm run serve -- build/bundled
 
 ### Run tests
 
 This command will run [Web Component Tester](https://github.com/Polymer/web-component-tester)
 against the browsers currently installed on your machine:
 
-    polymer test
     npm run test
 
 ### Adding a new view
