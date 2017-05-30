@@ -18,7 +18,7 @@
     "build": "polymer build",
     "postbuild": "npm run nuxeo",
     "prenuxeo": "mkdirp target/classes/nuxeo.war/<%= route %>",
-    "nuxeo": "cpr build/bundled/ target/classes/nuxeo.war/<%= route %> -o && cpr nuxeo/ target/classes/ -o",
+    "nuxeo": "cpr build/default/ target/classes/nuxeo.war/<%= route %> -o && cpr nuxeo/ target/classes/ -o",
     "serve": "polymer serve --port 3000 --proxy-path=\"${npm_config_proxy_path:-nuxeo}\" --proxy-target=\"${npm_config_proxy_target:-http://localhost:8080/nuxeo}\""
   }
 }
