@@ -1,9 +1,8 @@
-
 var helper = require('../../lib/helpers.js');
 
 // Fake Inquirer Separator / with chalk
 // See: https://github.com/SBoudrias/Inquirer.js/blob/master/lib/objects/separator.js
-var Separator = function(line) {
+var Separator = function (line) {
   this.type = 'separator';
   this.line = ' > \u001b[90m' + line.trim() + '\u001b[22m\u001b[39m';
 };
@@ -67,17 +66,17 @@ module.exports = {
         name: 'Add custom events'
       }
     ],
-    validate: function(value) {
+    validate: function (value) {
       return value.length > 0 ? true : 'Selected events should not be empty.';
     }
   }, {
     type: 'input',
     name: 'custom_events',
     message: 'Custom Events (separate with a comma):',
-    validate: function(value) {
+    validate: function (value) {
       return value.length === 0 || value[0].trim().length === 0 ? 'Invalid input, and use a comma to separate custom events.' : true;
     },
-    when: function(answers) {
+    when: function (answers) {
       var i = answers.events.indexOf('Add custom events');
       if (i >= 0) {
         // Remove custom events entry
@@ -88,12 +87,12 @@ module.exports = {
         answers.custom_events = [];
       }
     },
-    filter: function(value) {
+    filter: function (value) {
       return value.trim().toLowerCase()
-                         .replace(/\s+/g, '') // remove all white spaces
-                         .replace(/,+/g, ',') // make unique comma
-                         .replace(/^,+|,+$/g, '') // remove starting and ending commas
-                         .split(/,+\s*/);
+        .replace(/\s+/g, '') // remove all white spaces
+        .replace(/,+/g, ',') // make unique comma
+        .replace(/^,+|,+$/g, '') // remove starting and ending commas
+        .split(/,+\s*/);
     }
   }, {
     type: 'confirm',
@@ -105,7 +104,7 @@ module.exports = {
     name: 'post_commit',
     message: 'Is it a post-commit Listener?',
     default: false,
-    when: function(answers) {
+    when: function (answers) {
       return !answers.aync;
     }
   }],
