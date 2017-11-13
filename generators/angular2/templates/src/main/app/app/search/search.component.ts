@@ -18,7 +18,7 @@ export class Search {
   error = undefined;
 
   // TypeScript public modifiers
-  constructor(public nuxeo: NuxeoService) {
+  constructor(public nuxeo: NuxeoService, public appRef: ApplicationRef) {
 
   }
 
@@ -41,6 +41,10 @@ export class Search {
       console.log(error);
       this.error = `${error}. Ensure Nuxeo is running on port 8080.`;
       this.loading = false;
+    }).then(() => {
+      // Promises are resolved lately
+      // Force a new tick to re-do component tree rendering
+      this.appRef.tick();
     });
   }
 
