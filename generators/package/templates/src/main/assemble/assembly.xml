@@ -1,4 +1,4 @@
-<project name="<%= s.dasherize(s.decapitalize(s.titleize(s.titleize(s.titleize(name))))) %>" default="build" xmlns:nx="urn:nuxeo-build" xmlns:artifact="urn:nuxeo-artifact">
+<project name="<%= s.dasherize(s.decapitalize(s.titleize(name))) %>" default="build" xmlns:nx="urn:nuxeo-build" xmlns:artifact="urn:nuxeo-artifact">
   <taskdef resource="org/nuxeo/build/antlib.xml" uri="urn:nuxeo-build"/>
   <taskdef resource="org/nuxeo/build/artifact/antlib.xml" uri="urn:nuxeo-artifact"/>
   <taskdef resource="net/sf/antcontrib/antlib.xml"/>
@@ -7,9 +7,8 @@
     <property name="outdir" value="${maven.project.build.directory}"/>
     <!-- Include your artifacts in the graph adding your groupId to groupPrefixes -->
     <artifact:nuxeo-expand includeTestScope="true" groupPrefixes="org.nuxeo,<%= parent_package %>"/>
-    <!-- For Nuxeo IDE being able to use that distribution as a SDK -->
-    <artifact:print output="${outdir}/artifacts.properties" mode="sdk"/>
-    <artifact:print output="${outdir}/test-artifacts.properties" mode="sdk" scopes="test"/>
+    <artifact:print output="${outdir}/<%= s.dasherize(s.decapitalize(s.titleize(name))) %>-artifacts.properties" mode="sdk"/>
+    <artifact:print output="${outdir}/<%= s.dasherize(s.decapitalize(s.titleize(name))) %>-test-artifacts.properties" mode="sdk" scopes="test"/>
     <!-- Prints the graph for debugging purpose -->
     <artifact:print output="${outdir}/dependency-tree.log"/>
     <tstamp/>
@@ -25,8 +24,8 @@
         <filter token="DISTRIB_VERSION" value="${nuxeo.distribution.version}"/>
       </filterset>
     </copy>
-    <copy file="${outdir}/artifacts.properties" todir="${outdir}/marketplace/install"/>
-    <copy file="${outdir}/test-artifacts.properties" todir="${outdir}/marketplace/install"/>
+    <copy file="${outdir}/<%= s.dasherize(s.decapitalize(s.titleize(name))) %>-artifacts.properties" todir="${outdir}/marketplace/install"/>
+    <copy file="${outdir}/<%= s.dasherize(s.decapitalize(s.titleize(name))) %>-test-artifacts.properties" todir="${outdir}/marketplace/install"/>
 
     <!-- Base distribution NXR -->
     <copy todir="${outdir}">
@@ -119,9 +118,9 @@
     <var
       name="install.properties"
       value="${line.separator}
-  &lt;copy file=&quot;${package.root}/install/artifacts.properties&quot;${line.separator}
+  &lt;copy file=&quot;${package.root}/install/<%= s.dasherize(s.decapitalize(s.titleize(name))) %>-artifacts.properties&quot;${line.separator}
     todir=&quot;${env.server.home}/sdk&quot; overwrite=&quot;true&quot; /&gt;${line.separator}
-  &lt;copy file=&quot;${package.root}/install/test-artifacts.properties&quot;${line.separator}
+  &lt;copy file=&quot;${package.root}/install/<%= s.dasherize(s.decapitalize(s.titleize(name))) %>-test-artifacts.properties&quot;${line.separator}
     todir=&quot;${env.server.home}/sdk&quot; overwrite=&quot;true&quot; /&gt;"/>
 
     <var name="install.templates" value=""/>
