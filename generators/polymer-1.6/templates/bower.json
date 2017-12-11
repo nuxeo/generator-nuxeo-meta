@@ -1,7 +1,7 @@
 {
-  "name": "polymer-starter-kit",
+  "name": "<%= s.humanize(name) %>",
   "authors": [
-    "The Polymer Authors"
+    "Nuxeo CLI"
   ],
   "license": "https://polymer.github.io/LICENSE.txt",
   "dependencies": {
