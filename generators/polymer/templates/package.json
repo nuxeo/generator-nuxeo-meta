@@ -1,0 +1,26 @@
+{
+  "name": "<%= s.dasherize(name) %>",
+  "devDependencies": {
+    "cpr": "^2.0.2",
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.7.1",
+    "eslint-plugin-html": "^2.0.0",
+    "mkdirp": "^0.5.1",
+    "polymer-cli": "^1.5.7",
+    "rimraf": "^2.5.4"
+  },
+  "scripts": {
+    "lint": "npm run lint:javascript && polymer lint",
+    "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
+    "polint": "polymer lint",
+    "test": "polymer test",
+    "test:integration": "polymer build # test that psk builds without error with the CLI",
+    "clean": "rimraf build target",
+    "prebuild": "npm run clean",
+    "build": "npm run lint && polymer build",
+    "postbuild": "npm run nuxeo",
+    "prenuxeo": "mkdirp target/classes/nuxeo.war/<%= route %>",
+    "nuxeo": "cpr build/es5-bundled/ target/classes/nuxeo.war/<%= route %> -o && cpr nuxeo/ target/classes/ -o",
+    "serve": "polymer serve --port 3000 --proxy-path=\"${npm_config_proxy_path:-nuxeo}\" --proxy-target=\"${npm_config_proxy_target:-http://localhost:8080/nuxeo}\""
+  }
+}
