@@ -9,7 +9,11 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
+<% if (v.isBefore('10.1-SNAPSHOT')) { -%>
 import org.codehaus.jackson.JsonGenerator;
+<% } else { -%>
+import com.fasterxml.jackson.core.JsonGenerator;
+<% } -%>
 import <%= entity_type_c %>;
 import org.nuxeo.ecm.core.api.CoreSession;
 import org.nuxeo.ecm.core.io.marshallers.json.ExtensibleEntityJsonWriter;
