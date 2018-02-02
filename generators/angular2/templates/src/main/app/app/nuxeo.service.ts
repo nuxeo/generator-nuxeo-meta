@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-let nuxeo = require('nuxeo/dist/nuxeo');
+const Nuxeo = require('nuxeo');
 
 @Injectable()
 export class NuxeoService {
@@ -19,7 +19,7 @@ export class NuxeoService {
   private instance: any;
 
   constructor() {
-    this.instance = new nuxeo({
+    this.instance = new Nuxeo({
       baseURL:  `${location.origin}/nuxeo/`,
       auth: {
         username: 'Administrator',
@@ -29,7 +29,7 @@ export class NuxeoService {
     });
 
     // Mixin Nuxeo JS Client prototype with NuxeoService to use it the same way.
-    Object.getOwnPropertyNames(nuxeo.prototype).forEach(name => {
+    Object.getOwnPropertyNames(Nuxeo.prototype).forEach(name => {
       if (/^_|constructor/.test(name)) {
         return;
       }
