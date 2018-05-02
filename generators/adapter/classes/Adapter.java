@@ -8,7 +8,7 @@ import org.nuxeo.ecm.core.api.DocumentRef;
  *
  */
 public class <%= s.capitalize(doctype) %>Adapter {
-  protected final DocumentModel doc;
+  protected DocumentModel doc;
 
   protected String titleXpath = "dc:title";
   protected String descriptionXpath = "dc:description";
@@ -24,14 +24,10 @@ public class <%= s.capitalize(doctype) %>Adapter {
   // For instance to avoid letting people change the document state using your adapter,
   // because this would be handled through workflows / buttons / events in your application.
   //
-  public void create() {
-    CoreSession session = doc.getCoreSession();
-    session.createDocument(doc);
-  }
 
   public void save() {
     CoreSession session = doc.getCoreSession();
-    session.saveDocument(doc);
+    doc = session.saveDocument(doc);
   }
 
   public DocumentRef getParentRef() {
