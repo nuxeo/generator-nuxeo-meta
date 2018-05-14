@@ -6,7 +6,7 @@
     "eslint-config-google": "^0.7.1",
     "eslint-plugin-html": "^2.0.0",
     "mkdirp": "^0.5.1",
-    "polymer-cli": "^1.5.7",
+    "polymer-cli": "1.6.0",
     "rimraf": "^2.5.4"
   },
   "scripts": {
