@@ -144,7 +144,7 @@
       </filterset>
     </copy>
 
-<% if (v.isAfterOrEquals('9.10-SNAPSHOT')) { -%>
+<% if (v.isAfterOrEquals('9.10')) { -%>
     <!-- Studio Registries Extraction -->
     <nx:studioExtraction todir="${outdir}/marketplace">
       <fileset dir="${outdir}/marketplace/install/bundles"/>
