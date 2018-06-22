@@ -4,7 +4,7 @@
   <extension target="<%= target %>" point="<%= point %>">
     <!-- 
     You might find some help here:
-    https://explorer.nuxeo.com/nuxeo/site/distribution/latest/viewExtensionPoint/<%= target %>--<%= point %>
+    https://explorer.nuxeo.com/nuxeo/site/distribution/latest/viewExtensionPoint/<%= target %>%2d%2d<%= point %>
     -->
   </extension>
 
