@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+<% if (parent_artifact) { -%>
+  <parent>
+    <groupId><%= parent_package %></groupId>
+    <artifactId><%= parent_artifact %></artifactId>
+    <version><%= parent_version %></version>
+  </parent>
+<% } -%>
+  <artifactId><%= artifact %></artifactId>
+<% if (!multi) { -%>
+<% if (parent_package && package !== parent_package) { -%>
+  <groupId><%= package %></groupId>
+<% } -%>
+<% if (parent_package && parent_version !== version) { -%>
+  <version><%= version %></version>
+<% } -%>
+<% } -%>
+  <name><%= s.humanize(artifact) %></name>
+  <description><%= description %></description>
+
+  <properties>
+    <nodeVersion>v6.9.0</nodeVersion>
+    <npmVersion>3.10.8</npmVersion>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>1.6</version>
+        <configuration>
+          <installDirectory>target</installDirectory>
+          <nodeVersion>${nodeVersion}</nodeVersion>
+          <npmVersion>${npmVersion}</npmVersion>
+        </configuration>
+        <executions>
+          <execution>
+            <id>install node and npm</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>npm install</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>npm test</id>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>test -- --headless</arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
