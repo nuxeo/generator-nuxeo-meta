@@ -1,0 +1,3 @@
+fixtures.users = {
+  Administrator: "Administrator"
+};
