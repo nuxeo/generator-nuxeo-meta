@@ -8,14 +8,18 @@ module.exports = {
   params: [{
     type: 'input',
     name: 'parent_package',
-    default: 'org.nuxeo.' + global._options.dirname,
+    default: function() {
+      return 'org.nuxeo.' + global._options.dirname;
+    },
     message: 'Parent Group id:',
     store: true,
     validate: helper.validators.package
   }, {
     type: 'input',
     name: 'parent_artifact',
-    default: global._options.dirname + '-parent',
+    default: function() {
+      return global._options.dirname + '-parent';
+    },
     message: 'Parent Artifact id:',
     store: true,
     validate: helper.validators.artifact
@@ -38,7 +42,9 @@ module.exports = {
     type: 'input',
     name: 'version',
     message: 'Project Version:',
-    default: global.parent_version,
+    default: function() {
+      return global.parent_version;
+    },
     validate: helper.validators.version_snapshot,
     when: function(answers) {
       return !(answers.parent_version && answers.parent_version.match(/-SNAPSHOT$/i));
@@ -54,7 +60,10 @@ module.exports = {
   }, {
     type: 'input',
     name: 'description',
-    message: 'Project description:'
+    message: 'Project description:',
+    default: function() {
+      return global._options.dirname + ' functional tests';
+    }
   }],
   properties: {
     skipNodeITs: 'true'
