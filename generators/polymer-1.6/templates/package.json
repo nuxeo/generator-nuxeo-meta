@@ -2,7 +2,7 @@
   "name": "<%= s.dasherize(name) %>",
   "devDependencies": {
     "cpr": "^2.0.2",
-    "eslint": "^3.12.0",
+    "eslint": "^6.6.0",
     "eslint-config-google": "^0.7.1",
     "eslint-plugin-html": "^1.7.0",
     "mkdirp": "^0.5.1",
