@@ -29,7 +29,7 @@ npm shrinkwrap --dev
 git add -f npm-shrinkwrap.json
 
 # Build, test and publish
-gulp prepublish
+npx gulp prepublish
 
 git commit -m "Release $VERSION"
 git tag v$VERSION
