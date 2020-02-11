@@ -8,28 +8,36 @@ module.exports = {
   params: [{
     type: 'input',
     name: 'parent_package',
-    default: function() {
-      return 'org.nuxeo.' + global._options.dirname;
-    },
     message: 'Parent Group id:',
+    default: 'org.nuxeo',
     store: true,
-    validate: helper.validators.package
+    validate: function(value) {
+      return value.match(/^\s+$/) ? true : helper.validators.package(value);
+    },
+    filter: helper.filters.package
   }, {
     type: 'input',
     name: 'parent_artifact',
-    default: function() {
-      return global._options.dirname + '-parent';
-    },
     message: 'Parent Artifact id:',
+    default: 'nuxeo-addons-parent',
     store: true,
-    validate: helper.validators.artifact
+    validate: helper.validators.parent_artifact,
+    when: function(answers) {
+      return answers.parent_package;
+    }
   }, {
     type: 'input',
     name: 'parent_version',
     message: 'Parent Version:',
     store: true,
-    default: '1.0-SNAPSHOT',
-    validate: helper.validators.version
+    validate: helper.validators.version,
+    default: helper.nuxeo_version.default_distribution,
+    when: function(answers) {
+      return answers.parent_package;
+    },
+    filter: function(answer) {
+      return answer || '';
+    }
   }, {
     type: 'input',
     name: 'artifact',
@@ -40,15 +48,19 @@ module.exports = {
     validate: helper.validators.artifact
   }, {
     type: 'input',
+    name: 'package',
+    message: 'Project Group id:',
+    store: true,
+    validate: helper.validators.package,
+    filter: helper.filters.package
+  }, {
+    type: 'input',
     name: 'version',
-    message: 'Project Version:',
+    message: 'Project version:',
     default: function() {
-      return global.parent_version;
+      return '1.0-SNAPSHOT';
     },
-    validate: helper.validators.version_snapshot,
-    when: function(answers) {
-      return !(answers.parent_version && answers.parent_version.match(/-SNAPSHOT$/i));
-    }
+    validate: helper.validators.version_snapshot
   }, {
     type: 'input',
     name: 'name',
