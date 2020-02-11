@@ -23,8 +23,8 @@
   <description><%= description %></description>
 
   <properties>
-    <nodeVersion>v6.9.0</nodeVersion>
-    <npmVersion>3.10.8</npmVersion>
+    <nodeVersion>v10.16.3</nodeVersion>
+    <npmVersion>6.11.2</npmVersion>
   </properties>
 
   <build>
@@ -53,13 +53,23 @@
             </goals>
           </execution>
           <execution>
+            <id>add nuxeo npm registry</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>pre-integration-test</phase>
+            <configuration>
+              <arguments>config set @nuxeo:registry https://packages.nuxeo.com/repository/npmjs-nuxeo</arguments>
+            </configuration>
+          </execution>
+          <execution>
             <id>npm test</id>
             <phase>integration-test</phase>
             <goals>
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>test -- --headless</arguments>
+              <arguments>test</arguments>
             </configuration>
           </execution>
         </executions>
