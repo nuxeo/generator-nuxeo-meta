@@ -40,6 +40,9 @@
       <plugin>
         <groupId>org.nuxeo.build</groupId>
         <artifactId>ant-assembly-maven-plugin</artifactId>
+        <% if (v.isAfterOrEquals('10.10') && v.isBefore('11.1-SNAPSHOT')) { -%>
+        <version>2.1.3</version>
+        <% } -%>
         <configuration>
           <buildFiles>
             <buildFile>${basedir}/src/main/assemble/assembly.xml</buildFile>
