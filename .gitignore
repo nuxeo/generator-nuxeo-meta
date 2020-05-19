@@ -117,3 +117,6 @@ $RECYCLE.BIN/
 *.gcno
 *.gcda
 *.gcov
+
+# Intellij
+.idea/

@@ -119,8 +119,18 @@
   </build>
   <repositories>
     <repository>
+      <id>hotfix-releases</id>
+      <url>https://packages.nuxeo.com/repository/maven-hotfix</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
       <id>public</id>
-      <url>http://maven.nuxeo.org/nexus/content/groups/public</url>
+      <url>https://packages.nuxeo.com/repository/maven-public</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -130,7 +140,7 @@
     </repository>
     <repository>
       <id>public-snapshot</id>
-      <url>http://maven.nuxeo.org/nexus/content/groups/public-snapshot</url>
+      <url>https://packages.nuxeo.com/repository/maven-public-snapshots</url>
       <releases>
         <enabled>false</enabled>
       </releases>
@@ -154,13 +164,14 @@
   <pluginRepositories>
     <pluginRepository>
       <id>public</id>
-      <url>http://maven.nuxeo.org/nexus/content/groups/public</url>
+      <url>https://packages.nuxeo.com/repository/maven-public</url>
       <name>Nuxeo releases</name>
       <releases>
         <enabled>true</enabled>
       </releases>
       <snapshots>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
