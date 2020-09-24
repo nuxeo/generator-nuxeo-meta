@@ -21,7 +21,7 @@
       <fileset dir="src/main/resources"/>
       <filterset>
         <filter token="VERSION" value="${maven.project.version}"/>
-<% if (v.isAfterOrEquals('11.1-SNAPSHOT')) { -%>
+<% if (v.isAfterOrEquals('11.1')) { -%>
         <filter token="DISTRIB_VERSION" value="${nuxeo.platform.version}"/>
 <% } else { -%>
         <filter token="DISTRIB_VERSION" value="${nuxeo.distribution.version}"/>
