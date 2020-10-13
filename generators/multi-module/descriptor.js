@@ -99,14 +99,12 @@ module.exports = {
     name: 'description',
     message: 'Project Description:'
   }],
-  templates: [{
-    src: function (props) {
-      if (props.bom && props.bom.length > 0) {
-        return props.bom;
-      } else {
-        return 'pom.xml';
-      }
-    },
-    dest: 'pom.xml'
-  }]
+  getTemplatesFolder: function(props) {
+    // Return the proper templates folder based on the version
+    if (props.v === undefined || props.v.isBefore('11.1')) {
+      return 'templates-7.10';
+    } else {
+      return 'templates-11.1';
+    }
+  }
 };
