@@ -17,10 +17,19 @@ module.exports = {
   }],
   'main-java': [{
     src: 'implementation.java',
-    dest: '{{s.camelize(service_name)}}Impl.java'
+    dest: '{{s.camelize(service_name)}}Impl.java',
+    when: function(answers) {
+      return answers.v.isBefore('10.10');
+    }
   }, {
     src: 'interface.java',
     dest: '{{s.camelize(service_name)}}.java'
+  }, {
+    src: 'implementation-10.10.java',
+    dest: '{{s.camelize(service_name)}}Impl.java',
+    when: function(answers) {
+      return answers.v.isAfterOrEquals('10.10');
+    }
   }],
   'test-java': [{
     src: 'test.java',
