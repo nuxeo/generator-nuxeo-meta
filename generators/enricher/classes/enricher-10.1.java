@@ -9,11 +9,7 @@ import static org.nuxeo.ecm.core.io.registry.reflect.Priorities.REFERENCE;
 import java.io.IOException;
 import java.util.Collections;
 
-<% if (v.isBefore('10.1-SNAPSHOT')) { -%>
-import org.codehaus.jackson.JsonGenerator;
-<% } else { -%>
 import com.fasterxml.jackson.core.JsonGenerator;
-<% } -%>
 import <%= entity_type %>;
 import org.nuxeo.ecm.core.io.marshallers.json.enrichers.AbstractJsonEnricher;
 import org.nuxeo.ecm.core.io.registry.reflect.Setup;

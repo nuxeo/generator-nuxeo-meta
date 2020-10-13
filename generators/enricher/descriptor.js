@@ -35,13 +35,28 @@ module.exports = {
     }
   }],
   'main-java': [{
-    src: 'enricher.java',
-    dest: '{{s.classify(enricher_name)}}Enricher.java'
+    src: 'enricher-7.10.java',
+    dest: '{{s.classify(enricher_name)}}Enricher.java',
+    when: function(answers) {
+      return answers.v.isBefore('10.1-SNAPSHOT');
+    }
   }, {
-    src: 'jsonWriter.java',
+    src: 'enricher-10.1.java',
+    dest: '{{s.classify(enricher_name)}}Enricher.java',
+    when: function(answers) {
+      return answers.v.iAfterOrEquals('10.1-SNAPSHOT');
+    }
+  }, {
+    src: 'jsonWriter-7.10.java',
     dest: '{{s.strRightBack(entity_type_c, \'.\')}}JsonWriter.java',
     when: function(answers) {
-      return answers.entity_type_c !== undefined && !answers.entity_type_c.startsWith('org.nuxeo.');
+      return answers.entity_type_c !== undefined && !answers.entity_type_c.startsWith('org.nuxeo.') && answers.v.isBefore('10.1-SNAPSHOT');
+    }
+  }, {
+    src: 'jsonWriter-10.1.java',
+    dest: '{{s.strRightBack(entity_type_c, \'.\')}}JsonWriter.java',
+    when: function(answers) {
+      return answers.entity_type_c !== undefined && !answers.entity_type_c.startsWith('org.nuxeo.') && answers.v.iAfterOrEquals('10.1-SNAPSHOT');
     }
   }],
   'test-java': [{
