@@ -16,6 +16,22 @@ describe('Generators', function() {
         }
       });
     });
+
+    it('can have different templates per version', function(){
+      this.generatorPackage = require(path.join('..', 'generators', 'package', 'descriptor.js'));
+      var props = {
+        v: {
+          isBefore: function(v2) {
+            return v2 === '10.10';
+          },
+          isAfterOrEquals: function(v2) {
+            return v2 === '9.10';
+          }
+        }
+      };
+      var res = this.generatorPackage.getTemplatesFolder(props);
+      expect(res).to.be.equal('templates-9.10');
+    });
   });
 
   describe('helper.js', function() {

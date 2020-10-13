@@ -53,5 +53,19 @@ module.exports = {
     name: 'company',
     message: 'Company name:'
   }],
-  dependencies: 'inherited'
+  dependencies: 'inherited',
+  getTemplatesFolder: function(props) {
+    // Return the proper templates folder based on the version
+    if (props.v === undefined || props.v.isBefore('8.10')) {
+      return 'templates-7.10';
+    } else if (props.v.isAfterOrEquals('8.10') && props.v.isBefore('9.10')) {
+      return 'templates-8.10';
+    } else if (props.v.isAfterOrEquals('9.10') && props.v.isBefore('10.10')) {
+      return 'templates-9.10';
+    } else if (props.v.isAfterOrEquals('10.10') && props.v.isBefore('11.1')) {
+      return 'templates-10.10';
+    } else {
+      return 'templates-11.1';
+    }
+  }
 };
