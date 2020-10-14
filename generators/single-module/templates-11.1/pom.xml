@@ -26,8 +26,8 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.nuxeo.ecm.distribution</groupId>
-        <artifactId>nuxeo-distribution</artifactId>
+        <groupId>org.nuxeo</groupId>
+        <artifactId>nuxeo-parent</artifactId>
         <scope>import</scope>
         <type>pom</type>
         <version><%= nuxeo_version %></version>
@@ -124,9 +124,8 @@
 
   <pluginRepositories>
     <pluginRepository>
-      <id>public</id>
-      <url>http://maven.nuxeo.org/nexus/content/groups/public</url>
-      <name>Nuxeo releases</name>
+      <id>maven-public</id>
+      <url>https://packages.nuxeo.com/repository/maven-public/</url>
       <releases>
         <enabled>true</enabled>
       </releases>
