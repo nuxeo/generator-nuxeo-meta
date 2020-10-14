@@ -14,24 +14,40 @@ module.exports = {
   params: [{
     type: 'confirm',
     name: 'use_bom',
-    message: 'Use a parent artifact (for instance your company\'s BOM or the org.nuxeo.ecm.distribution:nuxeo-distribution POM)?',
-    default: true
+    message: 'Use a parent artifact (for instance your company\'s BOM or the Nuxeo Distribution POM)?',
+    default: false
+  }, {
+    type: 'confirm',
+    name: 'use_nuxeo_bom',
+    message: 'Use the Nuxeo Distribution POM?',
+    default: false,
+    when: function (answers) {
+      return answers.use_nuxeo_bom;
+    }
+  }, {
+    type: 'input',
+    name: 'super_nuxeo_version',
+    store: true,
+    message: 'Nuxeo Parent Version:',
+    default: helper.nuxeo_version.default_distribution,
+    validate: helper.validators.version,
+    when: function (answers) {
+      return answers.use_nuxeo_bom;
+    }
   }, {
     type: 'input',
     name: 'super_package',
     store: true,
     message: 'Parent Group id:',
-    default: 'org.nuxeo.ecm.distribution',
     validate: helper.validators.package,
     filter: helper.filters.package,
     when: function (answers) {
-      return answers.use_bom;
+      return answers.use_bom && !answers.use_nuxeo_bom;
     }
   }, {
     type: 'input',
     name: 'super_artifact',
     message: 'Parent Artifact id:',
-    default: 'nuxeo-distribution',
     validate: helper.validators.parent_artifact,
     filter: function (answer) {
       return answer.trim();
@@ -44,7 +60,6 @@ module.exports = {
     name: 'super_version',
     store: true,
     message: 'Parent Version:',
-    default: helper.nuxeo_version.default_distribution,
     validate: helper.validators.version,
     when: function (answers) {
       return answers.super_package;
@@ -52,10 +67,10 @@ module.exports = {
   }, {
     type: 'confirm',
     name: 'import_nuxeo',
-    message: 'Import Nuxeo in the `dependencyManagement` (useful as you don\'t inherit from `org.nuxeo.ecm.distribution:nuxeo-distribution`)?',
+    message: 'Import Nuxeo in the `dependencyManagement` (useful as you don\'t inherit from the Nuxeo distribution POM)?',
     default: true,
     when: function (answers) {
-      return answers.super_package && !answers.super_package.match(/org\.nuxeo\.ecm\.distribution/);
+      return answers.use_bom && !answers.use_nuxeo_bom;
     }
   }, {
     type: 'list',
@@ -67,7 +82,7 @@ module.exports = {
     validate: helper.validators.version,
     filter: helper.nuxeo_version.filter,
     when: function (answers) {
-      return !answers.super_artifact || answers.import_nuxeo;
+      return !answers.use_bom || answers.import_nuxeo;
     }
   }, {
     type: 'input',
