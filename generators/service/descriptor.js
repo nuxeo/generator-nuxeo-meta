@@ -19,16 +19,16 @@ module.exports = {
     src: 'implementation.java',
     dest: '{{s.camelize(service_name)}}Impl.java',
     when: function(answers) {
-      return answers.v.isBefore('10.10');
+      return answers.v.isBefore('9.10');
     }
   }, {
     src: 'interface.java',
     dest: '{{s.camelize(service_name)}}.java'
   }, {
-    src: 'implementation-10.10.java',
+    src: 'implementation-9.10.java',
     dest: '{{s.camelize(service_name)}}Impl.java',
     when: function(answers) {
-      return answers.v.isAfterOrEquals('10.10');
+      return answers.v.isAfterOrEquals('9.10');
     }
   }],
   'test-java': [{
