@@ -1,4 +1,4 @@
-var helper = require('../../lib/helpers.js');
+const helper = require('../../lib/helpers.js');
 
 module.exports = {
   depends: 'default',
@@ -16,7 +16,7 @@ module.exports = {
     name: 'doctype',
     message: 'Document Type ID:',
     validate: function(value) {
-      var doctypeRegex = '^[a-zA-Z][a-zA-Z0-9_-]*$';
+      const doctypeRegex = '^[a-zA-Z][a-zA-Z0-9_-]*$';
       return value.match(doctypeRegex) ? true : 'A doctype id should start with a letter, and contain alphanumeric characters, dashes and underscores only.';
     }
   }],

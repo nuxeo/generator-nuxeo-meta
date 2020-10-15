@@ -1,12 +1,12 @@
 /**
  * @author: @AngularClass
  */
-var path = require('path');
+const path = require('path');
 
 // Helper functions
-var ROOT = path.resolve(__dirname, '..');
-var SRC = path.join(ROOT, 'src', 'main', 'app');
-var MVN_BUILD = path.join(ROOT, 'target', 'classes', 'nuxeo.war', '<%= route %>');
+const ROOT = path.resolve(__dirname, '..');
+const SRC = path.join(ROOT, 'src', 'main', 'app');
+const MVN_BUILD = path.join(ROOT, 'target', 'classes', 'nuxeo.war', '<%= route %>');
 
 function hasProcessFlag(flag) {
   return process.argv.join('').indexOf(flag) > -1;
@@ -17,17 +17,17 @@ function isWebpackDevServer() {
 }
 
 function src() {
-  var args = Array.prototype.splice.call(arguments, 0)
+  const args = Array.prototype.splice.call(arguments, 0)
   return path.join.apply(this, [SRC].concat(args));
 }
 
 function root() {
-  var args = Array.prototype.slice.call(arguments, 0);
+  const args = Array.prototype.slice.call(arguments, 0);
   return path.join.apply(path, [ROOT].concat(args));
 }
 
 function maven() {
-  var args = Array.prototype.slice.call(arguments, 0);
+  const args = Array.prototype.slice.call(arguments, 0);
   return path.join.apply(path, [MVN_BUILD].concat(args));
 }
 

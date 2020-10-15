@@ -4,7 +4,7 @@ function HtmlElementsPlugin(locations) {
 }
 
 HtmlElementsPlugin.prototype.apply = function(compiler) {
-  var self = this;
+  const self = this;
   compiler.plugin('compilation', function(compilation) {
     compilation.options.htmlElements = compilation.options.htmlElements || {};
 
@@ -48,7 +48,7 @@ function createTag(tagName, attrMap, publicPath) {
   const attributes = Object.getOwnPropertyNames(attrMap)
     .filter(function(name) { return name[0] !== '='; } )
     .map(function(name) {
-      var value = attrMap[name];
+      let value = attrMap[name];
 
       if (publicPath) {
         // check if we have explicit instruction, use it if so (e.g: =herf: false)

@@ -42,7 +42,7 @@ const NuxeoUtils = {
     // _nuxeo.enrichers({document: ['subtypes']});
 
   batchUpload(params){
-      var blob = new Nuxeo.Blob({
+      const blob = new Nuxeo.Blob({
           content: params.data.file,
           name: params.data.file.name,
           mimeType: params.data.file.type,

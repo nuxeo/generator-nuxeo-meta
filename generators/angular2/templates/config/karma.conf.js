@@ -3,7 +3,7 @@
  */
 
 module.exports = function(config) {
-  var testWebpackConfig = require('./webpack.test.js');
+  const testWebpackConfig = require('./webpack.test.js');
 
   config.set({
 

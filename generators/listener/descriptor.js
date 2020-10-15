@@ -1,8 +1,8 @@
-var helper = require('../../lib/helpers.js');
+const helper = require('../../lib/helpers.js');
 
 // Fake Inquirer Separator / with chalk
 // See: https://github.com/SBoudrias/Inquirer.js/blob/master/lib/objects/separator.js
-var Separator = function (line) {
+const Separator = function (line) {
   this.type = 'separator';
   this.line = ' > \u001b[90m' + line.trim() + '\u001b[22m\u001b[39m';
 };
@@ -77,7 +77,7 @@ module.exports = {
       return value.length === 0 || value[0].trim().length === 0 ? 'Invalid input, and use a comma to separate custom events.' : true;
     },
     when: function (answers) {
-      var i = answers.events.indexOf('Add custom events');
+      const i = answers.events.indexOf('Add custom events');
       if (i >= 0) {
         // Remove custom events entry
         answers.events.splice(i, 1);
