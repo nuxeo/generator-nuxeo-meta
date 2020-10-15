@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch: (action) => dispatch(action),
 });
 
-// var DocumentViewContainers = [
+// const DocumentViewContainers = [
 //     FileTree,
 //     MainView,
 //     RightMainView,
@@ -60,18 +60,18 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 
-export var MainViewContainer = connect(mapStateToProps, mapDispatchToProps)(MainView);
-export var RightMainViewContainer = connect(mapStateToProps, mapDispatchToProps)(RightMainView);
-export var FileViewContainer = connect(mapStateToProps, mapDispatchToProps)(FileView);
-export var FolderViewContainer = connect(mapStateToProps, mapDispatchToProps)(FolderView);
-export var FileTreeContainer = connect(mapStateToProps, mapDispatchToProps)(FileTree);
-export var CreateDocumentFormContainer = connect(mapStateToProps, mapDispatchToProps)(CreateDocumentForm);
-export var ShowACLContainer = connect(mapStateToProps, mapDispatchToProps)(ShowACL);
-export var ShowAuditContainer = connect(mapStateToProps, mapDispatchToProps)(ShowAudit);
-export var ShowTaskContainer = connect(mapStateToProps, mapDispatchToProps)(ShowTask);
-export var ShowWorkFlowContainer = connect(mapStateToProps, mapDispatchToProps)(ShowWorkFlow);
-export var AttachFileContainer = connect(mapStateToProps, mapDispatchToProps)(AttachFile);
-export var EditDocumentContainer = connect(mapStateToProps, mapDispatchToProps)(EditDocument);
+export const MainViewContainer = connect(mapStateToProps, mapDispatchToProps)(MainView);
+export const RightMainViewContainer = connect(mapStateToProps, mapDispatchToProps)(RightMainView);
+export const FileViewContainer = connect(mapStateToProps, mapDispatchToProps)(FileView);
+export const FolderViewContainer = connect(mapStateToProps, mapDispatchToProps)(FolderView);
+export const FileTreeContainer = connect(mapStateToProps, mapDispatchToProps)(FileTree);
+export const CreateDocumentFormContainer = connect(mapStateToProps, mapDispatchToProps)(CreateDocumentForm);
+export const ShowACLContainer = connect(mapStateToProps, mapDispatchToProps)(ShowACL);
+export const ShowAuditContainer = connect(mapStateToProps, mapDispatchToProps)(ShowAudit);
+export const ShowTaskContainer = connect(mapStateToProps, mapDispatchToProps)(ShowTask);
+export const ShowWorkFlowContainer = connect(mapStateToProps, mapDispatchToProps)(ShowWorkFlow);
+export const AttachFileContainer = connect(mapStateToProps, mapDispatchToProps)(AttachFile);
+export const EditDocumentContainer = connect(mapStateToProps, mapDispatchToProps)(EditDocument);
 
 
 // export default DocumentViewContainers;

@@ -1,10 +1,10 @@
-var seq = require('async/seq');
-var chai = require('chai');
-var dirtyChai = require('dirty-chai');
+const seq = require('async/seq');
+const chai = require('chai');
+const dirtyChai = require('dirty-chai');
 chai.use(dirtyChai);
-var expect = chai.expect;
-var path = require('path');
-var request = require('request');
+const expect = chai.expect;
+const path = require('path');
+const request = require('request');
 
 describe('Samples', function() {
   this.timeout(30 * 1000);

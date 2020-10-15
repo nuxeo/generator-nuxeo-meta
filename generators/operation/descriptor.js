@@ -1,5 +1,5 @@
 
-var helper = require('../../lib/helpers.js');
+const helper = require('../../lib/helpers.js');
 
 module.exports = {
   params: [{

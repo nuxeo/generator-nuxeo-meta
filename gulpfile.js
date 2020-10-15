@@ -1,16 +1,16 @@
-var path = require('path');
-var gulp = require('gulp');
-var fs = require('fs');
-var watch = require('gulp-watch');
-var batch = require('gulp-batch');
-var eslint = require('gulp-eslint');
-var childProcess = require('child_process');
-var mocha = require('gulp-mocha');
-var istanbul = require('gulp-istanbul');
-var plumber = require('gulp-plumber');
-var nsp = require('gulp-nsp');
+const path = require('path');
+const gulp = require('gulp');
+const fs = require('fs');
+const watch = require('gulp-watch');
+const batch = require('gulp-batch');
+const eslint = require('gulp-eslint');
+const childProcess = require('child_process');
+const mocha = require('gulp-mocha');
+const istanbul = require('gulp-istanbul');
+const plumber = require('gulp-plumber');
+const nsp = require('gulp-nsp');
 
-var files = ['generators/**/*.js', '!generators/*/templates/**/*.js', 'lib/*.js', 'test/**/*.js'];
+const files = ['generators/**/*.js', '!generators/*/templates/**/*.js', 'lib/*.js', 'test/**/*.js'];
 
 gulp.task('pre-test', function() {
   return gulp.src(['lib/*.js'])
@@ -27,7 +27,7 @@ gulp.task('watch-test', function() {
 });
 
 gulp.task('checkstyle', function() {
-  var targetFolder = 'target';
+  const targetFolder = 'target';
   if (fs.existsSync(targetFolder)) {
     childProcess.execSync('rm -rf ' + targetFolder);
   }
@@ -53,9 +53,9 @@ gulp.task('nsp', function(done) {
     package: __dirname + '/package.json'
   }, done);
 });
-
+;
 gulp.task('test', ['lint', 'pre-test'], function(cb) {
-  var mochaErr;
+  let mochaErr;
 
   gulp.src('test/**/*.js')
     .pipe(plumber())

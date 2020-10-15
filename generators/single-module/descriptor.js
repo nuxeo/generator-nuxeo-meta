@@ -1,10 +1,10 @@
-var helper = require('../../lib/helpers.js');
-var path = require('path');
+const helper = require('../../lib/helpers.js');
+const path = require('path');
 
 module.exports = {
   order: -5,
   skip: function(type) {
-    var pom = path.join(this._getBaseFolderName(type), 'pom.xml');
+    const pom = path.join(this._getBaseFolderName(type), 'pom.xml');
     return this.fs.exists(pom);
   },
   params: [{

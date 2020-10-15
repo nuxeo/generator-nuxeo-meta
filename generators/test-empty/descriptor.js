@@ -1,8 +1,8 @@
-var helper = require('../../lib/helpers.js');
+const helper = require('../../lib/helpers.js');
 
 // Fake Inquirer Separator / with chalk
 // See: https://github.com/SBoudrias/Inquirer.js/blob/master/lib/objects/separator.js
-var Separator = function (line) {
+const Separator = function (line) {
   this.type = 'separator';
   this.line = ' > \u001b[90m' + line.trim() + '\u001b[22m\u001b[39m';
 };

@@ -1,19 +1,19 @@
 'use strict';
 
 // Include Gulp & Tools We'll Use
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var del = require('del');
-var runSequence = require('run-sequence');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
-var merge = require('merge-stream');
-var path = require('path');
-var fs = require('fs');
-var glob = require('glob');
-var historyApiFallback = require('connect-history-api-fallback');
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const del = require('del');
+const runSequence = require('run-sequence');
+const browserSync = require('browser-sync');
+const reload = browserSync.reload;
+const merge = require('merge-stream');
+const path = require('path');
+const fs = require('fs');
+const glob = require('glob');
+const historyApiFallback = require('connect-history-api-fallback');
 
-var AUTOPREFIXER_BROWSERS = [
+const AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
   'ie_mob >= 10',
   'ff >= 30',
@@ -25,9 +25,9 @@ var AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ];
 
-var APP = 'src/main/app', DIST = 'target/classes/nuxeo.war/<%= route %>';
+const APP = 'src/main/app', DIST = 'target/classes/nuxeo.war/<%= route %>';
 
-var styleTask = function (stylesPath, srcs) {
+const styleTask = function (stylesPath, srcs) {
   return gulp.src(srcs.map(function(src) {
     return path.join(APP, stylesPath, src);
   }))
@@ -75,25 +75,25 @@ gulp.task('images', function () {
 
 // Copy All Files At The Root Level (app)
 gulp.task('copy', function () {
-  var app = gulp.src([APP + '/*'], {
+  const app = gulp.src([APP + '/*'], {
     dot: true
   }).pipe(gulp.dest(DIST));
 
 
-  // var bower = gulp.src([
+  // const bower = gulp.src([
   //   'bower_components/**/*'
   // ]).pipe(gulp.dest(DIST + '/bower_components'));
   //
-  // var elements = gulp.src([APP + '/elements/**/*.html'])
+  // const elements = gulp.src([APP + '/elements/**/*.html'])
   //   .pipe(gulp.dest(DIST + '/elements'));
 
-  //var swBootstrap = gulp.src(['bower_components/platinum-sw/bootstrap/*.js'])
+  //const swBootstrap = gulp.src(['bower_components/platinum-sw/bootstrap/*.js'])
   //  .pipe(gulp.dest('dist/elements/bootstrap'));
 
-  //var swToolbox = gulp.src(['bower_components/sw-toolbox/*.js'])
+  //const swToolbox = gulp.src(['bower_components/sw-toolbox/*.js'])
   //    .pipe(gulp.dest('dist/sw-toolbox'));
 
-//   var vulcanized = gulp.src([APP + '/elements/elements.html'])
+//   const vulcanized = gulp.src([APP + '/elements/elements.html'])
 //     .pipe($.rename('elements.vulcanized.html'))
 //     .pipe(gulp.dest(DIST + '/elements'));
 //
@@ -110,7 +110,7 @@ gulp.task('fonts', function () {
 
 // Scan Your HTML For Assets & Optimize Them
 gulp.task('html', function () {
-  var assets = $.useref.assets({searchPath: ['.tmp', APP, DIST]});
+  const assets = $.useref.assets({searchPath: ['.tmp', APP, DIST]});
 
   return gulp.src([APP +'/**/*.html', '!' + APP + '/{elements,test}/**/*.html'])
   // Replace path for vulcanized assets
@@ -136,7 +136,7 @@ gulp.task('html', function () {
 
 // Vulcanize granular configuration
 // gulp.task('vulcanize', function() {
-//   var DEST_DIR = DIST + '/elements';
+//   const DEST_DIR = DIST + '/elements';
 //   return gulp.src(DEST_DIR + '/elements.html')
 //     .pipe($.vulcanize({
 //       stripComments: true,
@@ -187,14 +187,14 @@ gulp.task('html', function () {
 // Generate a list of files that should be precached when serving from 'dist'.
 // The list will be consumed by the <platinum-sw-cache> element.
 // gulp.task('precache', function (callback) {
-//   var dir = DIST;
+//   const dir = DIST;
 //
 //   glob('{elements,scripts,styles}/**/*.*', {cwd: dir}, function(error, files) {
 //     if (error) {
 //       callback(error);
 //     } else {
 //       files.push('index.html', './', 'bower_components/webcomponentsjs/webcomponents-lite.min.js');
-//       var filePath = path.join(dir, 'precache.json');
+//       const filePath = path.join(dir, 'precache.json');
 //       fs.writeFile(filePath, JSON.stringify(files), callback);
 //     }
 //   });
@@ -206,7 +206,7 @@ gulp.task('clean', del.bind(null, ['.tmp', DIST]));
 // Watch Files For Changes & Reload
 gulp.task('serve', ['styles', 'images'], function () {
   // setup our local proxy
-  var proxyOptions = require('url').parse('http://localhost:8080/nuxeo');
+  const proxyOptions = require('url').parse('http://localhost:8080/nuxeo');
   proxyOptions.route = '/nuxeo';
   browserSync({
     notify: false,

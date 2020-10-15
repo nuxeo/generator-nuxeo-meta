@@ -1,16 +1,16 @@
-var fs = require('fs');
-var path = require('path');
-var chai = require('chai');
-var dirtyChai = require('dirty-chai');
+const fs = require('fs');
+const path = require('path');
+const chai = require('chai');
+const dirtyChai = require('dirty-chai');
 chai.use(dirtyChai);
-var expect = chai.expect;
+const expect = chai.expect;
 
 describe('Generators', function() {
   describe('descriptor.js', function() {
     it('can be required', function() {
-      var generatorsPath = path.join('generators');
+      const generatorsPath = path.join('generators');
       fs.readdirSync(generatorsPath).forEach(function(file) {
-        var descPath = path.join(generatorsPath, file, 'descriptor.js');
+        const descPath = path.join(generatorsPath, file, 'descriptor.js');
         if (fs.existsSync(descPath)) {
           require(path.join('..', descPath));
         }
@@ -19,7 +19,7 @@ describe('Generators', function() {
 
     it('can have different templates per version', function(){
       this.generatorPackage = require(path.join('..', 'generators', 'package', 'descriptor.js'));
-      var props = {
+      const props = {
         v: {
           isBefore: function(v2) {
             return v2 === '10.10';
@@ -29,7 +29,7 @@ describe('Generators', function() {
           }
         }
       };
-      var res = this.generatorPackage.getTemplatesFolder(props);
+      let res = this.generatorPackage.getTemplatesFolder(props);
       expect(res).to.be.equal('templates-9.10');
     });
   });
@@ -41,7 +41,7 @@ describe('Generators', function() {
     });
 
     it('can validate Java package name', function() {
-      var res = this.validators.package('tre.qr®r');
+      let res = this.validators.package('tre.qr®r');
       expect(res).to.be.a('string');
       res = this.validators.package('tre');
       expect(res).to.be.a('string');
@@ -54,7 +54,7 @@ describe('Generators', function() {
     });
 
     it('can validate parent artifact id', function() {
-      var res = this.validators.parent_artifact('dsa sad sad');
+      let res = this.validators.parent_artifact('dsa sad sad');
       expect(res).to.be.a('string');
       res = this.validators.parent_artifact('');
       expect(res).to.be.true();
@@ -69,7 +69,7 @@ describe('Generators', function() {
     });
 
     it('can validate artifact id', function() {
-      var res = this.validators.artifact('dsa sad sad');
+      let res = this.validators.artifact('dsa sad sad');
       expect(res).to.be.a('string');
       res = this.validators.artifact('');
       expect(res).to.be.a('string');
@@ -84,14 +84,14 @@ describe('Generators', function() {
     });
 
     it('can validate required field', function() {
-      var res = this.validators.required('');
+      let res = this.validators.required('');
       expect(res).to.be.a('string');
       res = this.validators.required('dsad');
       expect(res).to.be.true();
     });
 
     it('can validate class name entry', function() {
-      var res = this.validators.className('');
+      let res = this.validators.className('');
       expect(res).to.be.a('string');
       res = this.validators.className('dsdadsa');
       expect(res).to.be.a('string');
@@ -105,7 +105,7 @@ describe('Generators', function() {
 
     it('can validate version field', function() {
       // All correct version
-      var res = this.validators.version('');
+      let res = this.validators.version('');
       expect(res).to.be.a('string');
       res = this.validators.version('1.');
       expect(res).to.be.a('string');
@@ -130,7 +130,7 @@ describe('Generators', function() {
     });
 
     it('can validate nuxeo package name', function() {
-      var res = this.validators.package_name('');
+      let res = this.validators.package_name('');
       expect(res).to.be.a('string');
       res = this.validators.package_name('1.');
       expect(res).to.be.a('string');
@@ -149,7 +149,7 @@ describe('Generators', function() {
     });
 
     it('can validate fully qualified class name', function() {
-      var res = this.validators.qualified_className('');
+      let res = this.validators.qualified_className('');
       expect(res).to.be.a('string');
       res = this.validators.qualified_className('1.');
       expect(res).to.be.a('string');
