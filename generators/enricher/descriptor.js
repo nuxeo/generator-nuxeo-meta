@@ -44,7 +44,7 @@ module.exports = {
     src: 'enricher-10.1.java',
     dest: '{{s.classify(enricher_name)}}Enricher.java',
     when: function(answers) {
-      return answers.v.iAfterOrEquals('10.1-SNAPSHOT');
+      return answers.v.isAfterOrEquals('10.1-SNAPSHOT');
     }
   }, {
     src: 'jsonWriter-7.10.java',
