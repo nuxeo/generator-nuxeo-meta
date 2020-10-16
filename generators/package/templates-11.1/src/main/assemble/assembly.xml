@@ -22,6 +22,7 @@
       <filterset>
         <filter token="VERSION" value="${maven.project.version}" />
         <filter token="DISTRIB_VERSION" value="${nuxeo.platform.version}" />
+        <filter token="NUXEO_TARGET_VERSION" value="${nuxeo.target.version}" />
       </filterset>
     </copy>
     <copy file="${outdir}/<%= s.dasherize(s.decapitalize(s.titleize(name))) %>-artifacts.properties" todir="${outdir}/marketplace/install" />
