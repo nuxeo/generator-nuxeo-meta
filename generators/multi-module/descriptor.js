@@ -22,17 +22,7 @@ module.exports = {
     message: 'Use the Nuxeo Distribution POM?',
     default: false,
     when: function (answers) {
-      return answers.use_nuxeo_bom;
-    }
-  }, {
-    type: 'input',
-    name: 'super_nuxeo_version',
-    store: true,
-    message: 'Nuxeo Parent Version:',
-    default: helper.nuxeo_version.default_distribution,
-    validate: helper.validators.version,
-    when: function (answers) {
-      return answers.use_nuxeo_bom;
+      return answers.use_bom;
     }
   }, {
     type: 'input',
@@ -73,16 +63,15 @@ module.exports = {
       return answers.use_bom && !answers.use_nuxeo_bom;
     }
   }, {
-    type: 'list',
+    type: 'input',
     name: 'nuxeo_version',
     message: 'Nuxeo Version:',
     default: helper.nuxeo_version.default,
     store: true,
-    choices: helper.nuxeo_version.choices,
     validate: helper.validators.version,
     filter: helper.nuxeo_version.filter,
     when: function (answers) {
-      return !answers.use_bom || answers.import_nuxeo;
+      return answers.use_nuxeo_bom || !answers.use_bom || answers.import_nuxeo;
     }
   }, {
     type: 'input',

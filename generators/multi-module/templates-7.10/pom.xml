@@ -3,20 +3,19 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 <% if (use_bom) { -%>
-<% if (!use_nuxeo_bom) { -%>
   <parent>
+<% if (!use_nuxeo_bom) { -%>
     <groupId><%= super_package %></groupId>
     <artifactId><%= super_artifact %></artifactId>
     <version><%= super_version %></version>
-  </parent>
 <% } else { -%>
-  <parent>
     <groupId>org.nuxeo.ecm.distribution</groupId>
     <artifactId>nuxeo-distribution</artifactId>
-    <version><%= super_nuxeo_version %></version>
+    <version><%= nuxeo_version %></version>
+<% } -%>
   </parent>
 <% } -%>
-<% } -%>
+
   <groupId><%= parent_package %></groupId>
   <artifactId><%= parent_artifact %></artifactId>
   <version><%= parent_version %></version>
