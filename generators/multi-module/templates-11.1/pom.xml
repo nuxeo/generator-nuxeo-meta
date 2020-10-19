@@ -23,7 +23,13 @@
   <description><%= description %></description>
   <packaging>pom</packaging>
 
+  <properties>
+    <nuxeo.skip.enforcer>true</nuxeo.skip.enforcer>
+    <nuxeo.target.version>11.*</nuxeo.target.version>
+  </properties>
+
   <modules></modules>
+
 <% if (use_bom && !parent_package.match(/^org\.nuxeo/)) { -%>
   <scm></scm>
   <licenses></licenses>
@@ -32,14 +38,9 @@
   <ciManagement></ciManagement>
   <developers></developers>
   <distributionManagement></distributionManagement>
+
 <% } -%>
-
-  <properties>
-    <nuxeo.skip.enforcer>true</nuxeo.skip.enforcer>
-    <nuxeo.target.version>11.*</nuxeo.target.version>
-  </properties>
-
-<% if (nuxeo_version) { -%>
+<% if (nuxeo_version && (!use_bom || (use_bom && !use_nuxeo_bom))) { -%>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -54,8 +55,8 @@
 <% } else { -%>
   <dependencyManagement />
 <% } -%>
-<% if (!use_bom) { -%>
 
+<% if (!use_bom) { -%>
     <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -105,8 +106,8 @@
         </plugin>
       </plugins>
     </build>
-<% } -%>
 
+<% } -%>
   <repositories>
     <repository>
       <id>maven-public</id>
