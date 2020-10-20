@@ -45,15 +45,8 @@ gulp.task('lint', ['checkstyle'], function() {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('prepublish', ['nsp', 'test']);
+gulp.task('prepublish', ['test']);
 
-gulp.task('nsp', function(done) {
-  nsp({
-    shrinkwrap: __dirname + '/npm-shrinkwrap.json',
-    package: __dirname + '/package.json'
-  }, done);
-});
-;
 gulp.task('test', ['lint', 'pre-test'], function(cb) {
   let mochaErr;
 
