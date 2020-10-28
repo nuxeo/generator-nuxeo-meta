@@ -24,8 +24,16 @@
   <packaging>pom</packaging>
 
   <properties>
+    <!-- Skip Nuxeo enforcer rules by default -->
     <nuxeo.skip.enforcer>true</nuxeo.skip.enforcer>
     <nuxeo.target.version>11.*</nuxeo.target.version>
+<% if (nuxeo_version && (!use_bom || (use_bom && !use_nuxeo_bom))) { -%>
+    <nuxeo.platform.version><%= nuxeo_version %></nuxeo.platform.version>
+<% } -%>
+<% if (!use_bom) { -%>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+<% } -%>
   </properties>
 
   <modules></modules>
@@ -57,15 +65,14 @@
 <% } -%>
 
 <% if (!use_bom) { -%>
-    <properties>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-      <!-- Skip Nuxeo enforcer rules by default -->
-      <nuxeo.skip.enforcer>true</nuxeo.skip.enforcer>
-    </properties>
-
     <build>
       <plugins>
+        <plugin>
+          <groupId>org.nuxeo.build</groupId>
+          <artifactId>ant-assembly-maven-plugin</artifactId>
+          <extensions>true</extensions>
+          <version>2.1.3</version>
+        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
