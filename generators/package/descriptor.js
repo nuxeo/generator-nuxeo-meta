@@ -1,4 +1,5 @@
 const helper = require('../../lib/helpers.js');
+const STUDIO_SYMNAME = 'studio:symbolicname';
 
 module.exports = {
   type: 'package',
@@ -67,5 +68,11 @@ module.exports = {
     } else {
       return 'templates-11.1';
     }
+  },
+  end: function (cb) {
+    if (this.config.get(STUDIO_SYMNAME)) {
+      this.log.conflict('Please re-run `nuxeo studio link` to properly configure your Studio Project into your package.');
+    }
+    cb();
   }
 };
