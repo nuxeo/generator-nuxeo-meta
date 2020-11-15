@@ -1,0 +1,19 @@
+{
+  // The order of the files is important since later files override previous ones
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "docker-compose.extend.yml"
+  ],
+  "extensions": [
+    "vscjava.vscode-java-pack",
+    "redhat.vscode-xml",
+    "lgdd.vscode-osgi"
+  ],
+  "postStartCommand": "bash scripts/poststart.sh",
+  "shutdownAction": "stopCompose",
+  "service": "ide",
+  "workspaceFolder": "/home/nuxeo/workspace",
+  "settings": {
+    "java.home": "/usr/local/openjdk-11"
+  }
+}
