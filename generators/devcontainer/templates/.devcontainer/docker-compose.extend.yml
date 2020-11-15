@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  ide:
+    image: docker.packages.nuxeo.com/nos-dev/shell-project:latest
+    command: tail -f /dev/null
+    tty: true
+    links:
+      - nuxeo
+    volumes:
+      # Shell Project Config
+      - ./.env.nuxeo-cli:/home/nuxeo/workspace/.env.nuxeo-cli
+      # VSC Tasks and scripts related
+      - ./.vscode:/home/nuxeo/workspace/.vscode
+      - ./scripts:/home/nuxeo/workspace/scripts
+      # Local repository
+      - .:/home/nuxeo/workspace/<%= global._options.dirname %>
+      # M2 repository
+      - m2repo:/home/nuxeo/.m2/repository
+      # Nuxeo Server Communication
+      - war:/home/nuxeo/workspace/deployable/nuxeo.war # useful?
+      - conf.d:/home/nuxeo/workspace/deployable/conf.d # config?
+      # VSCode installed extensions cache
+      - vscode-extensions:/home/nuxeo/.vscode-server/extensions
+      - vscode-extensions:/home/nuxeo/.vscode-server-insiders/extensions
+      # Docker socket
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Nuxeo CLI configuration
+      - ./.yo-rc.json:/home/nuxeo/workspace/.yo-rc.json
+  nuxeo:
+    volumes:
+      - data:/var/lib/nuxeo
+      - conf.d:/etc/nuxeo/conf.d
+      - bundles:/tmp/nuxeo/bundles
+      - war:/opt/nuxeo/server/nxserver/nuxeo.war
+volumes:
+  data: {}
+  bundles: {}
+  war: {}
+  conf.d: {}
+  vscode-extensions: {}
+  m2repo: {}
