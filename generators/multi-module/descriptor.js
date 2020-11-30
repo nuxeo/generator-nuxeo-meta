@@ -12,10 +12,21 @@ module.exports = {
     multi: true
   },
   params: [{
+    type: 'input',
+    name: 'nuxeo_version',
+    message: 'Nuxeo Version:',
+    default: helper.nuxeo_version.default,
+    store: true,
+    validate: helper.validators.version,
+    filter: helper.nuxeo_version.filter
+  }, {
     type: 'confirm',
     name: 'use_bom',
     message: 'Use a parent artifact (for instance your company\'s BOM or the Nuxeo Distribution POM)?',
-    default: false
+    default: false,
+    when: function (answers) {
+      return global.VERSION_HELPER.fromVersion(answers.nuxeo_version).isBefore('11.1');
+    }
   }, {
     type: 'confirm',
     name: 'use_nuxeo_bom',
@@ -61,17 +72,6 @@ module.exports = {
     default: true,
     when: function (answers) {
       return answers.use_bom && !answers.use_nuxeo_bom;
-    }
-  }, {
-    type: 'input',
-    name: 'nuxeo_version',
-    message: 'Nuxeo Version:',
-    default: helper.nuxeo_version.default,
-    store: true,
-    validate: helper.validators.version,
-    filter: helper.nuxeo_version.filter,
-    when: function (answers) {
-      return answers.use_nuxeo_bom || !answers.use_bom || answers.import_nuxeo;
     }
   }, {
     type: 'input',
