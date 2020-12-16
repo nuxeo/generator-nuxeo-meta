@@ -1,5 +1,4 @@
 const helper = require('../../lib/helpers.js');
-const path = require('path');
 
 module.exports = {
   depends: 'default',
