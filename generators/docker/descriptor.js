@@ -32,19 +32,11 @@ module.exports = {
     type: 'input',
     name: 'artifact',
     message: 'Docker Artifact id:',
+    store: true,
     default: function () {
       return global._options.dirname + '-docker';
     },
     validate: helper.validators.artifact
-  }, {
-    type: 'choice',
-    name: 'version',
-    message: 'Docker Version:',
-    default: '1.0-SNAPSHOT',
-    validate: helper.validators.version_snapshot,
-    when: function (answers) {
-      return !(answers.parent_version && answers.parent_version.match(/-SNAPSHOT$/i));
-    }
   }, {
     type: 'input',
     name: 'base_image_repository',
@@ -73,5 +65,5 @@ module.exports = {
     groupId: 'com.spotify',
     artifactId: 'dockerfile-maven-plugin',
     version: '1.4.13',
-  }],
+  }]
 };
