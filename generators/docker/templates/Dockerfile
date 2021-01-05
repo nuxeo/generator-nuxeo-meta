@@ -15,7 +15,11 @@ LABEL com.customer.sample.build-tag=${BUILD_TAG}
 
 COPY --chown=nuxeo:0 target/<%= global._options.dirname %>-package-*.zip /home/nuxeo/local-packages/<%= global._options.dirname %>-package.zip
 
-RUN /install-local-packages.sh /home/nuxeo/local-packages
+<% if ( v.isBefore('11.4')) { -%>
+RUN /install-local-packages.sh /home/nuxeo/local-packages/<%= global._options.dirname %>-package.zip
+<% } else { -%>
+RUN /install-packages.sh --offline /home/nuxeo/local-packages/<%= global._options.dirname %>-package.zip
+<% } -%>
 <% if (typeof studio_package !== 'undefined') { -%>
 RUN /install-packages.sh --clid ${CLID} ${PACKAGES}
 <% } -%>
