@@ -47,7 +47,7 @@ module.exports = {
   }, {
     type: 'password',
     name: 'password',
-    message: 'NOS Token:',
+    message: 'NOS Token (it can be generated at https://connect.nuxeo.com/nuxeo/site/connect/tokens ):',
     validate: (input) => {
       return input && input.length > 0 || 'Token is empty';
     }
@@ -62,7 +62,7 @@ module.exports = {
   }, {
     type: 'input',
     name: 'nexusUser',
-    message: 'Nexus Username:',
+    message: 'Nexus Username (use to connect to https://packages.nuxeo.com ):',
     store: true,
     validate: (input) => {
       return input && input.length > 0 || 'Username is empty';
@@ -70,7 +70,7 @@ module.exports = {
   }, {
     type: 'password',
     name: 'nexusToken',
-    message: 'Nexus Token:',
+    message: 'Nexus Token (use to connect to https://packages.nuxeo.com ):',
     store: true,
     validate: (input) => {
       return input && input.length > 0 || 'Username is empty';
@@ -80,6 +80,12 @@ module.exports = {
     // If the docker image has not been built yet, display a warning to the user
     if (!this.fs.exists(`${this.options.dirname}-docker/target/docker/image-id`)) {
       this.log.conflict(`Please make sure the docker image has been built before running the devcontainer`);
+    }
+    // Display more info on what to do next
+    this.log.info('You can now open the project with Visual Studio Code and run the command \'Remote-Containers: Rebuild and Reopen in Container\'');
+    // If the OS is windows, display message to activate Docker file sharing
+    if (process.platform === 'win32') {
+      this.log.info('Please ensure file sharing has been configured on Docker Desktop to allow sharing file with a Linux container (more info https://docs.docker.com/docker-for-windows/#resources ).');
     }
     cb();
   }
