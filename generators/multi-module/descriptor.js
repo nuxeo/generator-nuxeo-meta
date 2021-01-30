@@ -23,7 +23,7 @@ module.exports = {
     type: 'confirm',
     name: 'use_bom',
     message: 'Use a parent artifact (for instance your company\'s BOM or the Nuxeo Distribution POM)?',
-    default: false,
+    default: true,
     when: function (answers) {
       return global.VERSION_HELPER.fromVersion(answers.nuxeo_version).isBefore('11.1');
     }
@@ -31,7 +31,7 @@ module.exports = {
     type: 'confirm',
     name: 'use_nuxeo_bom',
     message: 'Use the Nuxeo Distribution POM?',
-    default: false,
+    default: true,
     when: function (answers) {
       return answers.use_bom;
     }

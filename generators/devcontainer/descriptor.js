@@ -23,19 +23,9 @@ module.exports = {
     return skip;
   },
   params: [{
-    type: 'checkbox',
-    name: 'ignoredModules',
-    message: 'Ignore selected modules:',
-    choices: () => {
-      const modules = global.MODULES_HELPER.listModules(global._options.env.cwd);
-      return global.MODULES_HELPER.modulesToChoices(modules);
-    },
-    store: true,
-    when: () => {
-      // Check if the ignored modules have been already configured
-      const modules = global._config.get(MODULE_IGNORED);
-      return modules === undefined;
-    }
+    type: 'input',
+    name: 'welcome_nos',
+    message: '> NOS Credentials\nUsed to access NOS artifacts\nGo to https://connect.nuxeo.com/nuxeo/site/connect/tokens\nNext step is to fill your username and your token\nReady?'
   }, {
     type: 'input',
     name: 'username',
@@ -47,7 +37,7 @@ module.exports = {
   }, {
     type: 'password',
     name: 'password',
-    message: 'NOS Token (it can be generated at https://connect.nuxeo.com/nuxeo/site/connect/tokens ):',
+    message: 'NOS Token:',
     validate: (input) => {
       return input && input.length > 0 || 'Token is empty';
     }
@@ -61,8 +51,12 @@ module.exports = {
     }
   }, {
     type: 'input',
+    name: 'welcome_nexus',
+    message: '> Nexus UserToken\nUsed to access Nexus artifacts\nGo to https://packages.nuxeo.com/#user/usertoken\nNext step is to fill your User Code and your Pass Code\nReady?'
+  }, {
+    type: 'input',
     name: 'nexusUser',
-    message: 'Nexus Username (use to connect to https://packages.nuxeo.com ):',
+    message: 'Nexus User Code:',
     store: true,
     validate: (input) => {
       return input && input.length > 0 || 'Username is empty';
@@ -70,10 +64,24 @@ module.exports = {
   }, {
     type: 'password',
     name: 'nexusToken',
-    message: 'Nexus Token (use to connect to https://packages.nuxeo.com ):',
+    message: 'Nexus Pass Code:',
     store: true,
     validate: (input) => {
       return input && input.length > 0 || 'Username is empty';
+    }
+  },{
+    type: 'checkbox',
+    name: 'ignoredModules',
+    message: 'Disable hot-reload for selected modules:',
+    choices: () => {
+      const modules = global.MODULES_HELPER.listModules(global._options.env.cwd);
+      return global.MODULES_HELPER.modulesToChoices(modules);
+    },
+    store: true,
+    when: () => {
+      // Check if the ignored modules have been already configured
+      const modules = global._config.get(MODULE_IGNORED);
+      return modules === undefined;
     }
   }],
   end: function (cb) {
@@ -82,10 +90,14 @@ module.exports = {
       this.log.conflict(`Please make sure the docker image has been built before running the devcontainer`);
     }
     // Display more info on what to do next
-    this.log.info('You can now open the project with Visual Studio Code and run the command \'Remote-Containers: Rebuild and Reopen in Container\'');
+    this.log.info('You can now open the project with Visual Studio Code and run the command \'Remote-Containers: Rebuild and Reopen in Container\' command.');
     // If the OS is windows, display message to activate Docker file sharing
     if (process.platform === 'win32') {
-      this.log.info('Please ensure file sharing has been configured on Docker Desktop to allow sharing file with a Linux container (more info https://docs.docker.com/docker-for-windows/#resources ).');
+      this.log.info('Please ensure file sharing has been configured on Docker Desktop to allow your current folder to be shared within the container (more info https://docs.docker.com/docker-for-windows/#resources ).');
+    }
+    // If the OS is MacOS, display message to activate Docker file sharing
+    if (process.platform === 'darwin') {
+      this.log.info('Please ensure file sharing has been configured on Docker Desktop to allow your current folder to be shared within the container (more info https://docs.docker.com/docker-for-mac/#resources ).');
     }
     cb();
   }
