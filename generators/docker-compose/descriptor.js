@@ -10,4 +10,4 @@ module.exports = {
     return this.fs.exists('docker-compose.yml');
   },
   params: []
-}
+};

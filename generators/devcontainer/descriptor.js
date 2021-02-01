@@ -69,7 +69,7 @@ module.exports = {
     validate: (input) => {
       return input && input.length > 0 || 'Username is empty';
     }
-  },{
+  }, {
     type: 'checkbox',
     name: 'ignoredModules',
     message: 'Disable hot-reload for selected modules:',
@@ -87,7 +87,7 @@ module.exports = {
   end: function (cb) {
     // If the docker image has not been built yet, display a warning to the user
     if (!this.fs.exists(`${this.options.dirname}-docker/target/docker/image-id`)) {
-      this.log.conflict(`Please make sure the docker image has been built before running the devcontainer`);
+      this.log.conflict('Please make sure the docker image has been built before running the devcontainer');
     }
     // Display more info on what to do next
     this.log.info('You can now open the project with Visual Studio Code and run the command \'Remote-Containers: Rebuild and Reopen in Container\' command.');
@@ -101,4 +101,4 @@ module.exports = {
     }
     cb();
   }
-}
+};
