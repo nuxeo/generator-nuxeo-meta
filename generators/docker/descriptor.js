@@ -32,7 +32,6 @@ module.exports = {
     type: 'input',
     name: 'artifact',
     message: 'Docker Artifact id:',
-    store: true,
     default: function () {
       return global._options.dirname + '-docker';
     },
