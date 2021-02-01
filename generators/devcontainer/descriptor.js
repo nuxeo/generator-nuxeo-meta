@@ -6,7 +6,7 @@ module.exports = {
   depends: 'default',
   autonomous: true,
   type: 'root',
-  requiredModuleType: ['package', 'docker'],
+  requiredModuleType: ['package', 'docker-compose'],
   skip: function () {
     // Check first if the devcontainer has already been configured
     let skip = this.fs.exists('.devcontainer/devcontainer.json');
