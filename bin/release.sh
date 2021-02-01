@@ -3,11 +3,14 @@ set -e
 
 VERSION=$1
 if [ -z $VERSION ]; then
-    echo echo 'Usage: ./release.sh VERSION'
-    exit 1;
+  echo echo 'Usage: ./release.sh VERSION'
+  exit 1
 fi
 
 git checkout master
+
+# Ensure Everything is good to go.
+npx gulp prepublish
 
 # Update the version in package.json
 npm version $VERSION --git-tag-version=false
