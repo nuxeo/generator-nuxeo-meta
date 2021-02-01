@@ -45,7 +45,9 @@ module.exports = {
     type: 'input',
     name: 'project',
     message: 'Studio Project:',
-    default: global._config.get(STUDIO_SYMNAME),
+    default: () => {
+      return global._config.get(STUDIO_SYMNAME);
+    },
     validate: (input) => {
       return input && input.length > 0 || 'Studio Project is empty';
     }
