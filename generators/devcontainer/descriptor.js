@@ -67,9 +67,8 @@ module.exports = {
     type: 'password',
     name: 'nexusToken',
     message: 'Nexus Pass Code:',
-    store: true,
     validate: (input) => {
-      return input && input.length > 0 || 'Username is empty';
+      return input && input.length > 0 || 'Token is empty';
     }
   }, {
     type: 'checkbox',
