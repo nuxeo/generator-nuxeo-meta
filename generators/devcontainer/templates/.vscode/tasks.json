@@ -6,7 +6,7 @@
     {
       "label": "Hot Reload Project",
       "type": "shell",
-      "command": "./scripts/reload.sh",
+      "command": "bash ./scripts/reload.sh",
       "presentation": {
         "reveal": "always",
         "panel": "new",
@@ -17,7 +17,7 @@
     {
       "label": "Synchronize Project's Web Resources",
       "type": "shell",
-      "command": "./scripts/sync.sh",
+      "command": "bash ./scripts/sync.sh",
       "presentation": {
         "reveal": "always",
         "panel": "new",
