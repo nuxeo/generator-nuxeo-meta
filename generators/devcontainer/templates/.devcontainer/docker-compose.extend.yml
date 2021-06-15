@@ -3,7 +3,7 @@ services:
   ide:
     image: docker.packages.nuxeo.com/nos-dev/shell-project:latest
     command: tail -f /dev/null
-    user: <%= process.getuid() + ':' +  process.getgid() %>
+    user: "<%= process.getuid() + ':' +  process.getgid() %>"
     tty: true
     links:
       - nuxeo
