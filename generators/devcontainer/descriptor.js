@@ -86,10 +86,6 @@ module.exports = {
     }
   }],
   end: function (cb) {
-    // If the docker image has not been built yet, display a warning to the user
-    if (!this.fs.exists(`${this.options.dirname}-docker/target/docker/image-id`)) {
-      this.log.conflict('Please make sure the docker image has been built before running the devcontainer');
-    }
     // Display more info on what to do next
     this.log.info('You can now open the project with Visual Studio Code and run the command \'Remote-Containers: Rebuild and Reopen in Container\' command.');
     // If the OS is windows, display message to activate Docker file sharing
