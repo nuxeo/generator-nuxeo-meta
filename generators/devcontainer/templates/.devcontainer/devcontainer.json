@@ -9,7 +9,7 @@
     "lgdd.vscode-osgi",
     "ms-azuretools.vscode-docker"
   ],
-  "postStartCommand": "bash scripts/poststart.sh",
+  "postStartCommand": "bash <%= global._options.dirname %>/.devcontainer/scripts/poststart.sh",
   "shutdownAction": "stopCompose",
   "service": "ide",
   "workspaceFolder": "/home/nuxeo/workspace",
