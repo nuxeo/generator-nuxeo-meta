@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/nuxeo/generator-nuxeo-meta#readme",
   "devDependencies": {
-    "async": "^2.5.0",
+    "async": "^2.6.4",
     "babel-eslint": "^7.2.3",
     "chai": "^4.1.0",
     "dirty-chai": "^2.0.1",
