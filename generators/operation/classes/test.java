@@ -5,7 +5,11 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
+<% if (v.isAfterOrEquals("2025.0")) { -%>
+import jakarta.inject.Inject;
+<% } else { -%>
 import javax.inject.Inject;
+<% } -%>
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
