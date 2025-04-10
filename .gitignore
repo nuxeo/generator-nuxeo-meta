@@ -122,3 +122,6 @@ _npx
 # Voluntary other
 package-lock.json
 target
+
+# Intellij
+.idea

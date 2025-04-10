@@ -1,6 +1,10 @@
 package <%= package %>;
 
+<% if (v.isAfterOrEquals("2025.0")) { -%>
+import jakarta.inject.Inject;
+<% } else { -%>
 import javax.inject.Inject;
+<% } -%>
 
 import org.junit.Assert;
 import org.junit.Test;

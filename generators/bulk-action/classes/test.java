@@ -18,7 +18,11 @@ import org.nuxeo.runtime.test.runner.Deploy;
 import org.nuxeo.runtime.test.runner.Features;
 import org.nuxeo.runtime.test.runner.FeaturesRunner;
 
+<% if (v.isAfterOrEquals("2025.0")) { -%>
+import jakarta.inject.Inject;
+<% } else { -%>
 import javax.inject.Inject;
+<% } -%>
 import java.time.Duration;
 
 @RunWith(FeaturesRunner.class)

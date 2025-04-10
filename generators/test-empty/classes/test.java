@@ -1,5 +1,5 @@
 package <%= package %>;
-<% 
+<%
 var feature;
 var f_package;
 
@@ -22,7 +22,7 @@ switch (runner_feature) {
     break;
   case 'AuditFeature':
     feature = 'AuditFeature';
-    f_package = 'org.nuxeo.ecm.platform.audit';
+    f_package = v.isAfterOrEquals("2025.0") ? 'org.nuxeo.audit.test' : 'org.nuxeo.ecm.platform.audit';
     break;
   default:
     break;
@@ -30,7 +30,11 @@ switch (runner_feature) {
 %>
 import static org.junit.Assert.*;
 
+<% if (v.isAfterOrEquals("2025.0")) { -%>
+import jakarta.inject.Inject;
+<% } else { -%>
 import javax.inject.Inject;
+<% } -%>
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,14 +44,15 @@ import org.nuxeo.ecm.core.test.annotations.Granularity;
 import org.nuxeo.ecm.core.test.annotations.RepositoryConfig;
 import org.nuxeo.runtime.test.runner.Deploy;
 import org.nuxeo.runtime.test.runner.Features;
-import org.nuxeo.runtime.test.runner.FeaturesRunner;<% if (f_package) { %>
+import org.nuxeo.runtime.test.runner.FeaturesRunner;
+<% if (f_package) { %>
 import <%= f_package + '.' + feature %>;
 <% } -%>
 
 /**
  * Empty Unit Testing class.
  * <p/>
- * 
+ *
  * @see <a href="https://doc.nuxeo.com/corg/unit-testing/">Unit Testing</a>
  */
 @RunWith(FeaturesRunner.class)<% if (feature) { %>
