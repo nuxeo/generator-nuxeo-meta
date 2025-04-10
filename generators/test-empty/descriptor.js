@@ -49,10 +49,21 @@ module.exports = {
     dest: '{{s.camelize(test_name)}}.java'
   }],
   // <groupId>:<artifactId>[:<version>[:<extension>[:<classifier>]]]
-  dependencies: [
-    'org.nuxeo.runtime:nuxeo-runtime-test:::test',
-    'org.nuxeo.ecm.platform:nuxeo-platform-test:::test',
-    'org.nuxeo.ecm.platform:nuxeo-platform-audit-core::test-jar:test',
-    'org.nuxeo.ecm.automation:nuxeo-automation-test:::test'
-  ]
+  dependencies: ({ v }) => {
+    if (v.isAfterOrEquals('2025.0')) {
+      return [
+        'org.nuxeo.runtime:nuxeo-runtime-test:::test',
+        'org.nuxeo.ecm.platform:nuxeo-platform-test:::test',
+        'org.nuxeo.ecm.platform:nuxeo-platform-audit-test::test-jar:test',
+        'org.nuxeo.ecm.automation:nuxeo-automation-test:::test'
+      ];
+    } else {
+      return [
+        'org.nuxeo.runtime:nuxeo-runtime-test:::test',
+        'org.nuxeo.ecm.platform:nuxeo-platform-test:::test',
+        'org.nuxeo.ecm.platform:nuxeo-platform-audit-core::test-jar:test',
+        'org.nuxeo.ecm.automation:nuxeo-automation-test:::test'
+      ];
+    }
+  }
 };
